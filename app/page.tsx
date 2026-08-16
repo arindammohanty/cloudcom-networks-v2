@@ -6,8 +6,14 @@ import { Container } from "@/components/ui/Container";
 export default function HomePage() {
     return (
         <div className="flex flex-col min-h-screen overflow-hidden">
-            <section className="bg-gradient-hero pt-32 pb-32 relative overflow-hidden flex items-center min-h-[90vh]">
-                <div className="absolute inset-0 z-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center mix-blend-screen"></div>
+            {/* Fixed Global Background */}
+            <div className="fixed inset-0 z-[-1]" style={{ backgroundColor: 'var(--color-dark-navy)' }}>
+                <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center mix-blend-screen"></div>
+            </div>
+
+            <section className="pt-32 pb-32 relative overflow-hidden flex items-center min-h-[90vh]">
+                {/* Radial gradients from bg-gradient-hero */}
+                <div className="absolute inset-0 z-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(at 0% 0%, hsla(216,100%,40%,0.2) 0px, transparent 50%), radial-gradient(at 100% 0%, hsla(199,89%,48%,0.2) 0px, transparent 50%), radial-gradient(at 100% 100%, hsla(216,100%,40%,0.2) 0px, transparent 50%), radial-gradient(at 0% 100%, hsla(199,89%,48%,0.2) 0px, transparent 50%)' }}></div>
                 <div className="absolute inset-0 bg-slate-900/40 z-0"></div>
                 <Container className="relative z-10">
                     <AnimatedSection direction="up" delay={0.1}>
@@ -158,8 +164,7 @@ export default function HomePage() {
                 </Container>
             </section>
 
-            <section className="py-24 bg-slate-900 relative overflow-hidden">
-                <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center mix-blend-screen"></div>
+            <section className="py-24 bg-slate-900/70 relative overflow-hidden">
                 <Container className="relative z-10">
                     <div className="text-center mb-16">
                         <AnimatedSection>

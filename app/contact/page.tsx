@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 // Comprehensive list of global country codes
 const COUNTRY_CODES = [
@@ -145,14 +146,16 @@ Message: ${formData.message}
 
 export default function ContactPage() {
     return (
-        <div className="animate-fade-in">
+        <div className="flex flex-col min-h-screen">
             {/* Hero Section */}
             <section className="bg-gradient-hero pt-16 pb-20 relative overflow-hidden">
                  <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center mix-blend-screen"></div>
                  <div className="container mx-auto px-6 max-w-7xl relative z-10 text-center">
-                     <div className="text-primary font-semibold text-xs mb-4">Home <i className="fa-solid fa-chevron-right text-[8px] mx-2 text-slate-500"></i> Contact Us</div>
-                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Let's Connect</h1>
-                     <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-10">We'd love to hear from you. Whether you have a question about our services, need support, or want to explore a partnership, our team is here to help.</p>
+                     <AnimatedSection direction="up">
+                         <div className="text-primary font-semibold text-xs mb-4">Home <i className="fa-solid fa-chevron-right text-[8px] mx-2 text-slate-500"></i> Contact Us</div>
+                         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Let's Connect</h1>
+                         <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-10">We'd love to hear from you. Whether you have a question about our services, need support, or want to explore a partnership, our team is here to help.</p>
+                     </AnimatedSection>
                  </div>
             </section>
 
@@ -160,7 +163,7 @@ export default function ContactPage() {
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="flex flex-col lg:flex-row gap-8 mb-16">
                         {/* Contact Info Cards */}
-                        <div className="lg:w-1/3">
+                        <AnimatedSection delay={0.1} direction="up" className="lg:w-1/3">
                             <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm h-full">
                                 <h3 className="text-xl font-bold text-slate-900 mb-6">Get in Touch</h3>
                                 <div className="space-y-6">
@@ -189,10 +192,10 @@ export default function ContactPage() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </AnimatedSection>
 
                         {/* Contact Form Wrapper */}
-                        <div className="lg:w-2/3 bg-white p-8 md:p-10 rounded-xl border border-slate-200 shadow-sm">
+                        <AnimatedSection delay={0.2} direction="up" className="lg:w-2/3 bg-white p-8 md:p-10 rounded-xl border border-slate-200 shadow-sm">
                             <h3 className="text-2xl font-bold text-slate-900 mb-2">Send Us a Message</h3>
                             <p className="text-slate-500 text-xs mb-8">Fill out the form below and our team will get back to you shortly.</p>
                             
@@ -200,7 +203,7 @@ export default function ContactPage() {
                             <Suspense fallback={<div className="text-slate-500 text-sm py-4">Loading form framework...</div>}>
                                 <ContactFormContent />
                             </Suspense>
-                        </div>
+                        </AnimatedSection>
                     </div>
 
                     {/* Offices */}
@@ -208,21 +211,27 @@ export default function ContactPage() {
                         <h3 className="text-2xl font-bold text-slate-900">Our Offices</h3>
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
-                        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
-                            <i className="fa-regular fa-building text-3xl text-primary mb-3"></i>
-                            <h4 className="font-bold text-slate-900 text-sm mb-1">Registered Office</h4>
-                            <p className="text-[11px] text-slate-500">Bhubaneswar, Odisha, India</p>
-                        </div>
-                        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
-                            <i className="fa-solid fa-handshake text-3xl text-primary mb-3"></i>
-                            <h4 className="font-bold text-slate-900 text-sm mb-1">Sales Enquiries</h4>
-                            <p className="text-[11px] text-slate-500">sales@cloudcomnet.com</p>
-                        </div>
-                        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
-                            <i className="fa-solid fa-headset text-3xl text-primary mb-3"></i>
-                            <h4 className="font-bold text-slate-900 text-sm mb-1">Support & Services</h4>
-                            <p className="text-[11px] text-slate-500">support@cloudcomnet.com</p>
-                        </div>
+                        <AnimatedSection delay={0.1} direction="up" className="h-full">
+                            <div className="h-full bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                                <i className="fa-regular fa-building text-3xl text-primary mb-3"></i>
+                                <h4 className="font-bold text-slate-900 text-sm mb-1">Registered Office</h4>
+                                <p className="text-[11px] text-slate-500">Bhubaneswar, Odisha, India</p>
+                            </div>
+                        </AnimatedSection>
+                        <AnimatedSection delay={0.2} direction="up" className="h-full">
+                            <div className="h-full bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                                <i className="fa-solid fa-handshake text-3xl text-primary mb-3"></i>
+                                <h4 className="font-bold text-slate-900 text-sm mb-1">Sales Enquiries</h4>
+                                <p className="text-[11px] text-slate-500">sales@cloudcomnet.com</p>
+                            </div>
+                        </AnimatedSection>
+                        <AnimatedSection delay={0.3} direction="up" className="h-full">
+                            <div className="h-full bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-center">
+                                <i className="fa-solid fa-headset text-3xl text-primary mb-3"></i>
+                                <h4 className="font-bold text-slate-900 text-sm mb-1">Support & Services</h4>
+                                <p className="text-[11px] text-slate-500">support@cloudcomnet.com</p>
+                            </div>
+                        </AnimatedSection>
                     </div>
                 </div>
             </section>
