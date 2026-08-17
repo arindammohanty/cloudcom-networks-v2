@@ -34,12 +34,12 @@ function ContactFormContent() {
 
     // Added countryCode to state, defaulting to +91
     const [formData, setFormData] = useState({
-        name: '', email: '', countryCode: '+91', phone: '', company: '', subject: '', message: ''
+        name: '', designation: '', email: '', countryCode: '+91', phone: '', company: '', requirement: '', message: ''
     });
 
     useEffect(() => {
         if (interestParam) {
-            setFormData(prev => ({ ...prev, subject: `Inquiry: ${interestParam}` }));
+            setFormData(prev => ({ ...prev, requirement: interestParam }));
         }
     }, [interestParam]);
 
@@ -70,12 +70,13 @@ Target Section: ${trackedSection}
 
 User Details:
 Name: ${formData.name}
+Designation: ${formData.designation || 'Not Provided'}
 Email: ${formData.email}
 Phone: ${formattedPhone}
 Company: ${formData.company || 'Not Provided'}
 
 Message Contents:
-Subject: ${formData.subject}
+Requirement: ${formData.requirement}
 Message: ${formData.message}
 
 (This payload will be routed to the backend communications handler)
@@ -84,62 +85,85 @@ Message: ${formData.message}
         alert(popupMessage);
         
         // Reset form, keeping the default +91 country code intact
-        setFormData({ name: '', email: '', countryCode: '+91', phone: '', company: '', subject: '', message: '' });
+        setFormData({ name: '', designation: '', email: '', countryCode: '+91', phone: '', company: '', requirement: '', message: '' });
     };
 
     return (
         <form onSubmit={handleFormSubmit}>
             <div className="grid md:grid-cols-2 gap-4 mb-4">
                 <div>
-                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Full Name *" required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-primary text-slate-900" />
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Full Name *</label>
+                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter your full name" required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" />
                 </div>
                 <div>
-                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="Email Address *" required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-primary text-slate-900" />
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Designation (Optional)</label>
+                    <input type="text" name="designation" value={formData.designation} onChange={handleInputChange} placeholder="Your designation" className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" />
+                </div>
+                <div className="md:col-span-2">
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Organisation / Company *</label>
+                    <input type="text" name="company" value={formData.company} onChange={handleInputChange} placeholder="Enter your organisation or company name" required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" />
+                </div>
+                <div>
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Work Email *</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="name@company.com" required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" />
                 </div>
                 
-                {/* Updated Phone Field with Country Code Selector */}
-                <div className="flex">
-                    <select 
-                        name="countryCode" 
-                        value={formData.countryCode} 
-                        onChange={handleInputChange}
-                        className="px-2 py-2.5 rounded-l border border-r-0 border-slate-200 text-xs outline-none focus:border-primary text-slate-900 bg-white"
-                    >
-                        {COUNTRY_CODES.map((item) => (
-                            <option key={item.code} value={item.code}>
-                                {item.country} ({item.code})
-                            </option>
-                        ))}
-                    </select>
-                    <input 
-                        type="tel" 
-                        name="phone" 
-                        value={formData.phone} 
-                        onChange={handlePhoneChange} 
-                        placeholder="Phone Number" 
-                        pattern="\d{10}"
-                        minLength={10}
-                        maxLength={10}
-                        title="Please enter exactly 10 digits"
-                        className="w-full px-4 py-2.5 rounded-r border border-slate-200 text-xs outline-none focus:border-primary text-slate-900" 
-                    />
-                </div>
-
                 <div>
-                    <input type="text" name="company" value={formData.company} onChange={handleInputChange} placeholder="Company / Organization" className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-primary text-slate-900" />
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Phone Number *</label>
+                    <div className="flex">
+                        <select 
+                            name="countryCode" 
+                            value={formData.countryCode} 
+                            onChange={handleInputChange}
+                            className="px-2 py-2.5 rounded-l border border-r-0 border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900 bg-white"
+                        >
+                            {COUNTRY_CODES.map((item) => (
+                                <option key={item.code} value={item.code}>
+                                    {item.country} ({item.code})
+                                </option>
+                            ))}
+                        </select>
+                        <input 
+                            type="tel" 
+                            name="phone" 
+                            value={formData.phone} 
+                            onChange={handlePhoneChange} 
+                            placeholder="+91 98765 43210" 
+                            pattern="\d{10}"
+                            minLength={10}
+                            maxLength={10}
+                            title="Please enter exactly 10 digits"
+                            required
+                            className="w-full px-4 py-2.5 rounded-r border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" 
+                        />
+                    </div>
+                </div>
+                
+                <div className="md:col-span-2">
+                    <label className="block text-xs font-semibold text-slate-700 mb-1">Requirement *</label>
+                    <select name="requirement" value={formData.requirement} onChange={handleInputChange} required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900 bg-white">
+                        <option value="" disabled>Select your requirement</option>
+                        <option value="Cloud & Infrastructure">Cloud & Infrastructure</option>
+                        <option value="Communication & Collaboration">Communication & Collaboration</option>
+                        <option value="Security">Security</option>
+                        <option value="Digital & Business Technology">Digital & Business Technology</option>
+                        <option value="Managed Services">Managed Services</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
             </div>
             <div className="mb-4">
-                <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} placeholder="Subject *" required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-primary text-slate-900" />
-            </div>
-            <div className="mb-4">
-                <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Your Message *" required rows={5} className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-primary resize-none text-slate-900"></textarea>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">Message *</label>
+                <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell us more about your goals and how we can help..." required rows={5} className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue resize-none text-slate-900"></textarea>
             </div>
             <div className="mb-6 flex items-start">
                 <input type="checkbox" id="terms" className="mt-0.5 mr-2" required />
                 <label htmlFor="terms" className="text-[10px] text-slate-500">I agree to the Privacy Policy and Terms of Service.</label>
             </div>
-            <button type="submit" className="bg-primary hover:bg-primaryHover text-white px-6 py-2.5 rounded text-sm font-bold transition-colors shadow-md">Send Message &rarr;</button>
+            <button type="submit" className="w-full bg-cloud-blue hover:bg-cloud-blue-hover text-white px-6 py-3 rounded-lg text-sm font-bold transition-colors shadow-md flex items-center justify-center gap-2">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+                Send Enquiry
+            </button>
         </form>
     );
 }
@@ -148,61 +172,76 @@ export default function ContactPage() {
     return (
         <div className="flex flex-col min-h-screen">
             {/* Hero Section */}
-            <section className="bg-gradient-hero pt-16 pb-20 relative overflow-hidden">
-                 <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1920&h=1080&q=80')] bg-cover bg-center mix-blend-screen"></div>
-                 <div className="container mx-auto px-6 max-w-7xl relative z-10 text-center">
-                     <AnimatedSection direction="up">
-                         <div className="text-primary font-semibold text-xs mb-4">Home <i className="fa-solid fa-chevron-right text-[8px] mx-2 text-slate-500"></i> Contact Us</div>
-                         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Let's Connect</h1>
-                         <p className="text-lg text-slate-300 max-w-3xl mx-auto mb-10">We'd love to hear from you. Whether you have a question about our services, need support, or want to explore a partnership, our team is here to help.</p>
+            <section className="bg-dark-navy pt-24 pb-20 relative overflow-hidden text-white">
+                 <div className="absolute inset-0 z-0 opacity-10 bg-[url('/media/mesh.svg')] mix-blend-overlay"></div>
+                 <div className="container mx-auto px-6 max-w-7xl relative z-10">
+                     <AnimatedSection direction="up" className="max-w-2xl">
+                         <div className="text-cloud-blue font-bold tracking-widest text-sm uppercase mb-4">Contact Us</div>
+                         <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Let's build<br/><span className="text-cloud-blue">something better.</span></h1>
+                         <p className="text-xl text-blue-100/80 mb-10 leading-relaxed font-light">Tell us what you're trying to achieve.<br/>Our team will help you identify the right<br/>technology approach.</p>
                      </AnimatedSection>
                  </div>
             </section>
 
-            <section className="py-16 bg-slateBg relative z-20 min-h-screen">
+            <section className="py-16 bg-slate-50 relative z-20 min-h-screen">
                 <div className="container mx-auto px-6 max-w-7xl">
                     <div className="flex flex-col lg:flex-row gap-8 mb-16">
-                        {/* Contact Info Cards */}
-                        <AnimatedSection delay={0.1} direction="up" className="lg:w-1/3">
-                            <div className="bg-white p-8 rounded-xl border border-slate-200 shadow-sm h-full">
-                                <h3 className="text-xl font-bold text-slate-900 mb-6">Get in Touch</h3>
-                                <div className="space-y-6">
-                                    <div className="flex items-start">
-                                        <div className="w-10 h-10 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg mr-4 flex-shrink-0"><i className="fa-solid fa-phone"></i></div>
-                                        <div>
-                                            <h4 className="font-bold text-slate-900 text-sm">Phone</h4>
-                                            <p className="text-slate-600 text-xs font-semibold mt-1">+91 7609832555</p>
-                                            <p className="text-slate-400 text-[10px] mt-1">Mon - Sat: 9:00 AM - 6:00 PM</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start">
-                                        <div className="w-10 h-10 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg mr-4 flex-shrink-0"><i className="fa-regular fa-envelope"></i></div>
-                                        <div>
-                                            <h4 className="font-bold text-slate-900 text-sm">Email</h4>
-                                            <p className="text-slate-600 text-xs font-semibold mt-1">info@cloudcomnet.com</p>
-                                            <p className="text-slate-400 text-[10px] mt-1">We respond within 24 hours</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start">
-                                        <div className="w-10 h-10 rounded-full bg-blue-50 text-primary flex items-center justify-center text-lg mr-4 flex-shrink-0"><i className="fa-solid fa-location-dot"></i></div>
-                                        <div>
-                                            <h4 className="font-bold text-slate-900 text-sm">Address</h4>
-                                            <p className="text-slate-600 text-xs mt-1">Bhubaneswar, Odisha, India</p>
-                                        </div>
-                                    </div>
+                        {/* Contact Form Wrapper */}
+                        <AnimatedSection delay={0.2} direction="up" className="lg:w-2/3 bg-white p-8 md:p-10 rounded-2xl border border-slate-200 shadow-lg shadow-slate-200/50">
+                            <div className="flex items-center gap-3 mb-6">
+                                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-cloud-blue">
+                                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
+                                </div>
+                                <div>
+                                    <h3 className="text-xl font-bold text-dark-navy">Send us an enquiry</h3>
+                                    <p className="text-slate-500 text-xs mt-1">All fields marked with * are required.</p>
                                 </div>
                             </div>
-                        </AnimatedSection>
-
-                        {/* Contact Form Wrapper */}
-                        <AnimatedSection delay={0.2} direction="up" className="lg:w-2/3 bg-white p-8 md:p-10 rounded-xl border border-slate-200 shadow-sm">
-                            <h3 className="text-2xl font-bold text-slate-900 mb-2">Send Us a Message</h3>
-                            <p className="text-slate-500 text-xs mb-8">Fill out the form below and our team will get back to you shortly.</p>
                             
                             {/* Suspense boundary required by Next.js when using useSearchParams */}
                             <Suspense fallback={<div className="text-slate-500 text-sm py-4">Loading form framework...</div>}>
                                 <ContactFormContent />
                             </Suspense>
+                        </AnimatedSection>
+
+                        {/* Contact Info Cards */}
+                        <AnimatedSection delay={0.1} direction="up" className="lg:w-1/3">
+                            <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-lg shadow-slate-200/50 h-full">
+                                <h3 className="text-xl font-bold text-dark-navy mb-6">Get in touch</h3>
+                                <div className="mb-6">
+                                    <h4 className="font-bold text-cloud-blue text-sm">CloudCom Networks Private Limited</h4>
+                                    <p className="text-slate-500 text-xs mt-1">Bhubaneswar, Odisha, India</p>
+                                </div>
+                                <div className="space-y-6">
+                                    <div className="flex items-start">
+                                        <div className="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center mr-4 flex-shrink-0">
+                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-dark-navy text-sm">Email</h4>
+                                            <p className="text-slate-600 text-xs mt-1">hello@cloudcomnet.com</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start">
+                                        <div className="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center mr-4 flex-shrink-0">
+                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-dark-navy text-sm">Phone</h4>
+                                            <p className="text-slate-600 text-xs mt-1">+91 86060 14781</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start">
+                                        <div className="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center mr-4 flex-shrink-0">
+                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                                        </div>
+                                        <div>
+                                            <h4 className="font-bold text-dark-navy text-sm">Website</h4>
+                                            <p className="text-slate-600 text-xs mt-1">www.cloudcomnet.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </AnimatedSection>
                     </div>
 

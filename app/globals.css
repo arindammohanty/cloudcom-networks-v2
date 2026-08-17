@@ -5,10 +5,10 @@
   --font-heading: "Plus Jakarta Sans", sans-serif;
 
   /* Custom Colors from reference */
-  --color-cloud-blue: #0052cc;
-  --color-cloud-blue-hover: #0043a6;
-  --color-dark-navy: #00091d;
-  --color-dark-navy-light: #001233;
+  --color-cloud-blue: #2563EB;
+  --color-cloud-blue-hover: #1d4ed8; /* Darker shade of CloudCom Blue */
+  --color-dark-navy: #021B4B;
+  --color-dark-navy-light: #0f2c6b;
   --color-white: #ffffff;
   --color-accent-gray: #f3f4f6;
   --color-sky-blue: #0ea5e9;

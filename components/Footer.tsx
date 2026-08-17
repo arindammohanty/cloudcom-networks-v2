@@ -25,17 +25,13 @@ export default function Footer() {
                                 alt="CloudCom Networks Logo"
                                 className="h-auto w-45 object-contain rounded-xl"
                                 />
-                                <div className="flex flex-col text-white">
-                                    <span className="text-xl font-bold leading-none tracking-tight">CloudCom</span>
-                                    <span className="text-[9px] font-bold text-slate-400 tracking-[0.2em] uppercase mt-0.5">Networks</span>
-                                </div>
                             </div>
                             <p className="text-xs text-slate-400 mb-6 leading-relaxed pr-4">Building secure communications and digital infrastructure for a connected and sovereign tomorrow.</p>
                             <div className="flex space-x-3">
-                                <Link href="https://linkedin.com" target="_blank" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-colors"><i className="fa-brands fa-linkedin-in text-sm"></i></Link>
-                                <Link href="https://twitter.com" target="_blank" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-colors"><i className="fa-brands fa-twitter text-sm"></i></Link>
-                                <Link href="https://youtube.com" target="_blank" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-colors"><i className="fa-brands fa-youtube text-sm"></i></Link>
-                                <Link href="mailto:info@cloudcomnet.com" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-colors"><i className="fa-regular fa-envelope text-sm"></i></Link>
+                                <Link href="https://linkedin.com" target="_blank" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cloud-blue hover:text-white transition-colors"><i className="fa-brands fa-linkedin-in text-sm"></i></Link>
+                                <Link href="https://twitter.com" target="_blank" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cloud-blue hover:text-white transition-colors"><i className="fa-brands fa-twitter text-sm"></i></Link>
+                                <Link href="https://youtube.com" target="_blank" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cloud-blue hover:text-white transition-colors"><i className="fa-brands fa-youtube text-sm"></i></Link>
+                                <Link href="mailto:hello@cloudcomnet.com" className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-cloud-blue hover:text-white transition-colors"><i className="fa-regular fa-envelope text-sm"></i></Link>
                             </div>
                         </div>
 

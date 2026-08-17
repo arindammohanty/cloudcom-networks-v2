@@ -1,17 +1,25 @@
-"use client";
-
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
-export default function KnowledgeBaseCategoryPage() {
-    const params = useParams();
-    const category = params?.category as string;
+export function generateStaticParams() {
+    return [
+        { category: "troubleshooting" },
+        { category: "setup-guides" },
+        { category: "security-and-compliance" },
+        { category: "ai-and-automation" },
+        { category: "network-architecture" },
+        { category: "glossary-and-concepts" }
+    ];
+}
+
+export default async function KnowledgeBaseCategoryPage({ params }: { params: Promise<{ category: string }> }) {
+    const resolvedParams = await params;
+    const category = resolvedParams.category;
     
     // Format the slug into a readable title
     const formattedTitle = category 
-        ? category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+        ? category.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
         : 'Category';
 
     return (

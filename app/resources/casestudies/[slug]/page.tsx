@@ -93,6 +93,12 @@ interface PageProps {
     params: Promise<{ slug: string }>;
 }
 
+export function generateStaticParams() {
+    return Object.keys(CASE_STUDIES_DATA).map((slug) => ({
+        slug,
+    }));
+}
+
 export default async function CaseStudyDetail({ params }: PageProps) {
     const resolvedParams = await params;
     const study = CASE_STUDIES_DATA[resolvedParams.slug];

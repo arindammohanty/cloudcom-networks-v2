@@ -51,28 +51,33 @@ export default function CompanyPage() {
         </Container>
       </section>
 
-      {/* Core Values */}
-      <section id="values" className="py-24 bg-accent-gray">
+      {/* Our Principles */}
+      <section id="principles" className="py-24 bg-white">
         <Container>
           <div className="text-center mb-16">
             <AnimatedSection>
-              <h2 className="text-3xl md:text-4xl font-bold text-dark-navy mb-4">Our Core Values</h2>
-              <p className="text-lg text-text-secondary">The principles that drive every engineering decision.</p>
+              <div className="text-cloud-blue font-bold tracking-widest text-sm uppercase mb-4">Our Principles</div>
+              <h2 className="text-3xl md:text-4xl font-bold text-dark-navy mb-4">The way we work. The way we build.</h2>
+              <p className="text-lg text-slate-500 max-w-2xl mx-auto">Our principles guide every decision we make and every solution we deliver.</p>
             </AnimatedSection>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
             {[
-              { icon: <Shield className="w-8 h-8 text-success-green" />, title: "Security First", desc: "Zero-trust is not a buzzword; it's our foundational architecture. We secure by design." },
-              { icon: <Lightbulb className="w-8 h-8 text-warning-orange" />, title: "Continuous Innovation", desc: "We actively promote open technologies and modern engineering practices to deliver sustainable solutions." },
-              { icon: <Users className="w-8 h-8 text-sky-blue" />, title: "Customer Partnership", desc: "Every engagement is driven by transparency, continuous improvement, and long-term commitment." }
+              { icon: <Shield className="w-8 h-8 text-cloud-blue mx-auto" />, title: "Security First", desc: "Security is designed in, not added on. We follow a zero trust approach across everything we build." },
+              { icon: <svg className="w-8 h-8 text-cloud-blue mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>, title: "Open Technology", desc: "We use open standards and technologies to ensure flexibility, choice and long-term independence." },
+              { icon: <Users className="w-8 h-8 text-cloud-blue mx-auto" />, title: "Customer First", desc: "We listen, understand and align technology with your goals, timeline and business outcomes." },
+              { icon: <svg className="w-8 h-8 text-cloud-blue mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>, title: "Engineering Excellence", desc: "We take pride in clean architecture, thoughtful design and robust engineering practices." },
+              { icon: <svg className="w-8 h-8 text-cloud-blue mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" /></svg>, title: "Long-Term Partnership", desc: "We build lasting relationships based on trust, transparency and shared success." }
             ].map((value, idx) => (
               <AnimatedSection key={value.title} delay={idx * 0.1}>
-                <Card className="h-full">
-                  <div className="mb-4">{value.icon}</div>
-                  <h3 className="text-xl font-bold text-dark-navy mb-2">{value.title}</h3>
-                  <p className="text-text-secondary">{value.desc}</p>
-                </Card>
+                <div className="flex flex-col h-full items-center">
+                  <div className="mb-6 w-16 h-16 rounded-full bg-blue-50 flex items-center justify-center">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-dark-navy mb-3">{value.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed">{value.desc}</p>
+                </div>
               </AnimatedSection>
             ))}
           </div>

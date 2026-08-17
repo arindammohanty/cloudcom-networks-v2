@@ -1,13 +1,20 @@
-"use client";
-
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
-export default function TicketDetailsPage() {
-    const params = useParams();
-    const id = params?.id as string || 'INC-0000';
+export function generateStaticParams() {
+    return [
+        { id: "INC-9824" },
+        { id: "INC-9811" },
+        { id: "INC-9755" },
+        { id: "INC-9642" },
+        { id: "INC-0000" }
+    ];
+}
+
+export default async function TicketDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+    const resolvedParams = await params;
+    const id = resolvedParams.id || 'INC-0000';
     
     // Determine status style based on ID pattern
     const isClosed = id.includes('9755') || id.includes('9642');

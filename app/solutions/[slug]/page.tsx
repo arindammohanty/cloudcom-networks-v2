@@ -1,5 +1,3 @@
-"use client";
-
 import { Container } from "@/components/ui/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Button } from "@/components/ui/Button";
@@ -14,7 +12,6 @@ import {
   CheckCircle2
 } from "lucide-react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import React from "react";
 
 const solutionsData: Record<string, any> = {
@@ -55,13 +52,12 @@ const solutionsData: Record<string, any> = {
   },
   "ai-automation": {
     title: "AI & Automation",
-    icon: <Cpu className="w-16 h-16 text-cloud-blue" />,
-    description: "Future-focused solutions to streamline operations and enhance intelligence.",
-    features: ["Enterprise Chatbots", "AI Knowledge Base", "Workflow Automation", "RPA"],
-    details: "Accelerate your digital transformation with applied AI and automation. We design and deploy intelligent systems that reduce manual workloads, enhance decision-making, and create frictionless experiences for both your employees and customers."
+    description: "Agile delivery pipelines and custom software solutions.",
+    features: ["CI/CD Automation", "Infrastructure as Code", "Custom Web Apps", "API Development"],
+    details: "Accelerate your software delivery without compromising on security. We build automated DevSecOps pipelines and custom cloud-native applications tailored exactly to your unique business requirements."
   },
-  "bpo": {
-    title: "Business Process Outsourcing",
+  "bpo-kpo": {
+    title: "Managed BPO & KPO Services",
     icon: <Briefcase className="w-16 h-16 text-cloud-blue" />,
     description: "Knowledge Process Outsourcing running on our secure infrastructure.",
     features: ["Finance & Accounting", "HR Compliance", "Customer Support Helpdesk"],
@@ -76,9 +72,19 @@ const solutionsData: Record<string, any> = {
   }
 };
 
-export default function SolutionDetail() {
-  const params = useParams();
-  const slug = params.slug as string;
+export function generateStaticParams() {
+  return Object.keys(solutionsData).map((slug) => ({
+    slug,
+  }));
+}
+
+export default async function SolutionDetail({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const solution = solutionsData[slug];
 
   if (!solution) {

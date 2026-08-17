@@ -1,17 +1,23 @@
-"use client";
-
 import React from 'react';
-import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
-export default function SLAPolicyDocumentPage() {
-    const params = useParams();
-    const slug = params?.slug as string;
+export function generateStaticParams() {
+    return [
+        { slug: "standard-support-sla" },
+        { slug: "enterprise-support-sla" },
+        { slug: "uptime-guarantees" },
+        { slug: "acceptable-use-policy" }
+    ];
+}
+
+export default async function SLAPolicyDocumentPage({ params }: { params: Promise<{ slug: string }> }) {
+    const resolvedParams = await params;
+    const slug = resolvedParams.slug;
     
     // Format the slug into a readable title
     const formattedTitle = slug 
-        ? slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+        ? slug.split('-').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
         : 'Policy Document';
 
     return (

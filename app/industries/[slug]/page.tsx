@@ -1,5 +1,3 @@
-"use client";
-
 import { Container } from "@/components/ui/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Button } from "@/components/ui/Button";
@@ -15,71 +13,72 @@ import {
   CheckCircle2
 } from "lucide-react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import React from "react";
 
 const industriesData: Record<string, any> = {
   "government": {
     name: "Government & Public Sector",
-    icon: <Building className="w-16 h-16 text-cloud-blue" />,
-    challenges: "High compliance, legacy systems, citizen data security.",
-    solutions: ["Secure Email", "e-Governance Infrastructure", "State Data Center Operations"],
-    details: "Modernize public services securely. We provide the robust, compliant infrastructure needed for e-governance initiatives, ensuring citizen data remains protected and services are always available."
-  },
-  "healthcare": {
-    name: "Healthcare",
-    icon: <HeartPulse className="w-16 h-16 text-cloud-blue" />,
-    challenges: "Patient data privacy (HIPAA/local), 24/7 uptime requirements.",
-    solutions: ["Private Cloud Hosting", "Zero-Trust Access", "Disaster Recovery"],
-    details: "In healthcare, downtime can be critical. Our highly available infrastructure and strict zero-trust security ensure that sensitive patient data is protected and always accessible to authorized medical professionals."
+    icon: <Landmark className="w-16 h-16 text-cloud-blue" />,
+    details: "Modernize public services securely. We provide the robust, compliant infrastructure needed for e-governance initiatives, ensuring citizen data remains protected and services are always available.",
+    useCases: ["e-Governance Infrastructure", "Smart City Data Platforms", "Secure Citizen Portals"],
+    compliance: ["MeitY Empanelment", "Data Localization (DPDP Act)", "State Security Audits"],
+    caseStudies: ["State Data Center Modernization", "Nationwide Secure Email Deployment"]
   },
   "education": {
     name: "Education",
     icon: <GraduationCap className="w-16 h-16 text-cloud-blue" />,
-    challenges: "Scalability during admissions, remote learning security.",
-    solutions: ["Unified Communications", "Managed Cloud", "Identity Integration"],
-    details: "Empower the next generation of learners. From scalable portals to handle admission spikes to secure unified communications for remote classrooms, we provide the IT foundation for modern education."
+    details: "Empower the next generation of learners. From scalable portals to handle admission spikes to secure unified communications for remote classrooms, we provide the IT foundation for modern education.",
+    useCases: ["Admission Portal Scaling", "Virtual Classroom Infrastructure", "Campus Wi-Fi & Networking"],
+    compliance: ["FERPA/Local Education Data Laws", "Data Privacy Standards", "Accessibility Guidelines"],
+    caseStudies: ["University Admission Traffic Management", "Secure Multi-Campus Network Rollout"]
   },
-  "banking": {
-    name: "Banking & Financial Services",
-    icon: <Landmark className="w-16 h-16 text-cloud-blue" />,
-    challenges: "Extreme regulatory compliance, fraud prevention, zero downtime.",
-    solutions: ["SOC Services", "Dedicated Infrastructure", "Secure Core Banking Hosting"],
-    details: "Financial institutions require the highest level of security and compliance. Our tailored banking infrastructure provides dedicated resources, comprehensive SOC monitoring, and ultra-low latency."
+  "healthcare": {
+    name: "Healthcare",
+    icon: <HeartPulse className="w-16 h-16 text-cloud-blue" />,
+    details: "In healthcare, downtime can be critical. Our highly available infrastructure and strict zero-trust security ensure that sensitive patient data is protected and always accessible to authorized medical professionals.",
+    useCases: ["Electronic Health Records (EHR) Hosting", "Telemedicine Infrastructure", "Medical Imaging Data Storage"],
+    compliance: ["HIPAA Compliance", "Local Health Data Regulations", "Zero-Trust Architecture"],
+    caseStudies: ["Hospital Network Zero-Downtime Migration", "Secure Telehealth Platform Scaling"]
   },
-  "manufacturing": {
-    name: "Manufacturing",
+  "bfsi": {
+    name: "BFSI",
+    icon: <Building className="w-16 h-16 text-cloud-blue" />,
+    details: "Financial institutions require the highest level of security and compliance. Our tailored banking infrastructure provides dedicated resources, comprehensive SOC monitoring, and ultra-low latency.",
+    useCases: ["Core Banking Systems Hosting", "High-Frequency Trading Networks", "Fraud Detection & Analytics Infrastructure"],
+    compliance: ["PCI-DSS", "RBI/Local Banking IT Guidelines", "ISO 27001"],
+    caseStudies: ["Fintech Payment Gateway Infrastructure", "Regional Bank Cloud Transformation"]
+  },
+  "enterprises": {
+    name: "Enterprises",
     icon: <Factory className="w-16 h-16 text-cloud-blue" />,
-    challenges: "IT/OT convergence, supply chain visibility, IoT security.",
-    solutions: ["IoT Edge Computing", "ERP Hosting (SAP)", "Network Security"],
-    details: "Drive Industry 4.0 forward. We secure and manage the critical infrastructure that connects your shop floor OT with your enterprise IT, enabling seamless ERP operations and supply chain visibility."
+    details: "Drive your business forward with scalable infrastructure, digital transformation, and operational resilience. We abstract the complexity of IT so you can focus on enterprise growth.",
+    useCases: ["ERP & CRM Hosting", "Hybrid Cloud Operations", "Enterprise-wide Unified Communications"],
+    compliance: ["SOC 2 Type II", "GDPR & Local Data Laws", "Industry-specific Standards"],
+    caseStudies: ["Global Enterprise Cloud Consolidation", "Supply Chain IT Modernization"]
   },
-  "retail": {
-    name: "Retail & E-commerce",
-    icon: <ShoppingCart className="w-16 h-16 text-cloud-blue" />,
-    challenges: "Traffic spikes, omni-channel support, payment security.",
-    solutions: ["Scalable Public Cloud", "Contact Center (CCaaS)", "PCI-DSS Compliance"],
-    details: "Never miss a sale due to downtime. Our scalable cloud solutions effortlessly handle seasonal traffic spikes, while our secure environment ensures continuous PCI-DSS compliance."
-  },
-  "it": {
-    name: "IT & ITES",
-    icon: <Monitor className="w-16 h-16 text-cloud-blue" />,
-    challenges: "Rapid scaling, global collaboration, talent retention.",
-    solutions: ["Workspace Collaboration", "DevSecOps Automation", "Managed IT"],
-    details: "Accelerate your development cycles. We provide the agile, automated infrastructure and unified collaboration tools that technology companies need to innovate rapidly and manage global teams."
-  },
-  "sme": {
-    name: "Start-ups & SMEs",
+  "startups": {
+    name: "Startups & SMEs",
     icon: <Users className="w-16 h-16 text-cloud-blue" />,
-    challenges: "Budget constraints, lack of in-house IT expertise.",
-    solutions: ["UCaaS", "Managed Services", "Turnkey Business Operations"],
-    details: "Get enterprise-grade technology without the enterprise price tag. Our fully managed solutions let SMEs focus on growth and customer acquisition, completely abstracting the complexity of IT."
+    details: "Get enterprise-grade technology without the enterprise price tag. Our fully managed solutions let startups and SMEs focus on growth and customer acquisition, completely abstracting the complexity of IT.",
+    useCases: ["Cloud Native App Deployment", "Turnkey Managed IT", "Scalable E-commerce Infrastructure"],
+    compliance: ["Startup Security Baselines", "Cost-effective Compliance Implementation", "Data Protection"],
+    caseStudies: ["Fast-tracking SaaS Platform Launch", "SME Zero-Trust Implementation"]
   }
 };
 
-export default function IndustryDetail() {
-  const params = useParams();
-  const slug = params.slug as string;
+export function generateStaticParams() {
+  return Object.keys(industriesData).map((slug) => ({
+    slug,
+  }));
+}
+
+export default async function IndustryDetail({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   const industry = industriesData[slug];
 
   if (!industry) {
@@ -119,18 +118,38 @@ export default function IndustryDetail() {
                 {industry.details}
               </p>
               
-              <div className="grid md:grid-cols-2 gap-8 mb-16">
-                <div className="bg-red-50/50 p-8 rounded-2xl border border-red-100">
-                  <h3 className="text-xl font-bold text-dark-navy mb-4">Key Challenges</h3>
-                  <p className="text-text-secondary">{industry.challenges}</p>
-                </div>
-                <div className="bg-blue-50/50 p-8 rounded-2xl border border-blue-100">
-                  <h3 className="text-xl font-bold text-dark-navy mb-4">CloudCom Solutions</h3>
+              <div className="grid md:grid-cols-3 gap-6 mb-16">
+                <div className="bg-blue-50/50 p-6 rounded-2xl border border-blue-100">
+                  <h3 className="text-lg font-bold text-dark-navy mb-4">Specific Use Cases</h3>
                   <ul className="space-y-3">
-                    {industry.solutions.map((sol: string) => (
-                      <li key={sol} className="flex items-start space-x-2">
+                    {industry.useCases?.map((useCase: string) => (
+                      <li key={useCase} className="flex items-start space-x-2">
                         <CheckCircle2 className="w-5 h-5 text-cloud-blue shrink-0 mt-0.5" />
-                        <span className="font-medium text-text-primary">{sol}</span>
+                        <span className="font-medium text-slate-700 text-sm">{useCase}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                <div className="bg-indigo-50/50 p-6 rounded-2xl border border-indigo-100">
+                  <h3 className="text-lg font-bold text-dark-navy mb-4">Compliance Requirements</h3>
+                  <ul className="space-y-3">
+                    {industry.compliance?.map((comp: string) => (
+                      <li key={comp} className="flex items-start space-x-2">
+                        <CheckCircle2 className="w-5 h-5 text-indigo-500 shrink-0 mt-0.5" />
+                        <span className="font-medium text-slate-700 text-sm">{comp}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="bg-teal-50/50 p-6 rounded-2xl border border-teal-100">
+                  <h3 className="text-lg font-bold text-dark-navy mb-4">Relevant Case Studies</h3>
+                  <ul className="space-y-3">
+                    {industry.caseStudies?.map((study: string) => (
+                      <li key={study} className="flex items-start space-x-2">
+                        <CheckCircle2 className="w-5 h-5 text-teal-500 shrink-0 mt-0.5" />
+                        <span className="font-medium text-slate-700 text-sm">{study}</span>
                       </li>
                     ))}
                   </ul>
