@@ -58,21 +58,21 @@ export default function IndustriesPage() {
                             <AnimatedSection direction="left" delay={0.2} className="relative h-[400px] flex items-center justify-end xl:justify-center">
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cloud-blue/20 rounded-full blur-[100px]"></div>
                                 <div className="relative grid grid-cols-2 gap-4 xl:gap-6 w-full max-w-[380px]">
-                                    <div className="bg-[#0039a6]/20 border border-[#0039a6]/50 p-4 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center gap-2">
+                                    <div className="bg-[#0039a6]/20 border border-[#0039a6]/50 p-5 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center gap-3 text-center shadow-lg">
                                         <ShieldCheck className="w-8 h-8 text-cloud-blue" />
-                                        <span className="text-xs font-semibold text-white/80">Secure Infrastructure</span>
+                                        <span className="text-sm font-semibold text-white/90">Secure Infrastructure</span>
                                     </div>
-                                    <div className="bg-[#0039a6]/20 border border-[#0039a6]/50 p-4 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center gap-2 mt-8">
+                                    <div className="bg-[#0039a6]/20 border border-[#0039a6]/50 p-5 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center gap-3 text-center shadow-lg">
                                         <Rocket className="w-8 h-8 text-cloud-blue" />
-                                        <span className="text-xs font-semibold text-white/80">Operational Excellence</span>
+                                        <span className="text-sm font-semibold text-white/90">Operational Excellence</span>
                                     </div>
-                                    <div className="bg-[#0039a6]/20 border border-[#0039a6]/50 p-4 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center gap-2 -mt-8">
+                                    <div className="bg-[#0039a6]/20 border border-[#0039a6]/50 p-5 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center gap-3 text-center shadow-lg">
                                         <BarChart3 className="w-8 h-8 text-cloud-blue" />
-                                        <span className="text-xs font-semibold text-white/80">Data Sovereignty</span>
+                                        <span className="text-sm font-semibold text-white/90">Data Sovereignty</span>
                                     </div>
-                                    <div className="bg-[#0039a6]/20 border border-[#0039a6]/50 p-4 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center gap-2">
+                                    <div className="bg-[#0039a6]/20 border border-[#0039a6]/50 p-5 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center gap-3 text-center shadow-lg">
                                         <TrendingUp className="w-8 h-8 text-cloud-blue" />
-                                        <span className="text-xs font-semibold text-white/80">Scalable Solutions</span>
+                                        <span className="text-sm font-semibold text-white/90">Scalable Solutions</span>
                                     </div>
                                 </div>
                             </AnimatedSection>
