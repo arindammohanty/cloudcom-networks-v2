@@ -53,9 +53,8 @@ export default function HomePage() {
                             </AnimatedSection>
 
                             <AnimatedSection direction="up" delay={0.5}>
-                                <div className="mt-14 text-lg md:text-xl font-semibold text-slate-500 flex flex-wrap gap-x-4 gap-y-3 items-center">
+                                <div className="mt-14 text-lg md:text-xl font-semibold text-slate-500 flex flex-wrap gap-x-6 gap-y-3 items-center">
                                     <span className="text-dark-navy italic font-extrabold">Open. Sovereign. Secure.</span> 
-                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400"></span> 
                                     <span className="text-dark-navy italic font-extrabold">Lean. Agile. AI-Enabled.</span>
                                 </div>
                             </AnimatedSection>
