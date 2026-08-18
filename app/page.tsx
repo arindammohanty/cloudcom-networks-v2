@@ -23,12 +23,12 @@ export default function HomePage() {
                         <div className="lg:w-[55%]">
                             <AnimatedSection direction="up" delay={0.1}>
                                 <div className="text-sm md:text-base font-bold text-cloud-blue mb-6 tracking-wide uppercase">
-                                    Enterprise capabilities delivered without the corporate complexity.
+                                    Cloud. Communication. Infrastructure. Security.
                                 </div>
                             </AnimatedSection>
                             
                             <AnimatedSection direction="up" delay={0.2}>
-                                <h1 className="text-6xl md:text-7xl lg:text-[5.5rem] font-extrabold text-dark-navy mb-8 leading-[1.05] tracking-tight">
+                                <h1 className="text-6xl md:text-7xl lg:text-[7rem] font-extrabold text-dark-navy mb-8 leading-[1.05] tracking-tight">
                                     <span className="block mb-2">Build. Connect.</span>
                                     <span className="block text-cloud-blue">Secure. Scale.</span>
                                 </h1>
@@ -53,14 +53,10 @@ export default function HomePage() {
                             </AnimatedSection>
 
                             <AnimatedSection direction="up" delay={0.5}>
-                                <div className="mt-14 text-sm md:text-base font-semibold text-slate-500 flex flex-wrap gap-x-4 gap-y-3 items-center">
-                                    <span className="text-dark-navy">OPEN STANDARDS & INTEROPERABILITY</span> 
-                                    <span className="w-1 h-1 rounded-full bg-slate-400"></span> 
-                                    <span className="text-dark-navy">SECURITY-FIRST BY DESIGN</span>
-                                    <span className="w-1 h-1 rounded-full bg-slate-400 hidden lg:block"></span> 
-                                    <span className="text-dark-navy">OPERATIONAL SOVEREIGNTY</span>
-                                    <span className="w-1 h-1 rounded-full bg-slate-400"></span> 
-                                    <span className="text-dark-navy">ENTERPRISE-GRADE RELIABILITY</span>
+                                <div className="mt-14 text-lg md:text-xl font-semibold text-slate-500 flex flex-wrap gap-x-4 gap-y-3 items-center">
+                                    <span className="text-dark-navy italic font-extrabold">Open. Sovereign. Secure.</span> 
+                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400"></span> 
+                                    <span className="text-dark-navy italic font-extrabold">Lean. Agile. AI-Enabled.</span>
                                 </div>
                             </AnimatedSection>
                         </div>
@@ -227,41 +223,6 @@ export default function HomePage() {
                 </Container>
             </section>
 
-            {/* OUR APPROACH - FROM PROBLEM TO PRODUCTION (Added from PDF page 5/9) */}
-            <section className="py-24 bg-slate-50 border-y border-slate-200">
-                <Container>
-                    <div className="text-center mb-16">
-                        <AnimatedSection>
-                            <span className="text-cloud-blue font-bold tracking-widest uppercase text-sm mb-4 block">Our Approach</span>
-                            <h2 className="text-4xl font-bold text-dark-navy tracking-tight">From problem to production.</h2>
-                        </AnimatedSection>
-                    </div>
-
-                    <div className="flex flex-col md:flex-row items-start justify-between relative max-w-5xl mx-auto">
-                        {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-12 left-12 right-12 h-0.5 bg-slate-200 z-0 border-t-2 border-dashed border-slate-300"></div>
-
-                        {[
-                            { num: "01", icon: <Search className="w-8 h-8" />, title: "Understand", desc: "We understand your business, challenges, users and objectives." },
-                            { num: "02", icon: <PenTool className="w-8 h-8" />, title: "Architect", desc: "We design a secure, scalable and practical technology architecture." },
-                            { num: "03", icon: <CloudLightning className="w-8 h-8" />, title: "Deploy", desc: "We implement, integrate, migrate and test to bring it to life." },
-                            { num: "04", icon: <Gauge className="w-8 h-8" />, title: "Operate", desc: "We monitor, manage and optimise to keep your environment running." }
-                        ].map((step, idx) => (
-                            <AnimatedSection key={idx} delay={idx * 0.15} direction="up" className="relative z-10 flex flex-col items-center text-center w-full md:w-1/4 px-4 mb-10 md:mb-0">
-                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-50 shadow-xl flex items-center justify-center text-cloud-blue mb-6 relative">
-                                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-cloud-blue text-white flex items-center justify-center text-sm font-bold border-2 border-white">
-                                        {step.num}
-                                    </div>
-                                    {step.icon}
-                                </div>
-                                <h3 className="text-xl font-bold text-dark-navy mb-3">{step.title}</h3>
-                                <p className="text-slate-500 leading-relaxed text-sm">{step.desc}</p>
-                            </AnimatedSection>
-                        ))}
-                    </div>
-                </Container>
-            </section>
-
             {/* WHY CLOUDCOM SECTION (Fully detailed from PDF page 8/9) */}
             <section className="py-32 bg-dark-navy text-white relative overflow-hidden">
                 {/* Background mesh/pattern */}
@@ -352,6 +313,41 @@ export default function HomePage() {
                 </Container>
             </section>
             
+            {/* OUR APPROACH - FROM PROBLEM TO PRODUCTION (Added from PDF page 5/9) */}
+            <section className="py-24 bg-slate-50 border-y border-slate-200">
+                <Container>
+                    <div className="text-center mb-16">
+                        <AnimatedSection>
+                            <span className="text-cloud-blue font-bold tracking-widest uppercase text-sm mb-4 block">Our Approach</span>
+                            <h2 className="text-4xl font-bold text-dark-navy tracking-tight">From problem to production.</h2>
+                        </AnimatedSection>
+                    </div>
+
+                    <div className="flex flex-col md:flex-row items-start justify-between relative max-w-5xl mx-auto">
+                        {/* Connecting Line (Desktop) */}
+                        <div className="hidden md:block absolute top-12 left-12 right-12 h-0.5 bg-slate-200 z-0 border-t-2 border-dashed border-slate-300"></div>
+
+                        {[
+                            { num: "01", icon: <Search className="w-8 h-8" />, title: "Understand", desc: "We understand your business, challenges, users and objectives." },
+                            { num: "02", icon: <PenTool className="w-8 h-8" />, title: "Architect", desc: "We design a secure, scalable and practical technology architecture." },
+                            { num: "03", icon: <CloudLightning className="w-8 h-8" />, title: "Deploy", desc: "We implement, integrate, migrate and test to bring it to life." },
+                            { num: "04", icon: <Gauge className="w-8 h-8" />, title: "Operate", desc: "We monitor, manage and optimise to keep your environment running." }
+                        ].map((step, idx) => (
+                            <AnimatedSection key={idx} delay={idx * 0.15} direction="up" className="relative z-10 flex flex-col items-center text-center w-full md:w-1/4 px-4 mb-10 md:mb-0">
+                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-50 shadow-xl flex items-center justify-center text-cloud-blue mb-6 relative">
+                                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-cloud-blue text-white flex items-center justify-center text-sm font-bold border-2 border-white">
+                                        {step.num}
+                                    </div>
+                                    {step.icon}
+                                </div>
+                                <h3 className="text-xl font-bold text-dark-navy mb-3">{step.title}</h3>
+                                <p className="text-slate-500 leading-relaxed text-sm">{step.desc}</p>
+                            </AnimatedSection>
+                        ))}
+                    </div>
+                </Container>
+            </section>
+
             {/* CTA SECTION */}
             <section className="py-24 bg-white text-center border-t border-slate-100">
                 <Container>

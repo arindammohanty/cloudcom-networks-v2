@@ -63,15 +63,13 @@ export default function Footer() {
                         </div>
 
                         <div>
-                            <h4 className="text-white font-bold text-sm mb-6 tracking-wide">Resources</h4>
+                            <h4 className="text-white font-bold text-sm mb-6 tracking-wide">Contact</h4>
                             <ul className="space-y-3 text-xs font-medium text-slate-400">
-                                <li><Link href="/resources/blog" className="hover:text-white transition-colors">Blog</Link></li>
-                                <li><Link href="/resources/whitepapers" className="hover:text-white transition-colors">White Papers</Link></li>
-                                <li><Link href="/resources/casestudies" className="hover:text-white transition-colors">Solution Briefs</Link></li>
-                                <li><Link href="/resources/guides" className="hover:text-white transition-colors">Brochures</Link></li>
-                                <li><Link href="/resources/guides" className="hover:text-white transition-colors">Datasheets</Link></li>
-                                <li><Link href="/support/knowledge-base" className="hover:text-white transition-colors">FAQs</Link></li>
-
+                                <li><Link href="/contact" className="hover:text-white transition-colors">Contact Sales</Link></li>
+                                <li><Link href="/support" className="hover:text-white transition-colors">Support Portal</Link></li>
+                                <li><Link href="/contact#offices" className="hover:text-white transition-colors">Office Locations</Link></li>
+                                <li><Link href="mailto:hello@cloudcomnet.com" className="hover:text-white transition-colors">Email Us</Link></li>
+                                <li><Link href="tel:+918606014781" className="hover:text-white transition-colors">Call Us</Link></li>
                             </ul>
                         </div>
 

@@ -3,6 +3,7 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { Mail, Lock, Target, ShieldCheck } from "lucide-react";
 
 // Comprehensive list of global country codes
 const COUNTRY_CODES = [
@@ -244,6 +245,58 @@ export default function ContactPage() {
                             </div>
                         </AnimatedSection>
                     </div>
+
+                    {/* Our Commitment */}
+                    <AnimatedSection direction="up" delay={0.3} className="mb-20">
+                        <div className="bg-slate-50/50 rounded-2xl border border-slate-200 p-8 md:p-12 shadow-sm flex flex-col md:flex-row gap-12 items-center">
+                            <div className="md:w-1/3 text-center md:text-left">
+                                <div className="text-cloud-blue font-bold tracking-widest text-xs uppercase mb-3">Our Commitment</div>
+                                <h3 className="text-2xl font-bold text-dark-navy mb-4">Real people. Real conversations.</h3>
+                                <p className="text-sm text-slate-500 leading-relaxed">
+                                    We believe the best solutions come from understanding your challenges. Expect a clear, honest and helpful response from our team.
+                                </p>
+                            </div>
+                            
+                            <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                                <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-cloud-blue flex-shrink-0 shadow-sm">
+                                        <Mail className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-dark-navy text-sm">No spam. Ever.</h4>
+                                        <p className="text-xs text-slate-500 mt-1 leading-relaxed">We respect your inbox.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-cloud-blue flex-shrink-0 shadow-sm">
+                                        <Lock className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-dark-navy text-sm">Confidential by default.</h4>
+                                        <p className="text-xs text-slate-500 mt-1 leading-relaxed">Your information is always kept private.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-cloud-blue flex-shrink-0 shadow-sm">
+                                        <Target className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-dark-navy text-sm">Solution focused.</h4>
+                                        <p className="text-xs text-slate-500 mt-1 leading-relaxed">We listen, understand and recommend what's right.</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-start gap-4">
+                                    <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-cloud-blue flex-shrink-0 shadow-sm">
+                                        <ShieldCheck className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-dark-navy text-sm">Long-term partners.</h4>
+                                        <p className="text-xs text-slate-500 mt-1 leading-relaxed">We grow with you, every step of the way.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </AnimatedSection>
 
                     {/* Offices */}
                     <div className="text-center mb-8">

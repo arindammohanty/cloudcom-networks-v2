@@ -20,7 +20,10 @@ import {
     Box,
     Activity,
     Repeat,
-    CheckCircle2
+    CheckCircle2,
+    Rocket,
+    Brain,
+    PiggyBank
 } from 'lucide-react';
 
 export default function ServicesPage() {
@@ -41,7 +44,7 @@ export default function ServicesPage() {
                             </AnimatedSection>
                             
                             <AnimatedSection direction="up" delay={0.2}>
-                                <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
+                                <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-white mb-6 leading-[1.1] tracking-tight">
                                     From strategy to <br />
                                     operations. We make <br />
                                     technology <span className="text-cloud-blue">simple to run.</span>
@@ -66,33 +69,50 @@ export default function ServicesPage() {
                             </AnimatedSection>
 
                             <AnimatedSection direction="up" delay={0.5}>
-                                <div className="grid grid-cols-2 gap-y-4 gap-x-8 mt-16 pt-8 border-t border-white/10">
-                                    <div className="flex items-start gap-3">
-                                        <Zap className="w-5 h-5 text-cloud-blue flex-shrink-0 mt-0.5" />
+                                <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mt-16 p-6 border border-[#0039a6]/50 rounded-2xl bg-dark-navy/80 shadow-[0_0_30px_rgba(0,57,166,0.3)] backdrop-blur-md">
+                                    <div className="flex items-center gap-4 group">
+                                        <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors">
+                                            <Rocket className="w-6 h-6 text-cloud-blue" />
+                                        </div>
                                         <div>
                                             <h4 className="font-bold text-white text-sm">Lean & Agile</h4>
-                                            <p className="text-xs text-blue-100/60 mt-1">Faster delivery</p>
+                                            <p className="text-xs text-blue-100/60 mt-0.5">Faster delivery</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-start gap-3">
-                                        <Cpu className="w-5 h-5 text-cloud-blue flex-shrink-0 mt-0.5" />
+                                    
+                                    <div className="hidden lg:block w-px h-10 bg-[#0039a6]/50"></div>
+                                    
+                                    <div className="flex items-center gap-4 group">
+                                        <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors">
+                                            <Brain className="w-6 h-6 text-cloud-blue" />
+                                        </div>
                                         <div>
                                             <h4 className="font-bold text-white text-sm">AI-Enabled</h4>
-                                            <p className="text-xs text-blue-100/60 mt-1">Smarter operations</p>
+                                            <p className="text-xs text-blue-100/60 mt-0.5">Smarter operations</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-start gap-3">
-                                        <Shield className="w-5 h-5 text-cloud-blue flex-shrink-0 mt-0.5" />
+                                    
+                                    <div className="hidden lg:block w-px h-10 bg-[#0039a6]/50"></div>
+                                    
+                                    <div className="flex items-center gap-4 group">
+                                        <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors">
+                                            <ShieldCheck className="w-6 h-6 text-cloud-blue" />
+                                        </div>
                                         <div>
                                             <h4 className="font-bold text-white text-sm">Secure by Design</h4>
-                                            <p className="text-xs text-blue-100/60 mt-1">Zero Trust approach</p>
+                                            <p className="text-xs text-blue-100/60 mt-0.5">Zero Trust approach</p>
                                         </div>
                                     </div>
-                                    <div className="flex items-start gap-3">
-                                        <LineChart className="w-5 h-5 text-cloud-blue flex-shrink-0 mt-0.5" />
+                                    
+                                    <div className="hidden lg:block w-px h-10 bg-[#0039a6]/50"></div>
+                                    
+                                    <div className="flex items-center gap-4 group">
+                                        <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors">
+                                            <PiggyBank className="w-6 h-6 text-cloud-blue" />
+                                        </div>
                                         <div>
                                             <h4 className="font-bold text-white text-sm">Cost-Efficient</h4>
-                                            <p className="text-xs text-blue-100/60 mt-1">Lower overhead</p>
+                                            <p className="text-xs text-blue-100/60 mt-0.5">Lower overhead</p>
                                         </div>
                                     </div>
                                 </div>
