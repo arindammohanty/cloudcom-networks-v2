@@ -24,11 +24,11 @@ export default function IndustriesPage() {
             <section className="bg-dark-navy pt-32 pb-24 relative overflow-hidden text-white">
                 <div className="absolute inset-0 opacity-10 bg-[url('/media/mesh.svg')] mix-blend-overlay"></div>
                 <Container className="relative z-10">
-                    <div className="flex flex-col lg:flex-row items-center gap-12">
-                        <div className="lg:w-1/2">
+                    <div className="flex flex-col lg:flex-row items-center gap-12 xl:gap-20">
+                        <div className="lg:w-[55%] xl:w-3/5">
                             <AnimatedSection direction="up">
                                 <div className="text-cloud-blue font-bold tracking-widest text-xs uppercase mb-4">INDUSTRIES WE SERVE</div>
-                                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight leading-[1.1]">
+                                <h1 className="text-4xl md:text-5xl lg:text-[52px] xl:text-6xl font-bold mb-6 tracking-tight leading-[1.1]">
                                     Technology that understands your world.
                                     <span className="block text-cloud-blue mt-2">Solutions that move your mission forward.</span>
                                 </h1>
@@ -54,10 +54,10 @@ export default function IndustriesPage() {
                                 </div>
                             </AnimatedSection>
                         </div>
-                        <div className="lg:w-1/2 hidden lg:block relative">
-                            <AnimatedSection direction="left" delay={0.2} className="relative h-[400px] flex items-center justify-center">
+                        <div className="lg:w-[45%] xl:w-2/5 hidden lg:block relative">
+                            <AnimatedSection direction="left" delay={0.2} className="relative h-[400px] flex items-center justify-end xl:justify-center">
                                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cloud-blue/20 rounded-full blur-[100px]"></div>
-                                <div className="relative grid grid-cols-2 gap-6 w-full max-w-md">
+                                <div className="relative grid grid-cols-2 gap-4 xl:gap-6 w-full max-w-[380px]">
                                     <div className="bg-[#0039a6]/20 border border-[#0039a6]/50 p-4 rounded-xl backdrop-blur-sm flex flex-col items-center justify-center gap-2">
                                         <ShieldCheck className="w-8 h-8 text-cloud-blue" />
                                         <span className="text-xs font-semibold text-white/80">Secure Infrastructure</span>

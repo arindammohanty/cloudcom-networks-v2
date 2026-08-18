@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Card } from "@/components/ui/Card";
-import { Shield, Zap, Target, Users, Globe, Lightbulb, CheckCircle2 } from "lucide-react";
+import { Shield, Zap, Target, Users, Globe, Lightbulb, CheckCircle2, Rocket } from "lucide-react";
 
 export default function CompanyPage() {
   return (
@@ -86,60 +86,84 @@ export default function CompanyPage() {
       </section>
 
       {/* Experience & Lean Team */}
-      <section className="py-24 bg-slate-50 border-t border-slate-100">
-        <Container>
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <AnimatedSection direction="right">
-              <h2 className="text-3xl md:text-4xl font-bold text-dark-navy mb-6">A lean team. Senior expertise.</h2>
-              <div className="w-16 h-1 bg-cloud-blue rounded-full mb-6"></div>
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                CloudCom is deliberately lean. Our team brings senior experience across architecture, infrastructure, security, cloud and operations.
-              </p>
-              
-              <div className="flex items-start gap-4 p-6 bg-white rounded-2xl border border-slate-200 shadow-sm mb-10">
-                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 mt-1">
-                  <Users className="w-6 h-6 text-cloud-blue" />
-                </div>
-                <p className="text-slate-700 leading-relaxed font-medium">
-                  We combine expertise with modern tools, automation and AI to deliver better outcomes with greater efficiency.
+      <section className="py-24 bg-white border-t border-slate-100">
+        <Container className="max-w-6xl">
+          <div className="flex flex-col lg:flex-row gap-12 xl:gap-16 items-stretch">
+            
+            {/* Left Column */}
+            <AnimatedSection direction="right" className="flex flex-col gap-6 lg:w-[60%]">
+              {/* Top: Title and Text */}
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold text-dark-navy mb-4">A lean team. Senior expertise.</h2>
+                <div className="w-12 h-1 bg-cloud-blue rounded-full mb-4"></div>
+                <p className="text-sm text-slate-600 leading-relaxed max-w-lg">
+                  CloudCom is deliberately lean. Our team brings senior experience across architecture, infrastructure, security, cloud and operations.
                 </p>
               </div>
               
-              <div className="p-8 bg-blue-50 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                  <h4 className="font-bold text-dark-navy mb-1">Let's build what's next. Together.</h4>
-                  <p className="text-sm text-slate-500">We're ready to understand your challenges and help you move forward.</p>
+              {/* Middle: Small Box and Image */}
+              <div className="flex flex-col sm:flex-row gap-6 mt-2">
+                <div className="sm:w-1/2 flex items-center gap-4 p-5 bg-[#f8fafc] rounded-xl border border-slate-100">
+                  <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                    <Users className="w-6 h-6 text-cloud-blue" />
+                  </div>
+                  <p className="text-xs text-slate-700 leading-relaxed font-medium">
+                    We combine expertise with modern tools, automation and AI to deliver better outcomes with greater efficiency.
+                  </p>
                 </div>
-                <Link href="/contact" className="w-full md:w-auto bg-cloud-blue hover:bg-cloud-blue-hover text-white px-6 py-3 rounded-lg text-sm font-semibold transition-colors text-center whitespace-nowrap shadow-lg shadow-cloud-blue/20">
+                <div className="sm:w-1/2 rounded-xl overflow-hidden shadow-sm h-[140px] sm:h-auto min-h-[140px]">
+                  <img 
+                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" 
+                    alt="Team collaborating" 
+                    className="w-full h-full object-cover" 
+                  />
+                </div>
+              </div>
+              
+              {/* Bottom: Wide CTA Box */}
+              <div className="p-5 bg-[#f8fafc] rounded-xl border border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mt-2">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                    <Rocket className="w-6 h-6 text-cloud-blue" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-dark-navy text-sm mb-1">Let's build what's next. Together.</h4>
+                    <p className="text-xs text-slate-500">We're ready to understand your challenges and help you move forward.</p>
+                  </div>
+                </div>
+                <Link href="/contact" className="w-full sm:w-auto bg-cloud-blue hover:bg-cloud-blue-hover text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-colors text-center whitespace-nowrap shadow-md">
                   Talk to CloudCom →
                 </Link>
               </div>
             </AnimatedSection>
             
-            <AnimatedSection direction="left">
-              <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50">
-                <h3 className="text-2xl font-bold text-dark-navy mb-8">Why organisations trust CloudCom</h3>
-                <ul className="space-y-5 mb-10">
-                  {[
-                    "Independent and technology-neutral approach",
-                    "Focus on business outcomes, not just technology",
-                    "Transparent, honest and straightforward",
-                    "Aligned to your timeline and budget",
-                    "Committed to long-term success"
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-center text-slate-700 font-medium">
-                      <CheckCircle2 className="w-6 h-6 text-cloud-blue mr-4 flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="pt-8 border-t border-slate-100">
-                  <div className="text-lg font-bold text-cloud-blue">
-                    Enterprise capability. Without enterprise overhead.
-                  </div>
+            {/* Right Column */}
+            <AnimatedSection direction="left" className="flex flex-col lg:w-[40%]">
+              <h3 className="text-xl md:text-2xl font-bold text-dark-navy mb-4">Why organisations trust CloudCom</h3>
+              <div className="w-12 h-1 bg-cloud-blue rounded-full mb-8"></div>
+              
+              <ul className="space-y-4 mb-10">
+                {[
+                  "Independent and technology-neutral approach",
+                  "Focus on business outcomes, not just technology",
+                  "Transparent, honest and straightforward",
+                  "Aligned to your timeline and budget",
+                  "Committed to long-term success"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start text-sm text-slate-700 font-medium">
+                    <CheckCircle2 className="w-5 h-5 text-cloud-blue mr-3 mt-0.5 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="mt-auto pt-6 border-t border-slate-100">
+                <div className="text-cloud-blue font-bold text-lg md:text-xl tracking-tight">
+                  Enterprise capability. Without enterprise overhead.
                 </div>
               </div>
             </AnimatedSection>
+
           </div>
         </Container>
       </section>

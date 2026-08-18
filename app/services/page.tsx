@@ -67,56 +67,6 @@ export default function ServicesPage() {
                                     </Link>
                                 </div>
                             </AnimatedSection>
-
-                            <AnimatedSection direction="up" delay={0.5}>
-                                <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mt-16 p-6 border border-[#0039a6]/50 rounded-2xl bg-dark-navy/80 shadow-[0_0_30px_rgba(0,57,166,0.3)] backdrop-blur-md">
-                                    <div className="flex items-center gap-4 group">
-                                        <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors">
-                                            <Rocket className="w-6 h-6 text-cloud-blue" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-white text-sm">Lean & Agile</h4>
-                                            <p className="text-xs text-blue-100/60 mt-0.5">Faster delivery</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="hidden lg:block w-px h-10 bg-[#0039a6]/50"></div>
-                                    
-                                    <div className="flex items-center gap-4 group">
-                                        <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors">
-                                            <Brain className="w-6 h-6 text-cloud-blue" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-white text-sm">AI-Enabled</h4>
-                                            <p className="text-xs text-blue-100/60 mt-0.5">Smarter operations</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="hidden lg:block w-px h-10 bg-[#0039a6]/50"></div>
-                                    
-                                    <div className="flex items-center gap-4 group">
-                                        <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors">
-                                            <ShieldCheck className="w-6 h-6 text-cloud-blue" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-white text-sm">Secure by Design</h4>
-                                            <p className="text-xs text-blue-100/60 mt-0.5">Zero Trust approach</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="hidden lg:block w-px h-10 bg-[#0039a6]/50"></div>
-                                    
-                                    <div className="flex items-center gap-4 group">
-                                        <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors">
-                                            <PiggyBank className="w-6 h-6 text-cloud-blue" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold text-white text-sm">Cost-Efficient</h4>
-                                            <p className="text-xs text-blue-100/60 mt-0.5">Lower overhead</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </AnimatedSection>
                         </div>
                         
                         <div className="lg:w-1/2 relative hidden lg:block">
@@ -176,6 +126,56 @@ export default function ServicesPage() {
                              </AnimatedSection>
                         </div>
                     </div>
+
+                    <AnimatedSection direction="up" delay={0.5} className="mt-16 w-full">
+                        <div className="flex flex-wrap lg:flex-nowrap items-center justify-between gap-6 p-6 md:p-8 border border-[#0039a6]/50 rounded-2xl bg-dark-navy/80 shadow-[0_0_30px_rgba(0,57,166,0.3)] backdrop-blur-md">
+                            <div className="flex items-center gap-4 group flex-1 min-w-[200px]">
+                                <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors flex-shrink-0">
+                                    <Rocket className="w-6 h-6 text-cloud-blue" />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-white text-sm whitespace-nowrap">Lean & Agile</h4>
+                                    <p className="text-xs text-blue-100/60 mt-0.5">Faster delivery</p>
+                                </div>
+                            </div>
+                            
+                            <div className="hidden lg:block w-px h-10 bg-[#0039a6]/50"></div>
+                            
+                            <div className="flex items-center gap-4 group flex-1 min-w-[200px]">
+                                <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors flex-shrink-0">
+                                    <Brain className="w-6 h-6 text-cloud-blue" />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-white text-sm whitespace-nowrap">AI-Enabled</h4>
+                                    <p className="text-xs text-blue-100/60 mt-0.5">Smarter operations</p>
+                                </div>
+                            </div>
+                            
+                            <div className="hidden lg:block w-px h-10 bg-[#0039a6]/50"></div>
+                            
+                            <div className="flex items-center gap-4 group flex-1 min-w-[200px]">
+                                <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors flex-shrink-0">
+                                    <ShieldCheck className="w-6 h-6 text-cloud-blue" />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-white text-sm whitespace-nowrap">Secure by Design</h4>
+                                    <p className="text-xs text-blue-100/60 mt-0.5">Zero Trust approach</p>
+                                </div>
+                            </div>
+                            
+                            <div className="hidden lg:block w-px h-10 bg-[#0039a6]/50"></div>
+                            
+                            <div className="flex items-center gap-4 group flex-1 min-w-[200px]">
+                                <div className="p-3 bg-[#0039a6]/20 rounded-xl border border-[#0039a6]/50 group-hover:bg-[#0039a6]/40 transition-colors flex-shrink-0">
+                                    <PiggyBank className="w-6 h-6 text-cloud-blue" />
+                                </div>
+                                <div>
+                                    <h4 className="font-bold text-white text-sm whitespace-nowrap">Cost-Efficient</h4>
+                                    <p className="text-xs text-blue-100/60 mt-0.5">Lower overhead</p>
+                                </div>
+                            </div>
+                        </div>
+                    </AnimatedSection>
                 </Container>
             </section>
 
