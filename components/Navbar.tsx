@@ -22,7 +22,7 @@ export default function Navbar() {
 
     return (
         <nav className="bg-white border-b border-slate-100 sticky top-0 z-50 transition-all shadow-sm">
-            <div className="container mx-auto px-6 max-w-7xl h-20 flex items-center justify-between">
+            <div className="container mx-auto px-6 max-w-7xl xl:max-w-[1420px] 2xl:max-w-[1500px] h-20 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 group">
                     {/* Assuming the logo is in public/media/nav_logo.png as before */}
                     <img 

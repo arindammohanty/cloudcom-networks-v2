@@ -6,7 +6,7 @@ export default function Footer() {
         <>
             <section className="bg-gradient-blue relative overflow-hidden py-16 mt-auto">
                 <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&h=800&q=80')] bg-cover bg-left opacity-20 mix-blend-screen"></div>
-                <div className="container mx-auto px-6 max-w-7xl relative z-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div className="container mx-auto px-6 max-w-7xl xl:max-w-[1420px] 2xl:max-w-[1500px] relative z-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                     <div className="mb-6 md:mb-0">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Ready to Transform Your Communication and Infrastructure?</h2>
                         <p className="text-sm text-blue-200 max-w-2xl">Let's discuss how CloudCom Networks can help your organization build a secure, scalable, and future-ready digital foundation.</p>
@@ -16,7 +16,7 @@ export default function Footer() {
             </section>
 
             <footer className="bg-darkBg border-t border-slate-800 pt-16 pb-8">
-                <div className="container mx-auto px-6 max-w-7xl">
+                <div className="container mx-auto px-6 max-w-7xl xl:max-w-[1420px] 2xl:max-w-[1500px]">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 mb-16">
                         <div className="lg:col-span-2">
                             <div className="flex items-center gap-2 mb-3">

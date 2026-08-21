@@ -2,241 +2,184 @@ import React from 'react';
 import Link from 'next/link';
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { Container } from "@/components/ui/Container";
+import { HeroCarousel } from "@/components/home/HeroCarousel";
+import { ChallengeComparison } from "@/components/home/ChallengeComparison";
+import { BuiltDifferently } from "@/components/home/BuiltDifferently";
+import { SecurityFirstSection } from "@/components/home/SecurityFirstSection";
+import { IndustriesGrid } from "@/components/home/IndustriesGrid";
+import { EnterpriseBanner } from "@/components/home/EnterpriseBanner";
 import { 
     ArrowRight, Shield, Cloud, MessageSquare, Cpu, Settings,
     Lock, Unlock, Layers, Target, Users, CheckCircle2, ShieldCheck,
     Check, Zap, Server, Activity, Database, LineChart, Globe, 
-    Search, PenTool, CloudLightning, Gauge, ChevronRight, Fingerprint, Flag
+    Search, PenTool, CloudLightning, Gauge, ChevronRight, Fingerprint, Flag,
+    Sparkles, Key, Leaf, HeartHandshake, FileCheck, ArrowUpRight
 } from 'lucide-react';
 
 export default function HomePage() {
     return (
         <div className="flex flex-col min-h-screen">
-            {/* HERO SECTION */}
-            <section className="relative pt-24 pb-20 overflow-hidden bg-slate-50 flex items-center min-h-[90vh]">
-                {/* Enhanced glowing backgrounds */}
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-cloud-blue/10 via-cloud-blue/5 to-transparent rounded-full blur-3xl pointer-events-none translate-x-1/3 -translate-y-1/4"></div>
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-tr from-blue-100/50 to-transparent rounded-full blur-3xl pointer-events-none -translate-x-1/3 translate-y-1/3"></div>
-                
-                <Container className="relative z-10">
-                    <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-                        <div className="lg:w-[55%]">
-                            <AnimatedSection direction="up" delay={0.1}>
-                                <div className="text-sm md:text-base font-bold text-cloud-blue mb-6 tracking-wide uppercase">
-                                    Cloud. Communication. Infrastructure. Security.
-                                </div>
-                            </AnimatedSection>
-                            
-                            <AnimatedSection direction="up" delay={0.2}>
-                                <h1 className="text-6xl md:text-7xl lg:text-[7rem] font-extrabold text-dark-navy mb-8 leading-[1.05] tracking-tight">
-                                    <span className="block mb-2">Build. Connect.</span>
-                                    <span className="block text-cloud-blue">Secure. Scale.</span>
-                                </h1>
-                            </AnimatedSection>
-                            
-                            <AnimatedSection direction="up" delay={0.3}>
-                                <p className="text-xl md:text-2xl text-slate-600 mb-12 leading-relaxed max-w-2xl text-balance font-light">
-                                    By integrating open technologies with AI-driven engineering, CloudCom enables organisations to develop resilient digital infrastructure that is both flexible and cost-effective.
-                                </p>
-                            </AnimatedSection>
-                            
-                            <AnimatedSection direction="up" delay={0.4}>
-                                <div className="flex flex-col sm:flex-row gap-5 items-center">
-                                    <Link href="/solutions" className="w-full sm:w-auto bg-cloud-blue hover:bg-cloud-blue-hover text-white px-10 py-4 rounded-xl font-semibold text-lg transition-all text-center flex items-center justify-center gap-3 shadow-lg shadow-cloud-blue/30 hover:scale-[1.02]">
-                                        Explore Solutions <ArrowRight className="w-5 h-5" />
-                                    </Link>
-                                    <span className="hidden sm:inline text-slate-300 mx-2">|</span>
-                                    <Link href="/contact" className="w-full sm:w-auto text-dark-navy hover:text-cloud-blue px-8 py-4 font-semibold text-lg transition-all text-center flex items-center justify-center gap-2 group">
-                                        Talk to CloudCom <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                                    </Link>
-                                </div>
-                            </AnimatedSection>
+            {/* 1. HERO SECTION - INFINITE LOOPING CAROUSEL */}
+            <HeroCarousel />
 
-                            <AnimatedSection direction="up" delay={0.5}>
-                                <div className="mt-14 text-lg md:text-xl font-semibold text-slate-500 flex flex-wrap gap-x-6 gap-y-3 items-center">
-                                    <span className="text-dark-navy italic font-extrabold">Open. Sovereign. Secure.</span> 
-                                    <span className="text-dark-navy italic font-extrabold">Lean. Agile. AI-Enabled.</span>
-                                </div>
-                            </AnimatedSection>
+            {/* 2. TRUSTED BY / VALUES ALIGNMENT STRIP (From PDF Page 3, 4, 7) */}
+            <section className="py-8 bg-white border-b border-slate-100 relative z-10 shadow-2xs">
+                <Container>
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+                        <div className="text-xs font-bold uppercase tracking-widest text-slate-400 whitespace-nowrap">
+                            Trusted by organisations that value:
                         </div>
-                        
-                        <div className="lg:w-[45%] w-full">
-                             <AnimatedSection direction="left" delay={0.4} className="relative w-full h-full">
-                                {/* Enhanced Abstract Graphic Representation */}
-                                <div className="relative w-full aspect-square max-w-lg mx-auto">
-                                    {/* Central glowing core */}
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cloud-blue/20 rounded-full blur-[80px]"></div>
-                                    
-                                    {/* Main Container Layer */}
-                                    <div className="absolute inset-4 rounded-3xl bg-white/40 backdrop-blur-3xl border border-white/60 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] p-6 flex flex-col gap-4 z-10">
-                                        
-                                        {/* Top Data Bar */}
-                                        <div className="w-full h-16 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center px-6 gap-4">
-                                            <div className="w-3 h-3 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.5)] animate-pulse"></div>
-                                            <div className="h-2.5 w-1/3 bg-slate-100 rounded-full"></div>
-                                            <div className="h-2.5 w-1/4 bg-slate-50 rounded-full ml-auto"></div>
-                                        </div>
-
-                                        {/* Grid Layout */}
-                                        <div className="flex-1 grid grid-cols-2 gap-4">
-                                            {/* Left Column */}
-                                            <div className="flex flex-col gap-4">
-                                                <div className="flex-1 bg-gradient-to-br from-cloud-blue to-dark-navy rounded-2xl p-6 shadow-xl relative overflow-hidden group">
-                                                    <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
-                                                    <Server className="w-10 h-10 text-white mb-auto" />
-                                                    <div className="mt-8 space-y-3">
-                                                        <div className="h-2 w-full bg-white/20 rounded-full"></div>
-                                                        <div className="h-2 w-2/3 bg-white/20 rounded-full"></div>
-                                                    </div>
-                                                </div>
-                                                <div className="h-1/3 bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center justify-between">
-                                                    <Shield className="w-8 h-8 text-cloud-blue" />
-                                                    <div className="flex gap-1">
-                                                        {[1,2,3,4].map(i => <div key={i} className="w-1.5 h-6 bg-slate-100 rounded-full"></div>)}
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {/* Right Column */}
-                                            <div className="flex flex-col gap-4 pt-8">
-                                                <div className="h-1/3 bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center gap-4">
-                                                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
-                                                        <Activity className="w-5 h-5 text-cloud-blue" />
-                                                    </div>
-                                                    <div className="flex-1 space-y-2">
-                                                        <div className="h-2 w-full bg-slate-100 rounded-full"></div>
-                                                        <div className="h-2 w-1/2 bg-slate-100 rounded-full"></div>
-                                                    </div>
-                                                </div>
-                                                <div className="flex-1 bg-white rounded-2xl p-6 border border-slate-100 shadow-lg relative overflow-hidden">
-                                                    <div className="absolute inset-0 bg-[url('/media/mesh.svg')] opacity-5"></div>
-                                                    <Database className="w-10 h-10 text-slate-800 mb-6 relative z-10" />
-                                                    <div className="space-y-4 relative z-10">
-                                                        <div className="flex items-center gap-3">
-                                                            <div className="w-2 h-2 rounded-full bg-cloud-blue"></div>
-                                                            <div className="h-2 flex-1 bg-slate-100 rounded-full"></div>
-                                                        </div>
-                                                        <div className="flex items-center gap-3">
-                                                            <div className="w-2 h-2 rounded-full bg-cloud-blue"></div>
-                                                            <div className="h-2 flex-1 bg-slate-100 rounded-full"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    {/* Decorative floating elements */}
-                                    <div className="absolute -left-6 top-1/4 bg-white p-4 rounded-2xl shadow-xl border border-slate-50 z-20 animate-[bounce_4s_infinite]">
-                                        <Lock className="w-6 h-6 text-cloud-blue" />
-                                    </div>
-                                    <div className="absolute -right-4 bottom-1/4 bg-dark-navy p-4 rounded-2xl shadow-xl z-20 animate-[bounce_5s_infinite_0.5s]">
-                                        <Cpu className="w-6 h-6 text-white" />
-                                    </div>
-                                </div>
-                             </AnimatedSection>
+                        <div className="flex flex-wrap justify-center lg:justify-end items-center gap-x-6 sm:gap-x-8 gap-y-3 text-xs sm:text-sm font-semibold text-slate-700">
+                            <div className="flex items-center gap-2">
+                                <ShieldCheck className="w-4 h-4 text-cloud-blue" />
+                                <span>Security & Compliance</span>
+                            </div>
+                            <div className="hidden sm:block w-1 h-1 rounded-full bg-slate-300"></div>
+                            <div className="flex items-center gap-2">
+                                <Unlock className="w-4 h-4 text-cloud-blue" />
+                                <span>Independence & Control</span>
+                            </div>
+                            <div className="hidden sm:block w-1 h-1 rounded-full bg-slate-300"></div>
+                            <div className="flex items-center gap-2">
+                                <CheckCircle2 className="w-4 h-4 text-cloud-blue" />
+                                <span>Practical Solutions</span>
+                            </div>
+                            <div className="hidden sm:block w-1 h-1 rounded-full bg-slate-300"></div>
+                            <div className="flex items-center gap-2">
+                                <HeartHandshake className="w-4 h-4 text-cloud-blue" />
+                                <span>Long-term Partnership</span>
+                            </div>
+                            <div className="hidden sm:block w-1 h-1 rounded-full bg-slate-300"></div>
+                            <div className="flex items-center gap-2">
+                                <Leaf className="w-4 h-4 text-emerald-600" />
+                                <span>Sustainable Technology</span>
+                            </div>
                         </div>
                     </div>
                 </Container>
             </section>
 
-            {/* TRUSTED BY / PARTNERS SECTION */}
-            <section className="py-10 bg-white border-b border-slate-100">
-                <Container>
-                    <div className="text-center">
-                        <p className="text-sm md:text-base font-semibold text-slate-500 mb-6 tracking-wide">Trusted by organisations that value security, performance and partnership.</p>
-                        <div className="flex flex-wrap justify-center items-center gap-x-4 md:gap-x-6 lg:gap-x-8 gap-y-4 text-sm md:text-base font-semibold text-slate-700">
-                            <div className="flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-cloud-blue" /> Security by Design</div>
-                            <div className="hidden xl:block w-1 h-1 rounded-full bg-slate-300"></div>
-                            <div className="flex items-center gap-2"><Unlock className="w-5 h-5 text-cloud-blue" /> Open & Standards-Based</div>
-                            <div className="hidden xl:block w-1 h-1 rounded-full bg-slate-300"></div>
-                            <div className="flex items-center gap-2"><Users className="w-5 h-5 text-cloud-blue" /> Customer First</div>
-                            <div className="hidden xl:block w-1 h-1 rounded-full bg-slate-300"></div>
-                            <div className="flex items-center gap-2"><Target className="w-5 h-5 text-cloud-blue" /> Outcome Driven</div>
-                            <div className="hidden xl:block w-1 h-1 rounded-full bg-slate-300"></div>
-                            <div className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-cloud-blue" /> Long-Term Partnership</div>
-                        </div>
-                    </div>
-                </Container>
-            </section>
+            {/* 3. THE CHALLENGE: TECHNOLOGY IS EVERYWHERE. ACCOUNTABILITY ISN'T. (From PDF Page 5) */}
+            <ChallengeComparison />
 
-            {/* BUILT DIFFERENTLY CARDS (From PDF Page 3) */}
-            <section className="py-16 bg-slate-50 border-b border-slate-100">
-                <Container>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-                        {[
-                            { title: "Lean & Agile", desc: "Short decision paths. Faster decisions. Faster delivery.", icon: <Zap /> },
-                            { title: "AI-Enabled", desc: "Modern tools that amplify our people and accelerate delivery.", icon: <Cpu /> },
-                            { title: "Secure by Design", desc: "Security built in, not bolted on. Zero Trust approach.", icon: <Shield /> },
-                            { title: "Cost-Efficient", desc: "Better outcomes with lower overhead and optimal cost.", icon: <LineChart /> },
-                            { title: "Built for Scale", desc: "Architectures that grow with your business and adapt to change.", icon: <Layers /> }
-                        ].map((item, idx) => (
-                            <AnimatedSection key={idx} delay={idx * 0.1} direction="up" className="h-full">
-                                <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm h-full flex flex-col hover:shadow-md transition-shadow">
-                                    <div className="w-10 h-10 rounded-lg bg-blue-50 text-cloud-blue flex items-center justify-center mb-4">
-                                        {React.cloneElement(item.icon as React.ReactElement<{ className?: string }>, { className: "w-5 h-5" })}
-                                    </div>
-                                    <h4 className="font-bold text-dark-navy mb-2">{item.title}</h4>
-                                    <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
-                                </div>
-                            </AnimatedSection>
-                        ))}
-                    </div>
-                </Container>
-            </section>
+            {/* 4. BUILT DIFFERENTLY: 4 VALUE DRIVERS & 5 PRINCIPLES (From PDF Page 3, 4, 13, 15) */}
+            <BuiltDifferently />
 
-            {/* WHAT CLOUDCOM DOES SECTION */}
-            <section className="py-32 bg-white relative">
+            {/* 5. WHAT CLOUDCOM DOES SECTION - 5 CORE CAPABILITIES (From PDF Page 5, 7, 11) */}
+            <section className="py-28 bg-white relative">
                 <Container>
-                    <div className="text-center mb-20">
-                        <AnimatedSection>
-                            <h2 className="text-4xl md:text-5xl font-bold text-dark-navy mb-6 tracking-tight">Technology that works together.</h2>
-                            <p className="text-xl text-slate-500 max-w-3xl mx-auto leading-relaxed">We bring together the essential building blocks of modern digital infrastructure to help organisations connect, protect and grow with confidence.</p>
+                    <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
+                        <AnimatedSection direction="up">
+                            <span className="text-xs font-bold uppercase tracking-widest text-cloud-blue mb-2 block">
+                                What We Do
+                            </span>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-dark-navy tracking-tight">
+                                Technology that <span className="text-cloud-blue">works together.</span>
+                            </h2>
+                            <p className="text-base sm:text-lg text-slate-500 max-w-2xl mt-4 leading-relaxed font-light">
+                                We bring together the essential building blocks of modern digital infrastructure to help organisations connect, protect and grow with confidence.
+                            </p>
+                        </AnimatedSection>
+                        <AnimatedSection direction="left" delay={0.2}>
+                            <Link 
+                                href="/solutions" 
+                                className="inline-flex items-center gap-2 text-sm font-bold text-cloud-blue hover:text-cloud-blue-hover transition-colors group"
+                            >
+                                Explore all solutions <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                            </Link>
                         </AnimatedSection>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                         {[
-                            { icon: <Cloud className="w-12 h-12" />, title: "Cloud Infrastructure", desc: "Scalable compute, storage, hosting and cloud environments.", link: "/solutions#cloud" },
-                            { icon: <MessageSquare className="w-12 h-12" />, title: "Unified Communications", desc: "Modern voice, video, messaging and collaboration.", link: "/solutions#communications" },
-                            { icon: <Shield className="w-12 h-12" />, title: "Cybersecurity", desc: "Security-first infrastructure, protection and monitoring.", link: "/solutions#security" },
-                            { icon: <Settings className="w-12 h-12" />, title: "Managed Infrastructure", desc: "Reliable operation, monitoring and management of IT environments.", link: "/solutions#managed" },
-                            { icon: <Cpu className="w-12 h-12" />, title: "AI & Automation", desc: "Intelligent automation and AI solutions to improve productivity and decisions.", link: "/solutions#ai" }
+                            { 
+                                icon: <Cloud className="w-8 h-8" />, 
+                                title: "Cloud & Infrastructure", 
+                                desc: "Scalable compute, storage, hybrid environments and sovereign hosting.", 
+                                link: "/solutions/cloud",
+                                bullets: ["Compute & Storage", "Disaster Recovery", "Hybrid Deployments"]
+                            },
+                            { 
+                                icon: <MessageSquare className="w-8 h-8" />, 
+                                title: "Unified Communications", 
+                                desc: "Modern voice, video, messaging and secure collaboration platforms.", 
+                                link: "/solutions/communications",
+                                bullets: ["Business Telephony", "Video Conferencing", "Team Collaboration"]
+                            },
+                            { 
+                                icon: <Shield className="w-8 h-8" />, 
+                                title: "Cybersecurity", 
+                                desc: "Security-first infrastructure, zero-trust protection and 24/7 monitoring.", 
+                                link: "/solutions/security",
+                                bullets: ["Zero Trust Network", "Identity & Access", "Threat Mitigation"]
+                            },
+                            { 
+                                icon: <Settings className="w-8 h-8" />, 
+                                title: "Managed Technology", 
+                                desc: "Reliable operation, proactive maintenance and technical support.", 
+                                link: "/services/managed-services",
+                                bullets: ["24/7 Ops & Monitoring", "Patching & Tuning", "SLA Guarantees"]
+                            },
+                            { 
+                                icon: <Cpu className="w-8 h-8" />, 
+                                title: "AI & Automation", 
+                                desc: "Intelligent automation and AI engineering to elevate productivity and decisions.", 
+                                link: "/solutions/applications",
+                                bullets: ["Workflow Automation", "AI Integration", "Intelligent Analytics"]
+                            }
                         ].map((item, idx) => (
-                            <AnimatedSection key={idx} delay={idx * 0.1} direction="up" className="h-full">
-                                <div className="h-full bg-white p-10 rounded-3xl border border-slate-100 hover:border-cloud-blue/30 shadow-lg shadow-slate-200/40 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col items-center text-center group cursor-pointer relative overflow-hidden">
-                                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1 bg-cloud-blue opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                    <div className="mb-8 text-cloud-blue bg-blue-50/80 p-5 rounded-2xl group-hover:bg-cloud-blue group-hover:text-white transition-colors duration-300">
-                                        {item.icon}
+                            <AnimatedSection key={idx} delay={idx * 0.08} direction="up" className="h-full">
+                                <Link 
+                                    href={item.link}
+                                    className="h-full bg-white p-7 rounded-3xl border border-slate-200/90 hover:border-cloud-blue/40 shadow-2xs hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group block relative overflow-hidden"
+                                >
+                                    <div className="absolute top-0 left-0 right-0 h-1 bg-cloud-blue opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                    <div>
+                                        <div className="mb-6 text-cloud-blue bg-blue-50/80 w-14 h-14 rounded-2xl flex items-center justify-center group-hover:bg-cloud-blue group-hover:text-white transition-colors duration-300">
+                                            {item.icon}
+                                        </div>
+                                        <h3 className="font-bold text-dark-navy text-lg mb-3 leading-snug group-hover:text-cloud-blue transition-colors">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-xs sm:text-sm text-slate-500 mb-6 leading-relaxed font-light">
+                                            {item.desc}
+                                        </p>
+                                        <ul className="space-y-1.5 mb-6 pt-4 border-t border-slate-100">
+                                            {item.bullets.map((b, bi) => (
+                                                <li key={bi} className="text-[11px] font-medium text-slate-600 flex items-center gap-1.5">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-cloud-blue/60"></span>
+                                                    {b}
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
-                                    <h3 className="font-bold text-dark-navy text-xl mb-4 leading-tight">{item.title}</h3>
-                                    <div className="w-8 h-1 bg-slate-100 rounded-full mb-4 group-hover:bg-cloud-blue/20 transition-colors"></div>
-                                    <p className="text-base text-slate-500 mb-8 flex-grow leading-relaxed">{item.desc}</p>
-                                    <Link href={item.link} className="text-cloud-blue font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                                        Explore <ArrowRight className="w-5 h-5" />
-                                    </Link>
-                                </div>
+                                    <div className="text-cloud-blue font-bold text-xs flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                                        Explore Solution <ArrowRight className="w-4 h-4" />
+                                    </div>
+                                </Link>
                             </AnimatedSection>
                         ))}
                     </div>
                 </Container>
             </section>
 
-            {/* WHY CLOUDCOM SECTION (Fully detailed from PDF page 8/9) */}
-            <section className="py-32 bg-dark-navy text-white relative overflow-hidden">
+            {/* 6. WHY CLOUDCOM SECTION (From PDF Pages 8 & 9) */}
+            <section className="py-28 bg-dark-navy text-white relative overflow-hidden">
                 {/* Background mesh/pattern */}
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-400 via-dark-navy to-dark-navy"></div>
-                <div className="absolute right-0 top-0 w-1/2 h-full bg-[url('/media/mesh.svg')] opacity-[0.05] pointer-events-none mix-blend-overlay"></div>
+                <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-400 via-dark-navy to-dark-navy"></div>
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
                 
                 <Container className="relative z-10">
-                    <div className="text-center lg:text-left mb-20">
+                    <div className="text-center max-w-3xl mx-auto mb-16">
                         <AnimatedSection direction="up">
-                            <span className="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4 block">Why CloudCom</span>
-                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight max-w-3xl">
+                            <span className="text-blue-400 font-bold tracking-widest uppercase text-xs mb-3 block">
+                                Why CloudCom
+                            </span>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
                                 Technology built <span className="text-cloud-blue">around your business.</span>
                             </h2>
-                            <p className="text-blue-100/70 text-xl mt-6 leading-relaxed max-w-2xl">
-                                We combine open technology, strong security and practical engineering to build digital infrastructure you can trust and grow on&mdash;today and tomorrow.
+                            <p className="text-blue-100/80 text-base sm:text-lg leading-relaxed font-light">
+                                We combine open technology, strong security and practical engineering to build digital infrastructure you can trust and grow on—today and tomorrow.
                             </p>
                         </AnimatedSection>
                     </div>
@@ -244,45 +187,45 @@ export default function HomePage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                         {[
                             { 
-                                icon: <Unlock className="w-8 h-8" />, 
+                                icon: <Unlock className="w-7 h-7" />, 
                                 title: "Open & Flexible", 
-                                desc: "Technology choices without unnecessary vendor lock-in. We use open technologies and standards to give you freedom and control.",
+                                desc: "Technology choices without unnecessary vendor lock-in. We use open standards to give you complete freedom and control.",
                                 checks: ["Freedom of choice", "Interoperable & portable", "Future-ready architecture"]
                             },
                             { 
-                                icon: <Shield className="w-8 h-8" />, 
+                                icon: <Shield className="w-7 h-7" />, 
                                 title: "Secure by Design", 
-                                desc: "Security integrated into every layer of our architecture, operations and services—from infrastructure to identity.",
+                                desc: "Security integrated into every layer of our architecture and operations—from infrastructure to identity.",
                                 checks: ["Zero Trust principles", "Identity & access control", "Continuous protection"]
                             },
                             { 
-                                icon: <Layers className="w-8 h-8" />, 
+                                icon: <Layers className="w-7 h-7" />, 
                                 title: "Built for Scale", 
-                                desc: "Architectures designed to grow with your organisation—supporting more users, more data and more possibilities.",
+                                desc: "Architectures designed to grow with your organisation—supporting more users, more data and more workloads.",
                                 checks: ["Elastic & resilient", "High availability", "Performance at scale"]
                             },
                             { 
-                                icon: <Target className="w-8 h-8" />, 
+                                icon: <Target className="w-7 h-7" />, 
                                 title: "Practical Technology", 
                                 desc: "Solutions focused on business outcomes and measurable impact—not technology for its own sake.",
-                                checks: ["Business-first approach", "Sustainable & efficient", "Measurable impact"]
+                                checks: ["Business-first approach", "Sustainable & efficient", "Measurable ROI"]
                             }
                         ].map((item, idx) => (
                             <AnimatedSection key={idx} delay={idx * 0.1} direction="up" className="h-full">
-                                <div className="bg-white rounded-3xl p-8 h-full flex flex-col text-slate-800 shadow-2xl relative">
-                                    <div className="absolute -top-5 left-8 w-10 h-10 rounded-full bg-cloud-blue text-white flex items-center justify-center font-bold text-sm shadow-lg">
+                                <div className="bg-white rounded-3xl p-8 h-full flex flex-col text-slate-800 shadow-2xl relative group hover:translate-y-[-4px] transition-transform">
+                                    <div className="absolute -top-4 left-8 w-8 h-8 rounded-full bg-cloud-blue text-white flex items-center justify-center font-bold text-xs shadow-md">
                                         0{idx + 1}
                                     </div>
-                                    <div className="w-16 h-16 rounded-2xl bg-dark-navy text-white flex items-center justify-center mb-8 mt-2">
+                                    <div className="w-14 h-14 rounded-2xl bg-dark-navy text-white flex items-center justify-center mb-6 mt-1 group-hover:bg-cloud-blue transition-colors">
                                         {item.icon}
                                     </div>
-                                    <h4 className="font-bold text-2xl mb-4 text-dark-navy">{item.title}</h4>
-                                    <p className="text-slate-600 leading-relaxed mb-8 flex-grow">{item.desc}</p>
+                                    <h4 className="font-bold text-xl mb-3 text-dark-navy">{item.title}</h4>
+                                    <p className="text-slate-600 text-sm leading-relaxed mb-6 flex-grow font-light">{item.desc}</p>
                                     
-                                    <ul className="space-y-3">
+                                    <ul className="space-y-2.5 pt-4 border-t border-slate-100">
                                         {item.checks.map((check, i) => (
-                                            <li key={i} className="flex items-center text-sm font-semibold text-slate-700">
-                                                <CheckCircle2 className="w-5 h-5 text-cloud-blue mr-3 flex-shrink-0" />
+                                            <li key={i} className="flex items-center text-xs font-semibold text-slate-700">
+                                                <CheckCircle2 className="w-4 h-4 text-cloud-blue mr-2.5 flex-shrink-0" />
                                                 {check}
                                             </li>
                                         ))}
@@ -292,81 +235,165 @@ export default function HomePage() {
                         ))}
                     </div>
 
-                    {/* Open Source Banner from PDF Page 8/9 */}
-                    <AnimatedSection direction="up" delay={0.4}>
-                        <div className="bg-gradient-to-r from-cloud-blue to-[#0039a6] rounded-3xl p-8 md:p-12 border border-blue-400/30 flex flex-col md:flex-row items-center gap-8 shadow-2xl relative overflow-hidden">
-                            <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none">
-                                <Globe className="w-64 h-64 -mb-16 -mr-16" />
+                    {/* Open Source Banner (From PDF Page 8 & 9) */}
+                    <AnimatedSection direction="up" delay={0.3}>
+                        <div className="bg-gradient-to-r from-cloud-blue via-[#1d4ed8] to-[#0f2c6b] rounded-3xl p-8 sm:p-10 border border-blue-400/30 flex flex-col md:flex-row items-center gap-8 shadow-2xl relative overflow-hidden">
+                            <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 flex-shrink-0">
+                                <Flag className="w-8 h-8 text-white" />
                             </div>
-                            <div className="w-20 h-20 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 flex-shrink-0">
-                                <Flag className="w-10 h-10 text-white" />
-                            </div>
-                            <div>
-                                <h3 className="text-2xl font-bold text-white mb-2">Open Source. Digital Sovereignty. Your Advantage.</h3>
-                                <p className="text-blue-100 text-lg leading-relaxed max-w-4xl">
-                                    By embracing OSS and digital sovereignty principles, we help organisations retain control over their data, reduce licensing costs and build a more resilient future.
+                            <div className="flex-1">
+                                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+                                    Open Source. Digital Sovereignty. Your Advantage.
+                                </h3>
+                                <p className="text-blue-100 text-sm sm:text-base leading-relaxed font-light max-w-3xl">
+                                    By embracing open-source software (OSS) and digital sovereignty principles, we help organisations retain control over their data, eliminate recurring vendor extortion, and build a more resilient future.
                                 </p>
                             </div>
+                            <Link 
+                                href="/solutions" 
+                                className="bg-white text-dark-navy hover:bg-slate-100 px-6 py-3 rounded-xl font-bold text-xs transition-colors whitespace-nowrap shadow-md flex-shrink-0"
+                            >
+                                Learn More
+                            </Link>
                         </div>
                     </AnimatedSection>
                 </Container>
             </section>
             
-            {/* OUR APPROACH - FROM PROBLEM TO PRODUCTION (Added from PDF page 5/9) */}
-            <section className="py-24 bg-slate-50 border-y border-slate-200">
+            {/* 7. OUR APPROACH - FROM PROBLEM TO PRODUCTION (From PDF Page 5, 7, 9, 13) */}
+            <section className="py-28 bg-slate-50 border-b border-slate-200/80">
                 <Container>
-                    <div className="text-center mb-16">
+                    <div className="text-center max-w-2xl mx-auto mb-16">
                         <AnimatedSection>
-                            <span className="text-cloud-blue font-bold tracking-widest uppercase text-sm mb-4 block">Our Approach</span>
-                            <h2 className="text-4xl font-bold text-dark-navy tracking-tight">From problem to production.</h2>
+                            <span className="text-cloud-blue font-bold tracking-widest uppercase text-xs mb-3 block">
+                                How We Deliver
+                            </span>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-dark-navy tracking-tight mb-4">
+                                From problem to production.
+                            </h2>
+                            <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-light">
+                                A disciplined, transparent 4-stage engineering lifecycle designed for precision and agility.
+                            </p>
                         </AnimatedSection>
                     </div>
 
-                    <div className="flex flex-col md:flex-row items-start justify-between relative max-w-5xl mx-auto">
-                        {/* Connecting Line (Desktop) */}
-                        <div className="hidden md:block absolute top-12 left-12 right-12 h-0.5 bg-slate-200 z-0 border-t-2 border-dashed border-slate-300"></div>
-
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative w-full mx-auto">
                         {[
-                            { num: "01", icon: <Search className="w-8 h-8" />, title: "Understand", desc: "We understand your business, challenges, users and objectives." },
-                            { num: "02", icon: <PenTool className="w-8 h-8" />, title: "Architect", desc: "We design a secure, scalable and practical technology architecture." },
-                            { num: "03", icon: <CloudLightning className="w-8 h-8" />, title: "Deploy", desc: "We implement, integrate, migrate and test to bring it to life." },
-                            { num: "04", icon: <Gauge className="w-8 h-8" />, title: "Operate", desc: "We monitor, manage and optimise to keep your environment running." }
+                            { 
+                                num: "01", 
+                                icon: <Search className="w-7 h-7" />, 
+                                title: "Understand", 
+                                desc: "We study your business goals, existing workloads, compliance needs and constraints." 
+                            },
+                            { 
+                                num: "02", 
+                                icon: <PenTool className="w-7 h-7" />, 
+                                title: "Architect", 
+                                desc: "We design a practical, secure, vendor-neutral and scalable technology architecture." 
+                            },
+                            { 
+                                num: "03", 
+                                icon: <CloudLightning className="w-7 h-7" />, 
+                                title: "Deploy", 
+                                desc: "We implement, integrate, migrate data, and validate in real-world environments." 
+                            },
+                            { 
+                                num: "04", 
+                                icon: <Gauge className="w-7 h-7" />, 
+                                title: "Operate", 
+                                desc: "We monitor 24/7, manage, patch, and continuously optimise performance and security." 
+                            }
                         ].map((step, idx) => (
-                            <AnimatedSection key={idx} delay={idx * 0.15} direction="up" className="relative z-10 flex flex-col items-center text-center w-full md:w-1/4 px-4 mb-10 md:mb-0">
-                                <div className="w-24 h-24 rounded-full bg-white border-4 border-slate-50 shadow-xl flex items-center justify-center text-cloud-blue mb-6 relative">
-                                    <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-cloud-blue text-white flex items-center justify-center text-sm font-bold border-2 border-white">
-                                        {step.num}
+                            <AnimatedSection key={idx} delay={idx * 0.1} direction="up" className="h-full">
+                                <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-2xs hover:shadow-lg transition-all h-full flex flex-col items-center text-center relative group">
+                                    <div className="w-16 h-16 rounded-2xl bg-blue-50 text-cloud-blue flex items-center justify-center mb-6 group-hover:bg-cloud-blue group-hover:text-white transition-colors">
+                                        {step.icon}
                                     </div>
-                                    {step.icon}
+                                    <span className="text-xs font-mono font-bold text-cloud-blue bg-blue-50 px-2.5 py-0.5 rounded-full mb-3">
+                                        Phase {step.num}
+                                    </span>
+                                    <h3 className="text-xl font-bold text-dark-navy mb-3">{step.title}</h3>
+                                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-light">{step.desc}</p>
                                 </div>
-                                <h3 className="text-xl font-bold text-dark-navy mb-3">{step.title}</h3>
-                                <p className="text-slate-500 leading-relaxed text-sm">{step.desc}</p>
                             </AnimatedSection>
                         ))}
                     </div>
                 </Container>
             </section>
 
-            {/* CTA SECTION */}
-            <section className="py-24 bg-white text-center border-t border-slate-100">
+            {/* 8. SECURITY FIRST ARCHITECTURE SECTION (From PDF Page 5) */}
+            <SecurityFirstSection />
+
+            {/* 9. INDUSTRIES SECTION (From PDF Page 5, 15) */}
+            <IndustriesGrid />
+
+            {/* 10. ENTERPRISE-GRADE BANNER (From PDF Page 5) */}
+            <EnterpriseBanner />
+
+            {/* 11. OUR TECHNOLOGY PHILOSOPHY STRIP (From PDF Page 5) */}
+            <section className="py-16 bg-white border-b border-slate-100">
+                <Container>
+                    <div className="bg-slate-50 rounded-3xl p-8 sm:p-10 border border-slate-200 flex flex-col lg:flex-row items-center justify-between gap-8">
+                        <div className="max-w-2xl">
+                            <span className="text-xs font-bold uppercase tracking-widest text-cloud-blue mb-2 block">
+                                Our Technology Philosophy
+                            </span>
+                            <h3 className="text-2xl sm:text-3xl font-extrabold text-dark-navy tracking-tight mb-3">
+                                The right technology. Not the most technology.
+                            </h3>
+                            <p className="text-sm text-slate-600 leading-relaxed font-light">
+                                CloudCom believes technology should serve the organisation — not the other way around. We favour solutions that are secure, interoperable, maintainable and economically sustainable, including open technologies where they make sense.
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
+                            <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-dark-navy">
+                                <Unlock className="w-4 h-4 text-cloud-blue" />
+                                <span>Open Standards</span>
+                            </div>
+                            <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-dark-navy">
+                                <Target className="w-4 h-4 text-emerald-600" />
+                                <span>Practical Outcomes</span>
+                            </div>
+                            <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-dark-navy">
+                                <Leaf className="w-4 h-4 text-cyan-600" />
+                                <span>Sustainable Growth</span>
+                            </div>
+                        </div>
+                    </div>
+                </Container>
+            </section>
+
+            {/* 12. LET'S SOLVE THE TECHNOLOGY PROBLEM - BOTTOM CTA (From PDF Page 5, 7, 9, 19) */}
+            <section className="py-24 bg-white text-center">
                 <Container>
                     <AnimatedSection direction="up">
-                        <div className="bg-slate-50 rounded-[3rem] p-12 md:p-20 border border-slate-200 shadow-xl overflow-hidden relative">
-                            {/* Decorative background elements inside CTA */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-cloud-blue/5 rounded-full blur-3xl"></div>
-                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-dark-navy/5 rounded-full blur-3xl"></div>
+                        <div className="bg-gradient-to-b from-dark-navy to-[#051c4a] rounded-[3rem] p-10 sm:p-16 lg:p-20 text-white shadow-2xl relative overflow-hidden border border-blue-500/30">
+                            {/* Decorative background elements */}
+                            <div className="absolute top-0 right-0 w-80 h-80 bg-cloud-blue/20 rounded-full blur-3xl pointer-events-none"></div>
+                            <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-900/30 rounded-full blur-3xl pointer-events-none"></div>
                             
-                            <div className="relative z-10">
-                                <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-dark-navy tracking-tight">Let's solve the technology problem.</h2>
-                                <p className="text-slate-600 text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-                                    Tell us what you're trying to achieve. Our experts will help you understand your options and identify the best way forward.
+                            <div className="relative z-10 max-w-3xl mx-auto">
+                                <span className="inline-block px-3.5 py-1.5 rounded-full bg-blue-900/60 text-blue-300 text-xs font-bold uppercase tracking-wider border border-blue-500/30 mb-6">
+                                    Start a Conversation
+                                </span>
+                                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-white tracking-tight leading-tight">
+                                    Let&apos;s solve the technology problem.
+                                </h2>
+                                <p className="text-blue-100/80 text-base sm:text-lg mb-10 leading-relaxed font-light max-w-2xl mx-auto">
+                                    Tell us what you&apos;re trying to achieve. Our principal architects will help you understand your options and identify the right, cost-effective way forward.
                                 </p>
                                 <div className="flex flex-col sm:flex-row justify-center gap-4">
-                                    <Link href="/contact" className="bg-cloud-blue text-white hover:bg-dark-navy px-10 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                                    <Link 
+                                        href="/contact" 
+                                        className="bg-cloud-blue hover:bg-cloud-blue-hover text-white px-9 py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-3 shadow-lg shadow-cloud-blue/30 hover:scale-[1.02] active:scale-[0.98]"
+                                    >
                                         Talk to CloudCom <ArrowRight className="w-5 h-5" />
                                     </Link>
-                                    <Link href="/solutions" className="bg-white text-dark-navy border-2 border-slate-200 hover:border-dark-navy px-10 py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center gap-3 hover:-translate-y-1">
-                                        Explore Solutions
+                                    <Link 
+                                        href="/solutions" 
+                                        className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-9 py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
+                                    >
+                                        Explore Solutions Family
                                     </Link>
                                 </div>
                             </div>

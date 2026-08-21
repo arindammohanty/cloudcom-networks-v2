@@ -38,3 +38,8 @@ next-env.d.ts
 
 # large reference dir
 /cloudcom-networks/
+
+# Temporary scripts & scratch files
+pdf_text.txt
+temp_sections.txt
+public/media/extracted/
