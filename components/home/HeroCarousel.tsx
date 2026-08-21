@@ -6,9 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Container } from "@/components/ui/Container";
 import {
     ArrowRight, CheckCircle2, ChevronLeft, ChevronRight,
-    Play, Pause, ArrowUpRight, Cloud, Shield, MessageSquare,
-    Cpu, Server, Database, Activity, Lock, Users, Settings,
-    Layers, Sparkles, Check, Globe
+    Play, Pause, ArrowUpRight, Shield, Cpu, Database, Server,
+    Lock, Globe
 } from 'lucide-react';
 
 export interface HeroSlide {
@@ -25,6 +24,8 @@ export interface HeroSlide {
     tabTitle: string;
     tabSub: string;
     theme: 'light' | 'dark';
+    image: string;
+    imageAlt: string;
 }
 
 export const heroSlides: HeroSlide[] = [
@@ -42,6 +43,8 @@ export const heroSlides: HeroSlide[] = [
         tabTitle: '01 Enterprise Stack',
         tabSub: 'Build & Scale Resilient Infra',
         theme: 'light',
+        image: '/media/hero/custom-slide-1.jpg',
+        imageAlt: 'CloudCom 3D Isometric Enterprise Cloud Architecture and AI Engine',
     },
     {
         id: 'why-better',
@@ -57,6 +60,8 @@ export const heroSlides: HeroSlide[] = [
         tabTitle: "02 Why We're Better",
         tabSub: 'Agile Teams & Zero Bloat',
         theme: 'dark',
+        image: '/media/hero/custom-slide-2.jpg',
+        imageAlt: 'High-Tech Datacenter with Neural AI Core and Server Racks',
     },
     {
         id: 'why-choose-us',
@@ -72,6 +77,8 @@ export const heroSlides: HeroSlide[] = [
         tabTitle: '03 Why Choose Us',
         tabSub: 'Open Tech & True Control',
         theme: 'dark',
+        image: '/media/hero/custom-slide-3.jpg',
+        imageAlt: '3D Isometric Digital Sovereignty Platform with Cryptographic Shield',
     },
     {
         id: 'one-partner',
@@ -87,19 +94,36 @@ export const heroSlides: HeroSlide[] = [
         tabTitle: '04 One Partner',
         tabSub: 'Unified Ecosystem & SLA',
         theme: 'light',
+        image: '/media/hero/custom-slide-4.jpg',
+        imageAlt: 'Unified Cloud, Telecom and AI Ecosystem with Central Nexus',
     }
 ];
 
+const slideVariants = {
+    enter: (direction: number) => ({
+        x: direction >= 0 ? 250 : -250,
+        opacity: 0,
+    }),
+    center: {
+        x: 0,
+        opacity: 1,
+    },
+    exit: (direction: number) => ({
+        x: direction >= 0 ? -250 : 250,
+        opacity: 0,
+    }),
+};
+
 export function HeroCarousel() {
-    const [current, setCurrent] = useState<number>(0);
+    const [[current, direction], setSlide] = useState<[number, number]>([0, 1]);
     const [isPaused, setIsPaused] = useState<boolean>(false);
     const [progress, setProgress] = useState<number>(0);
 
-    // Continuous auto-advance interval using wall-clock time (React StrictMode safe)
+    // Continuous auto-advance interval using wall-clock time
     useEffect(() => {
         if (isPaused) return;
 
-        const duration = 6500; // 6.5 seconds per slide
+        const duration = 6500; // 6.5s per slide
         const startTime = Date.now() - (progress / 100) * duration;
 
         const interval = setInterval(() => {
@@ -107,7 +131,7 @@ export function HeroCarousel() {
             const pct = Math.min(100, (elapsed / duration) * 100);
 
             if (pct >= 100) {
-                setCurrent((prev) => (prev + 1) % heroSlides.length);
+                setSlide(([prev]) => [(prev + 1) % heroSlides.length, 1]);
                 setProgress(0);
             } else {
                 setProgress(pct);
@@ -118,17 +142,18 @@ export function HeroCarousel() {
     }, [isPaused, current]);
 
     const goToSlide = (index: number) => {
-        setCurrent(index);
+        const dir = index > current ? 1 : -1;
+        setSlide([index, dir]);
         setProgress(0);
     };
 
     const nextSlide = () => {
-        setCurrent((prev) => (prev + 1) % heroSlides.length);
+        setSlide(([prev]) => [(prev + 1) % heroSlides.length, 1]);
         setProgress(0);
     };
 
     const prevSlide = () => {
-        setCurrent((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+        setSlide(([prev]) => [(prev - 1 + heroSlides.length) % heroSlides.length, -1]);
         setProgress(0);
     };
 
@@ -137,7 +162,7 @@ export function HeroCarousel() {
 
     return (
         <section 
-            className={`relative overflow-hidden transition-colors duration-700 select-none min-h-[92vh] lg:min-h-[90vh] flex flex-col justify-between ${
+            className={`relative overflow-hidden transition-colors duration-700 select-none min-h-[92vh] lg:min-h-[88vh] flex flex-col justify-between ${
                 isDark ? 'bg-dark-navy text-white' : 'bg-slate-50 text-slate-800'
             }`}
         >
@@ -159,17 +184,22 @@ export function HeroCarousel() {
                 )}
             </div>
 
-            {/* Main Slide Content Area */}
-            <div className="relative z-10 pt-14 md:pt-18 pb-8 flex-1 flex items-center">
+            {/* Main Slide Content Area with Horizontal Scrolling Animation */}
+            <div className="relative z-10 pt-12 md:pt-16 pb-6 flex-1 flex items-center overflow-hidden">
                 <Container>
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence mode="wait" custom={direction}>
                         <motion.div
                             key={activeSlide.id}
-                            initial={{ opacity: 0, y: 15 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -15 }}
-                            transition={{ duration: 0.45, ease: "easeInOut" }}
-                            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
+                            custom={direction}
+                            variants={slideVariants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            transition={{
+                                x: { type: "spring", stiffness: 220, damping: 28 },
+                                opacity: { duration: 0.35 }
+                            }}
+                            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
                         >
                             {/* Left Text Column (6 cols) */}
                             <div className="lg:col-span-6 xl:col-span-6 flex flex-col justify-center">
@@ -184,7 +214,7 @@ export function HeroCarousel() {
                                 </div>
 
                                 {/* Main Headline */}
-                                <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-extrabold tracking-tight leading-[1.06] mb-6 ${
+                                <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-[4.1rem] font-extrabold tracking-tight leading-[1.06] mb-6 ${
                                     isDark ? 'text-white' : 'text-dark-navy'
                                 }`}>
                                     <span className="block">{activeSlide.titleStart}</span>
@@ -247,12 +277,12 @@ export function HeroCarousel() {
                                 </div>
                             </div>
 
-                            {/* Right Visual Column (6 cols): 3D Hero Illustration with Surrounding Callouts */}
+                            {/* Right Custom 3D Illustration Column (6 cols) */}
                             <div className="lg:col-span-6 xl:col-span-6 w-full flex justify-center items-center">
-                                {current === 0 && <HeroSlide1Visual />}
-                                {current === 1 && <HeroSlide2Visual />}
-                                {current === 2 && <HeroSlide3Visual />}
-                                {current === 3 && <HeroSlide4Visual />}
+                                {current === 0 && <HeroSlide1Visual activeSlide={activeSlide} />}
+                                {current === 1 && <HeroSlide2Visual activeSlide={activeSlide} />}
+                                {current === 2 && <HeroSlide3Visual activeSlide={activeSlide} />}
+                                {current === 3 && <HeroSlide4Visual activeSlide={activeSlide} />}
                             </div>
                         </motion.div>
                     </AnimatePresence>
@@ -283,7 +313,7 @@ export function HeroCarousel() {
                                                     : 'bg-white/70 border-slate-200/80 text-slate-500 hover:text-slate-800 hover:bg-white'
                                         }`}
                                     >
-                                        {/* Auto-advance animated progress bar inside the active tab */}
+                                        {/* Auto-advance animated progress bar */}
                                         {isActive && (
                                             <div 
                                                 className="absolute bottom-0 left-0 h-1 bg-cloud-blue transition-all duration-75"
@@ -357,93 +387,54 @@ export function HeroCarousel() {
 }
 
 // ----------------------------------------------------------------------------------
-// Visual 1: Enterprise Stack (3D Isometric Cloud Platform with Surrounding Badges)
-// Reference: PDF Page 3 Top
+// Visual 1: Custom 3D Isometric Cloud Platform with Surrounding Badges
 // ----------------------------------------------------------------------------------
-function HeroSlide1Visual() {
+function HeroSlide1Visual({ activeSlide }: { activeSlide: HeroSlide }) {
     return (
-        <div className="relative w-full max-w-[620px] flex items-center justify-center py-4">
-            {/* Ambient Radial Glow */}
+        <div className="relative w-full max-w-[560px] flex items-center justify-center py-2">
             <div className="absolute inset-4 bg-gradient-to-tr from-cloud-blue/20 via-sky-blue/15 to-transparent rounded-full blur-3xl"></div>
 
-            {/* Central 3D Illustration */}
             <motion.div
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 w-full flex items-center justify-center"
+                className="relative z-10 w-full flex items-center justify-center group"
             >
-                <img 
-                    src="/media/hero/hero-slide-1.png"
-                    alt="3D Isometric Enterprise Cloud Architecture"
-                    className="w-full max-w-[480px] h-auto object-contain drop-shadow-[0_20px_40px_rgba(0,102,204,0.15)] rounded-2xl"
-                />
+                <div className="relative rounded-3xl overflow-hidden border border-blue-200/90 shadow-2xl bg-white/90 p-2 backdrop-blur-md">
+                    <img 
+                        src={activeSlide.image}
+                        alt={activeSlide.imageAlt}
+                        className="w-full h-auto max-h-[460px] object-cover rounded-2xl drop-shadow-xl transition-transform duration-500 group-hover:scale-[1.02]"
+                    />
+                </div>
 
-                {/* Floating Interactive Callout Badges with PDF Styling */}
-                {/* Top-Left: Security */}
+                {/* Floating Callout Badges */}
                 <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -15 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="absolute -top-2 left-0 sm:left-4 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-blue-200/90 shadow-lg shadow-blue-500/10 flex items-center gap-2.5 cursor-default z-20"
+                    className="absolute -top-3 -left-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-blue-200 shadow-xl flex items-center gap-2.5 z-20"
                 >
                     <div className="w-8 h-8 rounded-xl bg-blue-50 text-cloud-blue flex items-center justify-center flex-shrink-0">
                         <Shield className="w-4 h-4" />
                     </div>
                     <div>
-                        <div className="text-xs font-bold text-dark-navy">Security First</div>
-                        <div className="text-[10px] text-slate-500 font-medium">Zero Trust by Design</div>
+                        <div className="text-xs font-bold text-dark-navy">Zero-Trust Network</div>
+                        <div className="text-[10px] text-slate-500 font-medium">Built-in Cyber Defense</div>
                     </div>
                 </motion.div>
 
-                {/* Top-Right: AI & Automation */}
                 <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 15 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="absolute -top-2 right-0 sm:right-4 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-blue-200/90 shadow-lg shadow-blue-500/10 flex items-center gap-2.5 cursor-default z-20"
+                    className="absolute -bottom-3 -right-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-blue-200 shadow-xl flex items-center gap-2.5 z-20"
                 >
                     <div className="w-8 h-8 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
                         <Cpu className="w-4 h-4" />
                     </div>
                     <div>
-                        <div className="text-xs font-bold text-dark-navy">AI-Enabled</div>
+                        <div className="text-xs font-bold text-dark-navy">AI Engine</div>
                         <div className="text-[10px] text-slate-500 font-medium">Intelligent Automation</div>
-                    </div>
-                </motion.div>
-
-                {/* Bottom-Left: Data & Storage */}
-                <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.4 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="absolute -bottom-2 left-0 sm:left-4 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-blue-200/90 shadow-lg shadow-blue-500/10 flex items-center gap-2.5 cursor-default z-20"
-                >
-                    <div className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
-                        <Database className="w-4 h-4" />
-                    </div>
-                    <div>
-                        <div className="text-xs font-bold text-dark-navy">Data & Cloud</div>
-                        <div className="text-[10px] text-slate-500 font-medium">Resilient & Sovereign</div>
-                    </div>
-                </motion.div>
-
-                {/* Bottom-Right: High Availability */}
-                <motion.div 
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.5 }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="absolute -bottom-2 right-0 sm:right-4 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-blue-200/90 shadow-lg shadow-blue-500/10 flex items-center gap-2.5 cursor-default z-20"
-                >
-                    <div className="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center flex-shrink-0">
-                        <Server className="w-4 h-4" />
-                    </div>
-                    <div>
-                        <div className="text-xs font-bold text-dark-navy">Built for Scale</div>
-                        <div className="text-[10px] text-slate-500 font-medium">99.999% SLA Uptime</div>
                     </div>
                 </motion.div>
             </motion.div>
@@ -452,40 +443,34 @@ function HeroSlide1Visual() {
 }
 
 // ----------------------------------------------------------------------------------
-// Visual 2: Why We're Better (3D Datacenter with 6 Surrounding Callouts)
-// Reference: PDF Page 3 Bottom & Page 4 Bottom
+// Visual 2: Custom 3D High-Tech Datacenter with AI Neural Core
 // ----------------------------------------------------------------------------------
-function HeroSlide2Visual() {
+function HeroSlide2Visual({ activeSlide }: { activeSlide: HeroSlide }) {
     return (
-        <div className="relative w-full max-w-[620px] flex items-center justify-center py-2">
-            {/* Ambient Radial Blue Glow */}
+        <div className="relative w-full max-w-[560px] flex items-center justify-center py-2">
             <div className="absolute inset-0 bg-cloud-blue/20 rounded-full blur-3xl"></div>
 
-            {/* 3D Datacenter Centerpiece with High-Tech Callout Frame */}
             <motion.div
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 w-full rounded-3xl bg-slate-950/70 border border-blue-500/30 backdrop-blur-xl p-3 sm:p-4 shadow-2xl overflow-hidden"
+                className="relative z-10 w-full rounded-3xl bg-slate-950/80 border border-blue-500/30 backdrop-blur-xl p-3 shadow-2xl overflow-hidden group"
             >
-                {/* Top Subtle Telemetry */}
                 <div className="flex items-center justify-between px-3 py-1.5 mb-2 border-b border-blue-900/40 text-[11px] font-mono text-blue-300">
                     <span className="flex items-center gap-2">
                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        AI-Enabled Architecture
+                        Neural AI Datacenter Core
                     </span>
-                    <span className="text-emerald-400 font-bold">100% Agile</span>
+                    <span className="text-emerald-400 font-bold">100% Agile Ops</span>
                 </div>
 
-                {/* Main 3D Datacenter Graphic from PDF */}
-                <div className="relative rounded-2xl overflow-hidden bg-slate-900/90 border border-slate-800/80">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800">
                     <img 
-                        src="/media/hero/hero-slide-2.png"
-                        alt="AI-Enabled Datacenter and Server Architecture"
-                        className="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                        src={activeSlide.image}
+                        alt={activeSlide.imageAlt}
+                        className="w-full h-auto max-h-[440px] object-cover drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
                     />
                 </div>
 
-                {/* Bottom Speed Metric Strip */}
                 <div className="grid grid-cols-3 gap-2 mt-2 pt-2 border-t border-blue-900/40 text-center">
                     <div className="bg-slate-900/80 p-1.5 rounded-xl border border-slate-800">
                         <div className="text-[10px] text-slate-400">Response</div>
@@ -506,42 +491,36 @@ function HeroSlide2Visual() {
 }
 
 // ----------------------------------------------------------------------------------
-// Visual 3: Why Choose Us ("OPEN. SOVEREIGN. SECURE." Platform with 6 Module Badges)
-// Reference: PDF Page 4 Top
+// Visual 3: Custom 3D Digital Sovereignty Platform with Cryptographic Shield Vault
 // ----------------------------------------------------------------------------------
-function HeroSlide3Visual() {
+function HeroSlide3Visual({ activeSlide }: { activeSlide: HeroSlide }) {
     return (
-        <div className="relative w-full max-w-[620px] flex items-center justify-center py-2">
-            {/* Ambient Deep Cyan & Blue Glow */}
+        <div className="relative w-full max-w-[560px] flex items-center justify-center py-2">
             <div className="absolute inset-0 bg-gradient-to-tr from-cloud-blue/25 via-indigo-600/20 to-transparent rounded-full blur-3xl"></div>
 
-            {/* 3D Platform Centerpiece with Sovereign Callouts */}
             <motion.div
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 w-full rounded-3xl bg-slate-950/80 border border-slate-800 backdrop-blur-xl p-3 sm:p-4 shadow-2xl overflow-hidden"
+                className="relative z-10 w-full rounded-3xl bg-slate-950/80 border border-slate-800 backdrop-blur-xl p-3 shadow-2xl overflow-hidden group"
             >
-                {/* Header Guarantee */}
                 <div className="flex items-center justify-between px-3 py-1.5 mb-2 border-b border-slate-800 text-[11px] font-mono">
                     <span className="text-blue-400 font-bold flex items-center gap-1.5">
                         <Lock className="w-3.5 h-3.5" />
-                        Digital Sovereignty & Open Standards
+                        Digital Sovereignty Vault
                     </span>
                     <span className="text-blue-300 bg-blue-950 px-2 py-0.5 rounded-full border border-blue-800 font-bold text-[10px]">
                         Zero Lock-in
                     </span>
                 </div>
 
-                {/* Main 3D Sovereign Cloud Graphic from PDF */}
-                <div className="relative rounded-2xl overflow-hidden bg-slate-900/90 border border-slate-800/80">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800">
                     <img 
-                        src="/media/hero/hero-slide-3.png"
-                        alt="Open Sovereign Secure Cloud Platform"
-                        className="w-full h-auto object-contain drop-shadow-2xl transition-transform duration-500 hover:scale-[1.02]"
+                        src={activeSlide.image}
+                        alt={activeSlide.imageAlt}
+                        className="w-full h-auto max-h-[440px] object-cover drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
                     />
                 </div>
 
-                {/* Bottom Guarantee Banner */}
                 <div className="mt-2.5 p-2.5 bg-blue-950/60 rounded-xl border border-blue-800/50 flex items-center justify-between text-xs font-semibold text-blue-200">
                     <span>100% Data Sovereignty</span>
                     <span className="text-emerald-400 font-mono font-bold">Audit-Ready ✓</span>
@@ -552,43 +531,37 @@ function HeroSlide3Visual() {
 }
 
 // ----------------------------------------------------------------------------------
-// Visual 4: One Partner (3D Connected Architecture Ecosystem & 1 Single SLA)
-// Reference: PDF Page 5 Top
+// Visual 4: Custom 3D Unified Cloud, Telecom and AI Ecosystem
 // ----------------------------------------------------------------------------------
-function HeroSlide4Visual() {
+function HeroSlide4Visual({ activeSlide }: { activeSlide: HeroSlide }) {
     return (
-        <div className="relative w-full max-w-[620px] flex items-center justify-center py-2">
-            {/* Ambient Radial Light Glow */}
+        <div className="relative w-full max-w-[560px] flex items-center justify-center py-2">
             <div className="absolute inset-4 bg-gradient-to-tr from-cloud-blue/20 via-sky-blue/15 to-transparent rounded-full blur-3xl"></div>
 
-            {/* 3D Ecosystem Centerpiece */}
             <motion.div
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative z-10 w-full rounded-3xl bg-white/90 border border-blue-200/80 backdrop-blur-xl p-4 sm:p-5 shadow-2xl overflow-hidden"
+                className="relative z-10 w-full rounded-3xl bg-white/95 border border-blue-200/80 backdrop-blur-xl p-3 shadow-2xl overflow-hidden group"
             >
-                {/* Top Badge */}
-                <div className="flex items-center justify-between pb-3 mb-2 border-b border-slate-100">
+                <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
                     <span className="text-xs font-bold text-dark-navy uppercase tracking-wider flex items-center gap-2">
                         <Globe className="w-4 h-4 text-cloud-blue" />
-                        Unified Architecture Ecosystem
+                        Unified Architecture Nexus
                     </span>
                     <span className="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                         1 Single SLA
                     </span>
                 </div>
 
-                {/* Main 3D Light Ecosystem Graphic from PDF */}
-                <div className="relative rounded-2xl overflow-hidden bg-slate-50/80 border border-slate-100 p-2 flex items-center justify-center">
+                <div className="relative rounded-2xl overflow-hidden bg-slate-50 border border-slate-100">
                     <img 
-                        src="/media/hero/hero-slide-4.png"
-                        alt="Unified 3D Cloud and Communications Ecosystem"
-                        className="w-full h-auto max-h-[360px] object-contain drop-shadow-lg transition-transform duration-500 hover:scale-[1.02]"
+                        src={activeSlide.image}
+                        alt={activeSlide.imageAlt}
+                        className="w-full h-auto max-h-[440px] object-cover drop-shadow-md transition-transform duration-500 group-hover:scale-[1.02]"
                     />
                 </div>
 
-                {/* Bottom Single Partner Commitment */}
-                <div className="mt-3 p-3 bg-dark-navy text-white rounded-xl flex items-center justify-between text-xs font-bold shadow-md">
+                <div className="mt-2.5 p-2.5 bg-dark-navy text-white rounded-xl flex items-center justify-between text-xs font-bold shadow-md">
                     <span>One Accountable Relationship</span>
                     <span className="text-cloud-blue font-mono">Zero Finger-Pointing</span>
                 </div>

@@ -88,27 +88,25 @@ export default function SolutionsPage() {
                         
                         <div className="lg:w-2/5 relative hidden lg:block">
                              <AnimatedSection direction="left" delay={0.4} className="relative w-full h-full flex justify-center">
-                                {/* Abstract stacked layers illustration representing solutions */}
-                                <div className="relative w-72 h-80">
-                                    {[0, 1, 2, 3].map((i) => (
-                                        <div 
-                                            key={i} 
-                                            className="absolute w-full h-24 bg-gradient-to-tr from-cloud-blue to-[#0f8bfd] rounded-2xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform -rotate-12 hover:-rotate-6 transition-transform duration-500 flex items-center justify-center backdrop-blur-md"
-                                            style={{ 
-                                                bottom: `${i * 45}px`, 
-                                                right: `${i * 15}px`,
-                                                zIndex: 10 - i,
-                                                opacity: 1 - (i * 0.15)
-                                            }}
-                                        >
-                                            <div className="w-full h-full bg-[url('/media/mesh.svg')] opacity-10 absolute inset-0 mix-blend-overlay"></div>
-                                            <div className="flex gap-4 opacity-70">
-                                                <div className="w-6 h-6 rounded-full bg-white/20"></div>
-                                                <div className="w-6 h-6 rounded-full bg-white/20"></div>
-                                                <div className="w-6 h-6 rounded-full bg-white/20"></div>
-                                            </div>
-                                        </div>
-                                    ))}
+                                <div className="relative w-full max-w-[500px] rounded-3xl bg-slate-950/80 border border-blue-500/30 backdrop-blur-xl p-4 shadow-[0_20px_50px_rgba(0,102,204,0.25)] overflow-hidden group">
+                                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-blue-900/40 text-xs font-mono text-blue-300">
+                                        <span className="flex items-center gap-2">
+                                            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                                            Integrated Solution Stack
+                                        </span>
+                                        <span className="text-cyan-400 font-bold">4 Unified Tiers</span>
+                                    </div>
+                                    <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800">
+                                        <img 
+                                            src="/media/solutions-hero-stack.jpg"
+                                            alt="CloudCom Multi-Layered Enterprise Digital Solutions Platform"
+                                            className="w-full h-auto object-cover drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+                                        />
+                                    </div>
+                                    <div className="mt-3 p-2.5 bg-blue-950/70 rounded-xl border border-blue-800/50 flex items-center justify-between text-xs font-medium text-blue-200">
+                                        <span>Cloud · Comms · Security · AI</span>
+                                        <span className="text-emerald-400 font-mono font-bold">Zero Lock-In ✓</span>
+                                    </div>
                                 </div>
                              </AnimatedSection>
                         </div>

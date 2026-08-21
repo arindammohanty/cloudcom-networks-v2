@@ -68,62 +68,39 @@ export default function ServicesPage() {
                                 </div>
                             </AnimatedSection>
                         </div>
-                        
-                        <div className="lg:w-1/2 relative hidden lg:block">
-                             <AnimatedSection direction="left" delay={0.4} className="relative w-full h-full flex items-center justify-center min-h-[500px]">
-                                {/* Hero abstract illustration matching the PDF Services page */}
-                                <div className="relative w-[400px] h-[400px]">
-                                    {/* Central glowing box */}
-                                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-20">
-                                        <div className="bg-dark-navy border border-cloud-blue rounded-2xl p-6 shadow-[0_0_50px_rgba(37,99,235,0.4)] backdrop-blur-md whitespace-nowrap relative overflow-hidden">
-                                            <div className="absolute inset-0 bg-gradient-to-r from-cloud-blue/10 to-transparent"></div>
-                                            <h3 className="font-extrabold text-white text-xl tracking-widest relative z-10 mb-2">OPEN. SOVEREIGN. SECURE.</h3>
-                                            <h4 className="font-bold text-cloud-blue text-sm tracking-[0.2em] relative z-10">LEAN. AGILE. AI-ENABLED.</h4>
+                                               <div className="lg:w-1/2 relative hidden lg:block">
+                             <AnimatedSection direction="left" delay={0.4} className="relative w-full h-full flex items-center justify-center">
+                                <div className="relative w-full max-w-[540px] rounded-3xl bg-slate-950/80 border border-blue-500/30 backdrop-blur-xl p-4 shadow-[0_20px_50px_rgba(0,102,204,0.25)] overflow-hidden group">
+                                    <div className="flex items-center justify-between pb-3 mb-3 border-b border-blue-900/40 text-xs font-mono text-blue-300">
+                                        <span className="flex items-center gap-2">
+                                            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                            24/7 Managed Operations Hub
+                                        </span>
+                                        <span className="text-emerald-400 font-bold">100% Proactive SLA</span>
+                                    </div>
+                                    <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800">
+                                        <img 
+                                            src="/media/services-hero-nexus.jpg"
+                                            alt="CloudCom 24/7 Enterprise Managed Services and Cloud Operations Hub"
+                                            className="w-full h-auto object-cover drop-shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]"
+                                        />
+                                    </div>
+                                    <div className="grid grid-cols-3 gap-2 mt-3 pt-2 border-t border-blue-900/40 text-center">
+                                        <div className="bg-slate-900/80 p-2 rounded-xl border border-slate-800">
+                                            <div className="text-[10px] text-slate-400">Response SLA</div>
+                                            <div className="text-xs font-bold text-emerald-400 font-mono">&lt; 15 Mins</div>
+                                        </div>
+                                        <div className="bg-slate-900/80 p-2 rounded-xl border border-slate-800">
+                                            <div className="text-[10px] text-slate-400">Accountability</div>
+                                            <div className="text-xs font-bold text-sky-400 font-mono">Single Partner</div>
+                                        </div>
+                                        <div className="bg-slate-900/80 p-2 rounded-xl border border-slate-800">
+                                            <div className="text-[10px] text-slate-400">Architecture</div>
+                                            <div className="text-xs font-bold text-indigo-300 font-mono">Open & Agile</div>
                                         </div>
                                     </div>
-
-                                    {/* Stack of server layers */}
-                                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-64 h-48 z-10">
-                                        {[1, 2, 3].map((i) => (
-                                            <div key={i} className="absolute bottom-0 w-full h-20 bg-gradient-to-r from-[#0039a6] to-cloud-blue rounded-xl border border-blue-400/30 transform" style={{ transform: `translateY(-${(i-1)*30}px) scale(${1 - (i-1)*0.05})`, opacity: 1 - (i-1)*0.15, zIndex: 10-i }}>
-                                                <div className="flex justify-between items-center h-full px-4 border-l-4 border-blue-400">
-                                                    <div className="flex gap-2">
-                                                        <div className="w-1.5 h-1.5 bg-blue-200 rounded-full animate-pulse"></div>
-                                                        <div className="w-1.5 h-1.5 bg-blue-200 rounded-full"></div>
-                                                    </div>
-                                                    <div className="w-8 h-2 bg-blue-900/50 rounded-full"></div>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* Floating service icons */}
-                                    <div className="absolute top-10 left-10 p-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm animate-[bounce_4s_infinite] flex flex-col items-center gap-1 shadow-lg">
-                                        <Users className="w-6 h-6 text-cloud-blue" />
-                                        <span className="text-[10px] text-white/70 font-semibold">Consulting</span>
-                                    </div>
-                                    <div className="absolute top-20 right-4 p-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm animate-[bounce_5s_infinite_1s] flex flex-col items-center gap-1 shadow-lg">
-                                        <ShieldCheck className="w-6 h-6 text-cloud-blue" />
-                                        <span className="text-[10px] text-white/70 font-semibold">Security Services</span>
-                                    </div>
-                                    <div className="absolute bottom-1/2 left-0 p-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm animate-[bounce_6s_infinite_0.5s] flex flex-col items-center gap-1 shadow-lg">
-                                        <Settings className="w-6 h-6 text-cloud-blue" />
-                                        <span className="text-[10px] text-white/70 font-semibold">Implementation</span>
-                                    </div>
-                                    <div className="absolute bottom-20 right-0 p-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm animate-[bounce_4.5s_infinite_1.5s] flex flex-col items-center gap-1 shadow-lg">
-                                        <Cloud className="w-6 h-6 text-cloud-blue" />
-                                        <span className="text-[10px] text-white/70 font-semibold">Cloud Services</span>
-                                    </div>
-                                    <div className="absolute -bottom-4 left-20 p-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm animate-[bounce_5.5s_infinite_2s] flex flex-col items-center gap-1 shadow-lg z-20">
-                                        <Server className="w-6 h-6 text-cloud-blue" />
-                                        <span className="text-[10px] text-white/70 font-semibold">Managed Services</span>
-                                    </div>
-                                    <div className="absolute -bottom-4 right-20 p-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm animate-[bounce_4s_infinite_0.2s] flex flex-col items-center gap-1 shadow-lg z-20">
-                                        <Headset className="w-6 h-6 text-cloud-blue" />
-                                        <span className="text-[10px] text-white/70 font-semibold">Support</span>
-                                    </div>
                                 </div>
-                             </AnimatedSection>
+                            </AnimatedSection>
                         </div>
                     </div>
 

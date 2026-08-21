@@ -1,0 +1,8 @@
+.next/
+node_modules/
+.git/
+*.pdf
+*.docx
+*.txt
+public/media/extracted/
+out/
