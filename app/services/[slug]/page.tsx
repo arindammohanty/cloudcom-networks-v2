@@ -76,6 +76,34 @@ const servicesData = {
             "Multi-cloud and hybrid networking"
         ]
     },
+    'cloud-migration': {
+        title: 'Cloud Migration',
+        icon: <Cloud className="w-12 h-12 text-sky-500" />,
+        bg: 'bg-sky-50',
+        desc: 'Seamless, zero-downtime migration of workloads, data and applications to modern cloud environments.',
+        details: 'We plan and execute end-to-end cloud migrations with zero data loss and minimal business interruption. From assessment to cutover, our engineers ensure optimal performance, security, and cost efficiency in your target cloud architecture.',
+        features: [
+            "Cloud readiness & workload discovery",
+            "Zero-downtime database & data migration",
+            "Application re-platforming and containerisation",
+            "Hybrid & multi-cloud architecture setup",
+            "Post-migration performance & cost tuning"
+        ]
+    },
+    'security-audit': {
+        title: 'Security Assessment',
+        icon: <ShieldCheck className="w-12 h-12 text-purple-600" />,
+        bg: 'bg-purple-50',
+        desc: 'Rigorous security reviews, vulnerability assessments and zero-trust maturity modeling.',
+        details: 'Our security assessment evaluates your infrastructure, network perimeters, IAM policies, and compliance posture against industry standards, identifying vulnerabilities and providing a clear, actionable remediation roadmap.',
+        features: [
+            "Zero-trust maturity & compliance audit",
+            "Vulnerability assessment & penetration testing",
+            "Cloud & infrastructure security review",
+            "Identity and access governance analysis",
+            "Actionable remediation roadmap"
+        ]
+    },
     'support': {
         title: 'Support',
         icon: <Headset className="w-12 h-12 text-violet-600" />,
@@ -92,8 +120,14 @@ const servicesData = {
     }
 };
 
+const fullServicesData: Record<string, any> = {
+    ...servicesData,
+    'advisory-consulting': servicesData['consulting'],
+    'architecture-deploy': servicesData['implementation']
+};
+
 export function generateStaticParams() {
-    return Object.keys(servicesData).map((slug) => ({
+    return Object.keys(fullServicesData).map((slug) => ({
         slug,
     }));
 }
@@ -104,7 +138,7 @@ export default async function ServiceDetailPage({
     params: Promise<{ slug: string }> 
 }) {
     const resolvedParams = await params;
-    const service = servicesData[resolvedParams.slug as keyof typeof servicesData];
+    const service = fullServicesData[resolvedParams.slug];
 
     if (!service) {
         notFound();
@@ -146,7 +180,7 @@ export default async function ServiceDetailPage({
 
                             <h3 className="text-xl font-bold text-dark-navy mb-6">Key Capabilities</h3>
                             <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 mb-16">
-                                {service.features.map((feature, i) => (
+                                {service.features.map((feature: string, i: number) => (
                                     <li key={i} className="flex items-start text-slate-700 font-medium">
                                         <CheckCircle2 className="w-5 h-5 text-cloud-blue mr-3 mt-0.5 flex-shrink-0" />
                                         {feature}

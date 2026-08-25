@@ -9,14 +9,20 @@ export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
-    const isActive = (path: string) => pathname === path || pathname?.startsWith(`${path}/`);
+    const isActive = (path: string) => {
+        if (!pathname) return false;
+        if (pathname === path || pathname.startsWith(`${path}/`)) return true;
+        if (path === '/about' && (pathname === '/company' || pathname.startsWith('/company/'))) return true;
+        if (path === '/company' && (pathname === '/about' || pathname.startsWith('/about/'))) return true;
+        return false;
+    };
 
     const navLinks = [
         { name: 'Solutions', href: '/solutions' },
         { name: 'Services', href: '/services' },
         { name: 'Industries', href: '/industries' },
         { name: 'Partners', href: '/partners' },
-        { name: 'About', href: '/company' },
+        { name: 'About', href: '/about' },
         { name: 'Contact', href: '/contact' },
     ];
 

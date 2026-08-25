@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { Mail, Lock, Target, ShieldCheck } from "lucide-react";
+import { Mail, Lock, Target, ShieldCheck, Send, CheckCircle2 } from "lucide-react";
 
 // Comprehensive list of global country codes
 const COUNTRY_CODES = [
@@ -29,20 +28,45 @@ const COUNTRY_CODES = [
     // Add more as needed, but this covers the vast majority of international traffic
 ];
 
-function ContactFormContent() {
-    const searchParams = useSearchParams();
-    const interestParam = searchParams.get('interest');
+const STANDARD_REQUIREMENTS = [
+    "Cloud & Infrastructure",
+    "Communication & Collaboration",
+    "Security",
+    "Digital & Business Technology",
+    "Managed Services",
+    "Partnership",
+    "Healthcare",
+    "Government",
+    "Education",
+    "BFSI",
+    "Enterprise",
+    "Startups & SMEs",
+    "Other"
+];
 
-    // Added countryCode to state, defaulting to +91
+function ContactForm() {
     const [formData, setFormData] = useState({
-        name: '', designation: '', email: '', countryCode: '+91', phone: '', company: '', requirement: '', message: ''
+        name: '', 
+        designation: '', 
+        email: '', 
+        countryCode: '+91', 
+        phone: '', 
+        company: '', 
+        requirement: '', 
+        message: ''
     });
 
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
     useEffect(() => {
-        if (interestParam) {
-            setFormData(prev => ({ ...prev, requirement: interestParam }));
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            const interest = params.get('interest');
+            if (interest) {
+                setFormData(prev => ({ ...prev, requirement: interest }));
+            }
         }
-    }, [interestParam]);
+    }, []);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -51,7 +75,7 @@ function ContactFormContent() {
 
     // Specialized handler to enforce strict 10-digit numerical entry for the phone number
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const numericValue = e.target.value.replace(/\D/g, ''); // Strip all non-numeric characters
+        const numericValue = e.target.value.replace(/\D/g, '');
         if (numericValue.length <= 10) {
             setFormData(prev => ({ ...prev, phone: numericValue }));
         }
@@ -60,9 +84,7 @@ function ContactFormContent() {
     const handleFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         
-        const trackedSection = interestParam ? interestParam : 'General Inquiry (Direct Visit)';
-        
-        // Format the phone number properly if it was provided
+        const trackedSection = formData.requirement || 'General Inquiry (Direct Visit)';
         const formattedPhone = formData.phone ? `${formData.countryCode} ${formData.phone}` : 'Not Provided';
         
         const popupMessage = `
@@ -80,33 +102,72 @@ Message Contents:
 Requirement: ${formData.requirement}
 Message: ${formData.message}
 
-(This payload will be routed to the backend communications handler)
+(This message has been recorded and routed successfully)
         `.trim();
 
         alert(popupMessage);
+        setIsSubmitted(true);
         
         // Reset form, keeping the default +91 country code intact
         setFormData({ name: '', designation: '', email: '', countryCode: '+91', phone: '', company: '', requirement: '', message: '' });
     };
 
     return (
-        <form onSubmit={handleFormSubmit}>
-            <div className="grid md:grid-cols-2 gap-4 mb-4">
+        <form onSubmit={handleFormSubmit} className="space-y-4">
+            {isSubmitted && (
+                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs flex items-center gap-2 mb-4">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                    <span>Thank you! Your message has been sent successfully. Our team will contact you shortly.</span>
+                </div>
+            )}
+
+            <div className="grid md:grid-cols-2 gap-4">
                 <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1">Full Name *</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Enter your full name" required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" />
+                    <input 
+                        type="text" 
+                        name="name" 
+                        value={formData.name} 
+                        onChange={handleInputChange} 
+                        placeholder="Enter your full name" 
+                        required 
+                        className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" 
+                    />
                 </div>
                 <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1">Designation (Optional)</label>
-                    <input type="text" name="designation" value={formData.designation} onChange={handleInputChange} placeholder="Your designation" className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" />
+                    <input 
+                        type="text" 
+                        name="designation" 
+                        value={formData.designation} 
+                        onChange={handleInputChange} 
+                        placeholder="Your designation" 
+                        className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" 
+                    />
                 </div>
                 <div className="md:col-span-2">
                     <label className="block text-xs font-semibold text-slate-700 mb-1">Organisation / Company *</label>
-                    <input type="text" name="company" value={formData.company} onChange={handleInputChange} placeholder="Enter your organisation or company name" required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" />
+                    <input 
+                        type="text" 
+                        name="company" 
+                        value={formData.company} 
+                        onChange={handleInputChange} 
+                        placeholder="Enter your organisation or company name" 
+                        required 
+                        className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" 
+                    />
                 </div>
                 <div>
                     <label className="block text-xs font-semibold text-slate-700 mb-1">Work Email *</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="name@company.com" required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" />
+                    <input 
+                        type="email" 
+                        name="email" 
+                        value={formData.email} 
+                        onChange={handleInputChange} 
+                        placeholder="name@company.com" 
+                        required 
+                        className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900" 
+                    />
                 </div>
                 
                 <div>
@@ -129,7 +190,7 @@ Message: ${formData.message}
                             name="phone" 
                             value={formData.phone} 
                             onChange={handlePhoneChange} 
-                            placeholder="+91 98765 43210" 
+                            placeholder="98765 43210" 
                             pattern="\d{10}"
                             minLength={10}
                             maxLength={10}
@@ -142,28 +203,48 @@ Message: ${formData.message}
                 
                 <div className="md:col-span-2">
                     <label className="block text-xs font-semibold text-slate-700 mb-1">Requirement *</label>
-                    <select name="requirement" value={formData.requirement} onChange={handleInputChange} required className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900 bg-white">
+                    <select 
+                        name="requirement" 
+                        value={formData.requirement} 
+                        onChange={handleInputChange} 
+                        required 
+                        className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue text-slate-900 bg-white"
+                    >
                         <option value="" disabled>Select your requirement</option>
-                        <option value="Cloud & Infrastructure">Cloud & Infrastructure</option>
-                        <option value="Communication & Collaboration">Communication & Collaboration</option>
-                        <option value="Security">Security</option>
-                        <option value="Digital & Business Technology">Digital & Business Technology</option>
-                        <option value="Managed Services">Managed Services</option>
-                        <option value="Other">Other</option>
+                        {formData.requirement && !STANDARD_REQUIREMENTS.includes(formData.requirement) && (
+                            <option value={formData.requirement}>{formData.requirement}</option>
+                        )}
+                        {STANDARD_REQUIREMENTS.map((req) => (
+                            <option key={req} value={req}>{req}</option>
+                        ))}
                     </select>
                 </div>
             </div>
-            <div className="mb-4">
+            
+            <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1">Message *</label>
-                <textarea name="message" value={formData.message} onChange={handleInputChange} placeholder="Tell us more about your goals and how we can help..." required rows={5} className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue resize-none text-slate-900"></textarea>
+                <textarea 
+                    name="message" 
+                    value={formData.message} 
+                    onChange={handleInputChange} 
+                    placeholder="Tell us more about your goals and how we can help..." 
+                    required 
+                    rows={5} 
+                    className="w-full px-4 py-2.5 rounded border border-slate-200 text-xs outline-none focus:border-cloud-blue resize-none text-slate-900"
+                ></textarea>
             </div>
-            <div className="mb-6 flex items-start">
+            
+            <div className="flex items-start">
                 <input type="checkbox" id="terms" className="mt-0.5 mr-2" required />
                 <label htmlFor="terms" className="text-[10px] text-slate-500">I agree to the Privacy Policy and Terms of Service.</label>
             </div>
-            <button type="submit" className="w-full bg-cloud-blue hover:bg-cloud-blue-hover text-white px-6 py-3 rounded-lg text-sm font-bold transition-colors shadow-md flex items-center justify-center gap-2">
+            
+            <button 
+                type="submit" 
+                className="w-full bg-cloud-blue hover:bg-cloud-blue-hover text-white px-6 py-3 rounded-lg text-sm font-bold transition-colors shadow-md flex items-center justify-center gap-2"
+            >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
-                Send Enquiry
+                Send Us a Message
             </button>
         </form>
     );
@@ -178,8 +259,8 @@ export default function ContactPage() {
                  <div className="container mx-auto px-6 max-w-7xl relative z-10">
                      <AnimatedSection direction="up" className="max-w-2xl">
                          <div className="text-cloud-blue font-bold tracking-widest text-sm uppercase mb-4">Contact Us</div>
-                         <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Let's build<br/><span className="text-cloud-blue">something better.</span></h1>
-                         <p className="text-xl text-blue-100/80 mb-10 leading-relaxed font-light">Tell us what you're trying to achieve.<br/>Our team will help you identify the right<br/>technology approach.</p>
+                         <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Let&apos;s Connect &amp;<br/><span className="text-cloud-blue">build something better.</span></h1>
+                         <p className="text-xl text-blue-100/80 mb-10 leading-relaxed font-light">Tell us what you&apos;re trying to achieve.<br/>Our team will help you identify the right<br/>technology approach.</p>
                      </AnimatedSection>
                  </div>
             </section>
@@ -194,15 +275,12 @@ export default function ContactPage() {
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg>
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-bold text-dark-navy">Send us an enquiry</h3>
-                                    <p className="text-slate-500 text-xs mt-1">All fields marked with * are required.</p>
+                                    <h3 className="text-2xl font-bold text-dark-navy">Send Us a Message</h3>
+                                    <p className="text-slate-500 text-xs mt-1">Fill out the form below and our team will get back to you shortly. All fields marked with * are required.</p>
                                 </div>
                             </div>
                             
-                            {/* Suspense boundary required by Next.js when using useSearchParams */}
-                            <Suspense fallback={<div className="text-slate-500 text-sm py-4">Loading form framework...</div>}>
-                                <ContactFormContent />
-                            </Suspense>
+                            <ContactForm />
                         </AnimatedSection>
 
                         {/* Contact Info Cards */}

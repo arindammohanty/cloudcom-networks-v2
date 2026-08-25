@@ -14,7 +14,7 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const solutionsData: Record<string, any> = {
+const baseSolutions: Record<string, any> = {
   "communications": {
     title: "Unified Communications & Collaboration",
     icon: <MessageSquare className="w-16 h-16 text-cloud-blue" />,
@@ -26,50 +26,67 @@ const solutionsData: Record<string, any> = {
     title: "Cloud Infrastructure & Hosting",
     icon: <Cloud className="w-16 h-16 text-cloud-blue" />,
     description: "Scalable, resilient cloud platforms built on open standards.",
-    features: ["Virtual Private Cloud", "Kubernetes Hosting", "Managed Databases", "Disaster Recovery"],
+    features: ["Virtual Private Cloud", "Kubernetes Hosting", "Managed Databases", "Disaster Recovery", "Application Hosting"],
     details: "Our cloud infrastructure provides the robust foundation your applications need to scale. Benefit from high-availability hosting, automated failover, and comprehensive disaster recovery solutions tailored to keep your business online 24/7."
   },
   "applications": {
     title: "Enterprise Applications",
     icon: <Layers className="w-16 h-16 text-cloud-blue" />,
     description: "Expert implementation and customization partner for core enterprise software.",
-    features: ["SAP Hosting & Migration", "Salesforce CRM", "Open Source ERP (Odoo)"],
+    features: ["SAP Hosting & Migration", "Salesforce CRM", "Open Source ERP (Odoo)", "Custom Business Logic"],
     details: "Streamline your business processes with our managed enterprise applications. From SAP migrations to custom ERP deployments, our team ensures your core software runs flawlessly on optimized, secure infrastructure."
   },
-  "cybersecurity": {
-    title: "Cyber Security",
+  "security": {
+    title: "Cyber Security & Zero Trust Architecture",
     icon: <ShieldCheck className="w-16 h-16 text-cloud-blue" />,
-    description: "Naturally connected to our Zero Trust philosophy to protect your assets.",
-    features: ["Security Audit", "SOC & SIEM", "Penetration Testing", "Identity Access Management"],
+    description: "Naturally connected to our Zero Trust philosophy to protect your critical digital assets.",
+    features: ["Security Audit & Compliance", "24/7 SOC & SIEM Monitoring", "Penetration Testing & Hardening", "Identity & Access Management (IAM)", "Network & Endpoint Defense"],
     details: "Security isn't an afterthought; it's the core of everything we do. Our dedicated SOC provides round-the-clock monitoring, threat hunting, and rapid incident response to safeguard your critical digital assets against evolving threats."
+  },
+  "digital": {
+    title: "Digital & Business Technology",
+    icon: <Cpu className="w-16 h-16 text-cloud-blue" />,
+    description: "Innovative digital solutions, automation engineering, and managed services to accelerate outcomes.",
+    features: ["AI & Intelligent Automation", "Enterprise Application Hosting", "SAP / CRM Customisation", "Managed IT Services", "Cloud-Native App Engineering"],
+    details: "Accelerate your digital transformation with agile engineering and intelligent automation. We combine senior architecture expertise with modern open technologies to modernize legacy workflows and deploy high-performance applications."
   },
   "managed-operations": {
     title: "Managed Infrastructure & Data Centers",
     icon: <Settings className="w-16 h-16 text-cloud-blue" />,
-    description: "Comprehensive management of your critical IT infrastructure.",
-    features: ["Data Center Operations", "NOC Services", "Server Administration", "Patch Management"],
+    description: "Comprehensive management of your critical IT infrastructure and operations.",
+    features: ["Data Center Operations", "24/7 NOC Services", "Server Administration", "Patch Management & Tuning"],
     details: "Offload the complexity of day-to-day IT operations to our certified experts. We proactively monitor, manage, and optimize your infrastructure, ensuring peak performance and reliability while freeing your team to focus on strategic initiatives."
   },
   "ai-automation": {
     title: "AI & Automation",
-    description: "Agile delivery pipelines and custom software solutions.",
-    features: ["CI/CD Automation", "Infrastructure as Code", "Custom Web Apps", "API Development"],
+    icon: <Cpu className="w-16 h-16 text-cloud-blue" />,
+    description: "Agile delivery pipelines and custom software solutions powered by intelligent automation.",
+    features: ["CI/CD Automation", "Infrastructure as Code", "Custom Web Apps", "API Development & Integration", "Workflow Intelligence"],
     details: "Accelerate your software delivery without compromising on security. We build automated DevSecOps pipelines and custom cloud-native applications tailored exactly to your unique business requirements."
   },
   "bpo-kpo": {
     title: "Managed BPO & KPO Services",
     icon: <Briefcase className="w-16 h-16 text-cloud-blue" />,
-    description: "Knowledge Process Outsourcing running on our secure infrastructure.",
-    features: ["Finance & Accounting", "HR Compliance", "Customer Support Helpdesk"],
+    description: "Knowledge Process Outsourcing running on our secure, sovereign infrastructure.",
+    features: ["Finance & Accounting Operations", "HR Compliance & Support", "Customer Support Helpdesk", "Process Automation"],
     details: "Scale your operations efficiently with our specialized BPO and KPO services. Backed by our secure infrastructure, our domain experts seamlessly integrate with your organization to deliver high-quality, compliant process management."
   },
   "iot-edge": {
     title: "IoT & Edge Computing",
     icon: <Cpu className="w-16 h-16 text-cloud-blue" />,
-    description: "Intelligent Edge and IoT platforms for real-time decision making.",
-    features: ["Edge Analytics", "IoT Device Management", "Real-time Monitoring", "Industrial IoT"],
+    description: "Intelligent Edge and IoT platforms for real-time decision making and low-latency processing.",
+    features: ["Edge Analytics", "IoT Device Management", "Real-time Telemetry & Monitoring", "Industrial IoT Security"],
     details: "Connect and manage your dispersed assets with our secure IoT and Edge platforms. Process data closer to the source to reduce latency and bandwidth usage, while ensuring enterprise-grade security across your entire connected ecosystem."
   }
+};
+
+const solutionsData: Record<string, any> = {
+  ...baseSolutions,
+  "cybersecurity": baseSolutions["security"],
+  "communication": baseSolutions["communications"],
+  "business-operations": baseSolutions["bpo-kpo"],
+  "cloud-infrastructure": baseSolutions["cloud"],
+  "ai": baseSolutions["ai-automation"]
 };
 
 export function generateStaticParams() {
