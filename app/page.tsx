@@ -20,7 +20,9 @@ export default function HomePage() {
     return (
         <div className="flex flex-col min-h-screen">
             {/* 1. HERO SECTION - INFINITE LOOPING CAROUSEL */}
-            <HeroCarousel />
+            <div data-tour="hero">
+                <HeroCarousel />
+            </div>
 
             {/* 2. TRUSTED BY / VALUES ALIGNMENT STRIP (From PDF Page 3, 4, 7) */}
             <section className="py-8 bg-white border-b border-slate-100 relative z-10 shadow-2xs">
@@ -66,7 +68,7 @@ export default function HomePage() {
             <BuiltDifferently />
 
             {/* 5. WHAT CLOUDCOM DOES SECTION - 5 CORE CAPABILITIES (From PDF Page 5, 7, 11) */}
-            <section className="py-28 bg-white relative">
+            <section data-tour="capabilities" className="py-28 bg-white relative">
                 <Container>
                     <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
                         <AnimatedSection direction="up">
@@ -164,7 +166,7 @@ export default function HomePage() {
             </section>
 
             {/* 6. WHY CLOUDCOM SECTION (From PDF Pages 8 & 9) */}
-            <section className="py-28 bg-dark-navy text-white relative overflow-hidden">
+            <section data-tour="sovereignty" className="py-28 bg-dark-navy text-white relative overflow-hidden">
                 {/* Background mesh/pattern */}
                 <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-400 via-dark-navy to-dark-navy"></div>
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
@@ -261,7 +263,7 @@ export default function HomePage() {
             </section>
             
             {/* 7. OUR APPROACH - FROM PROBLEM TO PRODUCTION (From PDF Page 5, 7, 9, 13) */}
-            <section className="py-28 bg-slate-50 border-b border-slate-200/80">
+            <section data-tour="lifecycle" className="py-28 bg-slate-50 border-b border-slate-200/80">
                 <Container>
                     <div className="text-center max-w-2xl mx-auto mb-16">
                         <AnimatedSection>

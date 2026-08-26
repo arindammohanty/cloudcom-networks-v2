@@ -59,7 +59,6 @@ export default function SitemapPage() {
             icon: "fa-solid fa-headset",
             links: [
                 { name: "Support Portal", url: "/support" },
-
                 { name: "Help Center", url: "/support/help-center" },
                 { name: "Knowledge Base", url: "/support/knowledge-base" },
                 { name: "My Tickets", url: "/support/my-tickets" },
@@ -71,8 +70,9 @@ export default function SitemapPage() {
             title: "Legal & Privacy",
             icon: "fa-solid fa-scale-balanced",
             links: [
-                { name: "Terms of Service", url: "/terms" },
+                { name: "Cookie Agreement Policy", url: "/cookies" },
                 { name: "Privacy Policy", url: "/privacy" },
+                { name: "Terms of Service", url: "/terms" },
             ]
         }
     ];

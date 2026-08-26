@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { AppProviders } from "@/components/providers/AppProviders";
 
 export const metadata: Metadata = {
   title: "CloudCom Networks | Building Secure Communications & Digital Infrastructure",
@@ -20,11 +21,13 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
       </head>
       <body className="text-slate-800 flex flex-col min-h-screen bg-slateBg">
-        <Navbar />
-        <main id="app-content" className="flex-grow">
-            {children}
-        </main>
-        <Footer />
+        <AppProviders>
+          <Navbar />
+          <main id="app-content" className="flex-grow">
+              {children}
+          </main>
+          <Footer />
+        </AppProviders>
       </body>
     </html>
   );

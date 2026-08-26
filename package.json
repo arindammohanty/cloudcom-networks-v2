@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "dev:turbo": "RAYON_NUM_THREADS=4 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "dev:webpack": "next dev --webpack",
     "clean": "rm -rf .next out"
   },
   "dependencies": {

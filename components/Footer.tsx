@@ -1,23 +1,39 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import { 
-    MapPin, Mail, Phone, ArrowRight, Shield, Globe
+    MapPin, Mail, Phone, ArrowRight, Shield, Globe, Sparkles, Cookie
 } from 'lucide-react';
+import { useTour } from '@/context/TourContext';
+import { useCookieConsent } from '@/context/CookieConsentContext';
 
 export default function Footer() {
+    const { startTour } = useTour();
+    const { openModal } = useCookieConsent();
+
     return (
         <>
             {/* CTA Pre-Footer Banner */}
-            <section className="bg-gradient-blue relative overflow-hidden py-16 mt-auto">
+            <section data-tour="cta" className="bg-gradient-blue relative overflow-hidden py-16 mt-auto">
                 <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&h=800&q=80')] bg-cover bg-left opacity-20 mix-blend-screen pointer-events-none"></div>
                 <div className="container mx-auto px-6 max-w-7xl xl:max-w-[1420px] 2xl:max-w-[1500px] relative z-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                     <div className="mb-6 md:mb-0">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Ready to Transform Your Communication and Infrastructure?</h2>
                         <p className="text-sm text-blue-200 max-w-2xl">Let's discuss how CloudCom Networks can help your organization build a secure, scalable, and future-ready digital foundation.</p>
                     </div>
-                    <Link href="/contact?interest=General%20Inquiry%20(Footer%20Banner)" className="bg-white text-slate-900 hover:bg-slate-100 px-6 py-3.5 rounded-xl text-sm font-bold transition-all inline-flex items-center gap-2 shadow-lg hover:scale-105 whitespace-nowrap">
-                        Get in Touch <ArrowRight className="w-4 h-4" />
-                    </Link>
+                    <div className="flex flex-wrap items-center gap-3">
+                        <button 
+                            onClick={() => startTour(0)}
+                            className="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-5 py-3.5 rounded-xl text-sm font-bold transition-all inline-flex items-center gap-2 shadow-sm cursor-pointer"
+                        >
+                            <Sparkles className="w-4 h-4 text-sky-300" />
+                            Website Tour
+                        </button>
+                        <Link href="/contact?interest=General%20Inquiry%20(Footer%20Banner)" className="bg-white text-slate-900 hover:bg-slate-100 px-6 py-3.5 rounded-xl text-sm font-bold transition-all inline-flex items-center gap-2 shadow-lg hover:scale-105 whitespace-nowrap">
+                            Get in Touch <ArrowRight className="w-4 h-4" />
+                        </Link>
+                    </div>
                 </div>
             </section>
 
@@ -76,7 +92,7 @@ export default function Footer() {
                                     </svg>
                                 </Link>
                                 <Link 
-                                    href="https://github.com/arindammohanty/cloudcom-networks-website" 
+                                    href="https://github.com/arindammohanty/cloudcom-networks-v2" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     title="CloudCom on GitHub"
@@ -107,6 +123,14 @@ export default function Footer() {
                                 <li><Link href="/industries" className="hover:text-white transition-colors">Industries</Link></li>
                                 <li><Link href="/partners" className="hover:text-white transition-colors">Partners</Link></li>
                                 <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+                                <li>
+                                    <button 
+                                        onClick={() => startTour(0)} 
+                                        className="hover:text-white text-cloud-blue font-bold transition-colors inline-flex items-center gap-1 cursor-pointer"
+                                    >
+                                        <Sparkles className="w-3 h-3" /> Interactive Tour
+                                    </button>
+                                </li>
                             </ul>
                         </div>
 
@@ -188,7 +212,9 @@ export default function Footer() {
                     {/* Bottom Copyright & Legal */}
                     <div className="border-t border-slate-800/80 pt-6 flex flex-col md:flex-row justify-between items-center text-[11px] text-slate-500">
                         <p>&copy; 2026 CloudCom Networks Private Limited. All Rights Reserved.</p>
-                        <div className="flex space-x-6 mt-4 md:mt-0 font-medium">
+                        <div className="flex flex-wrap items-center space-x-6 mt-4 md:mt-0 font-medium">
+                            <Link href="/cookies" className="hover:text-white text-slate-400 transition-colors">Cookie Policy</Link>
+                            <button onClick={openModal} className="hover:text-white text-slate-400 transition-colors cursor-pointer">Cookie Preferences</button>
                             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                             <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
                             <Link href="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
