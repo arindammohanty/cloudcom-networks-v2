@@ -11,16 +11,15 @@ export default function SitemapPage() {
     // Structured data representing the directories found in ccn-web-ari
     const siteStructure = [
         {
-            title: "Company",
-            icon: "fa-solid fa-building",
+            title: "Navigation",
+            icon: "fa-solid fa-compass",
             links: [
                 { name: "Home", url: "/" },
-                { name: "Company", url: "/company" },
+                { name: "About Us", url: "/about" },
                 { name: "Solutions", url: "/solutions" },
+                { name: "Services", url: "/services" },
                 { name: "Industries", url: "/industries" },
-                { name: "Resources", url: "/resources" },
                 { name: "Partners", url: "/partners" },
-                { name: "Careers", url: "/careers" },
                 { name: "Contact", url: "/contact" },
             ]
         },
@@ -29,27 +28,30 @@ export default function SitemapPage() {
             icon: "fa-solid fa-server",
             links: [
                 { name: "All Solutions Overview", url: "/solutions" },
-                { name: "AI & Automation", url: "/solutions/ai-automation" },
-                { name: "Enterprise Cloud", url: "/solutions/cloud" },
-                { name: "Cybersecurity", url: "/solutions/cybersecurity" },
-                { name: "Enterprise Communications", url: "/solutions/communications" },
-                { name: "Managed Operations", url: "/solutions/managed-operations" },
+                { name: "Cloud Infrastructure", url: "/solutions/cloud" },
+                { name: "Unified Communications", url: "/solutions/communications" },
+                { name: "Cybersecurity", url: "/solutions/security" },
+                { name: "Digital & Business Technology", url: "/solutions/digital" },
                 { name: "Enterprise Applications", url: "/solutions/applications" },
+                { name: "Managed Operations", url: "/solutions/managed-operations" },
+                { name: "AI & Automation", url: "/solutions/ai-automation" },
                 { name: "IoT & Edge", url: "/solutions/iot-edge" },
-                { name: "Business Operations", url: "/solutions/bpo" },
+                { name: "Business Operations", url: "/solutions/business-operations" },
             ]
         },
         {
-            title: "Resources",
-            icon: "fa-solid fa-book-open",
+            title: "Services",
+            icon: "fa-solid fa-gears",
             links: [
-                { name: "Resource Center", url: "/resources" },
-                { name: "Blog", url: "/resources/blog" },
-                { name: "Case Studies", url: "/resources/casestudies" },
-                { name: "Guides", url: "/resources/guides" },
-                { name: "News & Announcements", url: "/resources/news" },
-                { name: "Webinars", url: "/resources/webinars" },
-                { name: "Whitepapers", url: "/resources/whitepapers" },
+                { name: "All Services Overview", url: "/services" },
+                { name: "Advisory & Consulting", url: "/services/consulting" },
+                { name: "Architecture & Implementation", url: "/services/implementation" },
+                { name: "Managed Services", url: "/services/managed-services" },
+                { name: "Security Services", url: "/services/security-services" },
+                { name: "Cloud Services", url: "/services/cloud-services" },
+                { name: "Cloud Migration", url: "/services/cloud-migration" },
+                { name: "Security Assessment", url: "/services/security-audit" },
+                { name: "Technical Support", url: "/services/support" },
             ]
         },
         {
