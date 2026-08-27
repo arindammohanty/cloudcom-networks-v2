@@ -45,6 +45,8 @@ export function WebsiteTour() {
     toggleAutoAdvance,
     setSpeechRate,
     replayStepAudio,
+    tourLanguage,
+    setTourLanguage,
   } = useTour();
 
   const [targetRect, setTargetRect] = useState<DOMRect | null>(null);
@@ -319,6 +321,18 @@ export function WebsiteTour() {
               </div>
 
               <div className="flex items-center gap-1.5">
+                {/* Language Dropdown */}
+                <select
+                  value={tourLanguage}
+                  onChange={(e) => setTourLanguage(e.target.value as 'en' | 'hi' | 'or')}
+                  className="px-2 py-1 rounded-xl text-xs font-semibold bg-white border border-slate-200 text-slate-700 focus:outline-none focus:ring-2 focus:ring-cloud-blue cursor-pointer"
+                  title="Change Tour Language"
+                >
+                  <option value="en">EN</option>
+                  <option value="hi">HI</option>
+                  <option value="or">OR</option>
+                </select>
+
                 {/* Auto Advance Switch */}
                 <button
                   onClick={toggleAutoAdvance}
