@@ -289,6 +289,7 @@ export default function ContactPage() {
                                 <h3 className="text-xl font-bold text-dark-navy mb-6">Get in touch</h3>
                                 <div className="mb-6">
                                     <h4 className="font-bold text-cloud-blue text-sm">CloudCom Networks Private Limited</h4>
+                                    <h5 className="font-semibold text-slate-700 text-xs mt-1">STPI (Software Technology Parks of India)</h5>
                                     <p className="text-slate-500 text-xs mt-1">Bhubaneswar, Odisha, India</p>
                                 </div>
                                 <div className="space-y-6">
