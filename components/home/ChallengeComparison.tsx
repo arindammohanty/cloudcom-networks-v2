@@ -13,10 +13,10 @@ import {
 
 export function ChallengeComparison() {
     return (
-        <section className="py-24 bg-white border-b border-slate-100 relative overflow-hidden">
+        <section className="py-24 bg-[#f4f5f8] border-b border-slate-200/80 relative overflow-hidden">
             {/* Ambient Background Accents */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/80 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-slate-100/70 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-slate-200/50 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/3"></div>
 
             <Container className="relative z-10">
                 {/* Section Header */}
@@ -44,7 +44,7 @@ export function ChallengeComparison() {
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
                         whileHover={{ x: 10, scale: 1.01, transition: { duration: 0.3, ease: "easeOut" } }}
-                        className="lg:col-span-6 bg-slate-50/90 rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:border-rose-300 hover:shadow-xl hover:shadow-rose-500/5 transition-all cursor-default"
+                        className="lg:col-span-6 bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-sm flex flex-col justify-between relative overflow-hidden group hover:border-rose-300 hover:shadow-xl hover:shadow-rose-500/5 transition-all cursor-default"
                     >
                         <div className="absolute top-0 left-0 right-0 h-1.5 bg-rose-400"></div>
                         

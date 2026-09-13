@@ -256,17 +256,17 @@ export default function ContactPage() {
             {/* Hero Section */}
             <section className="bg-dark-navy pt-24 pb-20 relative overflow-hidden text-white">
                  <div className="absolute inset-0 z-0 opacity-10 bg-[url('/media/mesh.svg')] mix-blend-overlay"></div>
-                 <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                     <AnimatedSection direction="up" className="max-w-2xl">
-                         <div className="text-cloud-blue font-bold tracking-widest text-sm uppercase mb-4">Contact Us</div>
-                         <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Let&apos;s Connect &amp;<br/><span className="text-cloud-blue">build something better.</span></h1>
-                         <p className="text-xl text-blue-100/80 mb-10 leading-relaxed font-light">Tell us what you&apos;re trying to achieve.<br/>Our team will help you identify the right<br/>technology approach.</p>
-                     </AnimatedSection>
-                 </div>
-            </section>
+                  <div className="mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 w-full max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1420px] relative z-10">
+                      <AnimatedSection direction="up" className="max-w-2xl">
+                          <div className="text-cloud-blue font-bold tracking-widest text-sm uppercase mb-4">Contact Us</div>
+                          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Let&apos;s Connect &amp;<br/><span className="text-cloud-blue">build something better.</span></h1>
+                          <p className="text-xl text-blue-100/80 mb-10 leading-relaxed font-light">Tell us what you&apos;re trying to achieve.<br/>Our team will help you identify the right<br/>technology approach.</p>
+                      </AnimatedSection>
+                  </div>
+             </section>
 
-            <section className="py-16 bg-slate-50 relative z-20 min-h-screen">
-                <div className="container mx-auto px-6 max-w-7xl">
+             <section className="py-16 bg-slate-50 relative z-20 min-h-screen">
+                <div className="mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 w-full max-w-7xl xl:max-w-[1380px] 2xl:max-w-[1420px]">
                     <div className="flex flex-col lg:flex-row gap-8 mb-16">
                         {/* Contact Form Wrapper */}
                         <AnimatedSection delay={0.2} direction="up" className="lg:w-2/3 bg-white p-8 md:p-10 rounded-2xl border border-slate-200 shadow-lg shadow-slate-200/50">

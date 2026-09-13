@@ -18,14 +18,14 @@ import {
 
 export default function HomePage() {
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen bg-[#f4f5f8]">
             {/* 1. HERO SECTION - INFINITE LOOPING CAROUSEL */}
             <div data-tour="hero">
                 <HeroCarousel />
             </div>
 
             {/* 2. TRUSTED BY / VALUES ALIGNMENT STRIP (From PDF Page 3, 4, 7) */}
-            <section className="py-8 bg-white border-b border-slate-100 relative z-10 shadow-2xs">
+            <section className="py-8 bg-[#f4f5f8] border-b border-slate-200/80 relative z-10 shadow-2xs">
                 <Container>
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
                         <div className="text-xs font-bold uppercase tracking-widest text-slate-400 whitespace-nowrap">
@@ -67,8 +67,8 @@ export default function HomePage() {
             {/* 4. BUILT DIFFERENTLY: 4 VALUE DRIVERS & 5 PRINCIPLES (From PDF Page 3, 4, 13, 15) */}
             <BuiltDifferently />
 
-            {/* 5. WHAT CLOUDCOM DOES SECTION - 5 CORE CAPABILITIES (From PDF Page 5, 7, 11) */}
-            <section data-tour="capabilities" className="py-28 bg-white relative">
+            {/* 5. WHAT CLOUDCOM DOES SECTION - 6 CORE CAPABILITIES (From PDF Page 5, 7, 11) */}
+            <section data-tour="capabilities" className="py-28 bg-[#f4f5f8] border-b border-slate-200/80 relative">
                 <Container>
                     <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
                         <AnimatedSection direction="up">
@@ -92,7 +92,7 @@ export default function HomePage() {
                         </AnimatedSection>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {[
                             { 
                                 icon: <Cloud className="w-8 h-8" />, 
@@ -123,6 +123,13 @@ export default function HomePage() {
                                 bullets: ["24/7 Ops & Monitoring", "Patching & Tuning", "SLA Guarantees"]
                             },
                             { 
+                                icon: <Users className="w-8 h-8" />, 
+                                title: "Consultant and Training", 
+                                desc: "Advisory, enterprise architecture and workforce capabilities enablement.", 
+                                link: "/services/consultant-and-training",
+                                bullets: ["Architecture Advisory", "Workforce Enablement", "Strategic Roadmap"]
+                            },
+                            { 
                                 icon: <Cpu className="w-8 h-8" />, 
                                 title: "AI & Automation", 
                                 desc: "Intelligent automation and AI engineering to elevate productivity and decisions.", 
@@ -133,11 +140,11 @@ export default function HomePage() {
                             <AnimatedSection key={idx} delay={idx * 0.08} direction="up" className="h-full">
                                 <Link 
                                     href={item.link}
-                                    className="h-full bg-white p-7 rounded-3xl border border-slate-200/90 hover:border-cloud-blue/40 shadow-2xs hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group block relative overflow-hidden"
+                                    className="h-full bg-white p-7 rounded-3xl border border-slate-200/90 hover:border-cloud-blue/50 shadow-xs hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between group block relative overflow-hidden"
                                 >
                                     <div className="absolute top-0 left-0 right-0 h-1 bg-cloud-blue opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                     <div>
-                                        <div className="mb-6 text-cloud-blue bg-blue-50/80 w-14 h-14 rounded-2xl flex items-center justify-center group-hover:bg-cloud-blue group-hover:text-white transition-colors duration-300">
+                                        <div className="mb-6 text-cloud-blue bg-blue-50/80 w-14 h-14 rounded-2xl flex items-center justify-center group-hover:bg-cloud-blue group-hover:text-white transition-colors duration-300 border border-blue-100">
                                             {item.icon}
                                         </div>
                                         <h3 className="font-bold text-dark-navy text-lg mb-3 leading-snug group-hover:text-cloud-blue transition-colors">
@@ -156,7 +163,7 @@ export default function HomePage() {
                                         </ul>
                                     </div>
                                     <div className="text-cloud-blue font-bold text-xs flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
-                                        Explore Solution <ArrowRight className="w-4 h-4" />
+                                        Explore Offering <ArrowRight className="w-4 h-4" />
                                     </div>
                                 </Link>
                             </AnimatedSection>
@@ -166,21 +173,20 @@ export default function HomePage() {
             </section>
 
             {/* 6. WHY CLOUDCOM SECTION (From PDF Pages 8 & 9) */}
-            <section data-tour="sovereignty" className="py-28 bg-dark-navy text-white relative overflow-hidden">
+            <section data-tour="sovereignty" className="py-28 bg-[#f4f5f8] text-slate-800 relative overflow-hidden border-b border-slate-200/80">
                 {/* Background mesh/pattern */}
-                <div className="absolute inset-0 opacity-15 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-400 via-dark-navy to-dark-navy"></div>
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,_rgba(37,99,235,0.06)_0%,_transparent_60%)]"></div>
                 
                 <Container className="relative z-10">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <AnimatedSection direction="up">
-                            <span className="text-blue-400 font-bold tracking-widest uppercase text-xs mb-3 block">
+                            <span className="text-cloud-blue font-bold tracking-widest uppercase text-xs mb-3 block">
                                 Why CloudCom
                             </span>
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight mb-6">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-dark-navy tracking-tight leading-tight mb-6">
                                 Technology built <span className="text-cloud-blue">around your business.</span>
                             </h2>
-                            <p className="text-blue-100/80 text-base sm:text-lg leading-relaxed font-light">
+                            <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-light">
                                 We combine open technology, strong security and practical engineering to build digital infrastructure you can trust and grow on—today and tomorrow.
                             </p>
                         </AnimatedSection>
@@ -214,11 +220,11 @@ export default function HomePage() {
                             }
                         ].map((item, idx) => (
                             <AnimatedSection key={idx} delay={idx * 0.1} direction="up" className="h-full">
-                                <div className="bg-white rounded-3xl p-8 h-full flex flex-col text-slate-800 shadow-2xl relative group hover:translate-y-[-4px] transition-transform">
+                                <div className="bg-white rounded-3xl p-8 h-full flex flex-col text-slate-800 shadow-sm border border-slate-200 relative group hover:border-cloud-blue/40 hover:shadow-lg hover:translate-y-[-4px] transition-all">
                                     <div className="absolute -top-4 left-8 w-8 h-8 rounded-full bg-cloud-blue text-white flex items-center justify-center font-bold text-xs shadow-md">
                                         0{idx + 1}
                                     </div>
-                                    <div className="w-14 h-14 rounded-2xl bg-dark-navy text-white flex items-center justify-center mb-6 mt-1 group-hover:bg-cloud-blue transition-colors">
+                                    <div className="w-14 h-14 rounded-2xl bg-blue-50 text-cloud-blue border border-blue-100 flex items-center justify-center mb-6 mt-1 group-hover:bg-cloud-blue group-hover:text-white transition-colors">
                                         {item.icon}
                                     </div>
                                     <h4 className="font-bold text-xl mb-3 text-dark-navy">{item.title}</h4>
@@ -239,7 +245,7 @@ export default function HomePage() {
 
                     {/* Open Source Banner (From PDF Page 8 & 9) */}
                     <AnimatedSection direction="up" delay={0.3}>
-                        <div className="bg-gradient-to-r from-cloud-blue via-[#1d4ed8] to-[#0f2c6b] rounded-3xl p-8 sm:p-10 border border-blue-400/30 flex flex-col md:flex-row items-center gap-8 shadow-2xl relative overflow-hidden">
+                        <div className="bg-gradient-to-r from-dark-navy via-[#072464] to-dark-navy rounded-3xl p-8 sm:p-10 border border-blue-500/30 flex flex-col md:flex-row items-center gap-8 shadow-2xl relative overflow-hidden text-white">
                             <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm border border-white/20 flex-shrink-0">
                                 <Flag className="w-8 h-8 text-white" />
                             </div>
@@ -263,7 +269,7 @@ export default function HomePage() {
             </section>
             
             {/* 7. OUR APPROACH - FROM PROBLEM TO PRODUCTION (From PDF Page 5, 7, 9, 13) */}
-            <section data-tour="lifecycle" className="py-28 bg-slate-50 border-b border-slate-200/80">
+            <section data-tour="lifecycle" className="py-28 bg-[#f4f5f8] border-b border-slate-200/80">
                 <Container>
                     <div className="text-center max-w-2xl mx-auto mb-16">
                         <AnimatedSection>
@@ -307,8 +313,8 @@ export default function HomePage() {
                             }
                         ].map((step, idx) => (
                             <AnimatedSection key={idx} delay={idx * 0.1} direction="up" className="h-full">
-                                <div className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-2xs hover:shadow-lg transition-all h-full flex flex-col items-center text-center relative group">
-                                    <div className="w-16 h-16 rounded-2xl bg-blue-50 text-cloud-blue flex items-center justify-center mb-6 group-hover:bg-cloud-blue group-hover:text-white transition-colors">
+                                <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-xs hover:shadow-lg transition-all h-full flex flex-col items-center text-center relative group">
+                                    <div className="w-16 h-16 rounded-2xl bg-blue-50 text-cloud-blue flex items-center justify-center mb-6 group-hover:bg-cloud-blue group-hover:text-white transition-colors border border-blue-100">
                                         {step.icon}
                                     </div>
                                     <span className="text-xs font-mono font-bold text-cloud-blue bg-blue-50 px-2.5 py-0.5 rounded-full mb-3">
@@ -333,9 +339,9 @@ export default function HomePage() {
             <EnterpriseBanner />
 
             {/* 11. OUR TECHNOLOGY PHILOSOPHY STRIP (From PDF Page 5) */}
-            <section className="py-16 bg-white border-b border-slate-100">
+            <section className="py-16 bg-[#f4f5f8] border-b border-slate-200/80">
                 <Container>
-                    <div className="bg-slate-50 rounded-3xl p-8 sm:p-10 border border-slate-200 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-8">
                         <div className="max-w-2xl">
                             <span className="text-xs font-bold uppercase tracking-widest text-cloud-blue mb-2 block">
                                 Our Technology Philosophy
@@ -348,15 +354,15 @@ export default function HomePage() {
                             </p>
                         </div>
                         <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
-                            <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-dark-navy">
+                            <div className="flex items-center gap-2 bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-dark-navy">
                                 <Unlock className="w-4 h-4 text-cloud-blue" />
                                 <span>Open Standards</span>
                             </div>
-                            <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-dark-navy">
+                            <div className="flex items-center gap-2 bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-dark-navy">
                                 <Target className="w-4 h-4 text-emerald-600" />
                                 <span>Practical Outcomes</span>
                             </div>
-                            <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-dark-navy">
+                            <div className="flex items-center gap-2 bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-200 shadow-2xs text-xs font-bold text-dark-navy">
                                 <Leaf className="w-4 h-4 text-cyan-600" />
                                 <span>Sustainable Growth</span>
                             </div>
@@ -366,7 +372,7 @@ export default function HomePage() {
             </section>
 
             {/* 12. LET'S SOLVE THE TECHNOLOGY PROBLEM - BOTTOM CTA (From PDF Page 5, 7, 9, 19) */}
-            <section className="py-24 bg-white text-center">
+            <section className="py-24 bg-[#f4f5f8] text-center">
                 <Container>
                     <AnimatedSection direction="up">
                         <div className="bg-gradient-to-b from-dark-navy to-[#051c4a] rounded-[3rem] p-10 sm:p-16 lg:p-20 text-white shadow-2xl relative overflow-hidden border border-blue-500/30">
@@ -392,10 +398,10 @@ export default function HomePage() {
                                         Talk to CloudCom <ArrowRight className="w-5 h-5" />
                                     </Link>
                                     <Link 
-                                        href="/solutions" 
+                                        href="/services/consultant-and-training" 
                                         className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-9 py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
                                     >
-                                        Explore Solutions Family
+                                        Consultant & Training
                                     </Link>
                                 </div>
                             </div>

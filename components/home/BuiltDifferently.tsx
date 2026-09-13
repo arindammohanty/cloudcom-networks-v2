@@ -12,7 +12,7 @@ import {
 
 export function BuiltDifferently() {
     return (
-        <section className="py-20 bg-slate-50 border-b border-slate-200/80 relative overflow-hidden">
+        <section className="py-20 bg-[#f4f5f8] border-b border-slate-200/80 relative overflow-hidden">
             <Container>
                 {/* 5 Strategic Delivery Principles (From PDF Pages 3 & 4) */}
                 <div className="mb-16">

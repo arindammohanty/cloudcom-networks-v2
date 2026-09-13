@@ -18,7 +18,7 @@ export default function SupportLayout({ children }: { children: React.ReactNode 
     return (
         <>
             <div className="bg-white border-b border-slate-200 sticky top-20 z-40">
-                <div className="container mx-auto px-6 max-w-7xl overflow-x-auto">
+                <div className="mx-auto px-6 sm:px-8 lg:px-10 xl:px-12 2xl:px-16 w-full max-w-[1720px] 2xl:max-w-[1800px] overflow-x-auto">
                     <div className="flex justify-between items-center py-4 min-w-max">
                         {navItems.map((item) => {
                             const isActive = item.exact ? pathname === item.path : pathname?.startsWith(item.path);

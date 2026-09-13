@@ -4,11 +4,11 @@ import React from 'react';
 import Link from 'next/link';
 import { Container } from "@/components/ui/Container";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { ArrowRight, Server, Shield, Sparkles, Cpu, Layers } from 'lucide-react';
+import { ArrowRight, Server, Shield, Sparkles, Cpu, Layers, Users } from 'lucide-react';
 
 export function EnterpriseBanner() {
     return (
-        <section className="py-20 bg-slate-50 border-b border-slate-200/80">
+        <section className="py-20 bg-[#f4f5f8] border-b border-slate-200/80">
             <Container>
                 <AnimatedSection direction="up">
                     <div className="bg-gradient-to-r from-dark-navy via-[#072464] to-dark-navy rounded-[2.5rem] p-8 sm:p-12 lg:p-14 text-white shadow-2xl relative overflow-hidden border border-blue-500/30">
@@ -38,10 +38,10 @@ export function EnterpriseBanner() {
                                         Talk to an Architect <ArrowRight className="w-4 h-4" />
                                     </Link>
                                     <Link 
-                                        href="/services" 
-                                        className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold text-sm transition-all"
+                                        href="/services/consultant-and-training" 
+                                        className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2"
                                     >
-                                        Explore Services Overview
+                                        <Users className="w-4 h-4 text-cloud-blue" /> Consultant & Training
                                     </Link>
                                 </div>
                             </div>
@@ -50,14 +50,17 @@ export function EnterpriseBanner() {
                             <div className="lg:col-span-4 flex justify-center">
                                 <div className="w-full max-w-xs bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-blue-400/30 shadow-2xl text-center flex flex-col items-center">
                                     <div className="w-16 h-16 rounded-2xl bg-blue-500/20 text-cloud-blue flex items-center justify-center mb-4 border border-blue-400/40">
-                                        <Server className="w-8 h-8" />
+                                        <Users className="w-8 h-8" />
                                     </div>
-                                    <h4 className="font-bold text-white text-base mb-1">Architecture Consultation</h4>
-                                    <p className="text-xs text-slate-400 mb-4">Direct discussion with principal infrastructure & security engineers.</p>
-                                    <div className="w-full bg-slate-800/80 rounded-xl p-2.5 text-[11px] font-mono text-emerald-400 flex items-center justify-center gap-2 border border-slate-700">
+                                    <h4 className="font-bold text-white text-base mb-1">Consultant and Training</h4>
+                                    <p className="text-xs text-slate-400 mb-4">Direct advisory with principal infrastructure engineers and hands-on staff enablement.</p>
+                                    <Link 
+                                        href="/services/consultant-and-training"
+                                        className="w-full bg-slate-800/80 hover:bg-slate-700 rounded-xl p-2.5 text-[11px] font-mono text-emerald-400 flex items-center justify-center gap-2 border border-slate-700 transition-colors"
+                                    >
                                         <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                                        Available for Scheduled Review
-                                    </div>
+                                        Explore Service Overview
+                                    </Link>
                                 </div>
                             </div>
                         </div>

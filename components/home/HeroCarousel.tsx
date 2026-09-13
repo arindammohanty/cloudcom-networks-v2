@@ -162,24 +162,22 @@ export function HeroCarousel() {
 
     return (
         <section 
-            className={`relative overflow-hidden transition-colors duration-700 select-none min-h-[92vh] lg:min-h-[88vh] flex flex-col justify-between ${
-                isDark ? 'bg-dark-navy text-white' : 'bg-slate-50 text-slate-800'
-            }`}
+            className={`relative overflow-hidden select-none min-h-[90vh] lg:min-h-[86vh] flex flex-col justify-between transition-colors duration-700 ${
+                isDark ? 'bg-dark-navy text-white' : 'bg-[#f4f5f8] text-slate-800'
+            } border-b border-slate-200/80`}
         >
             {/* Ambient Background Lights */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 {isDark ? (
                     <>
-                        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-cloud-blue/20 via-sky-blue/10 to-transparent rounded-full blur-3xl -translate-y-1/4 translate-x-1/4 animate-pulse"></div>
-                        <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-gradient-to-tr from-blue-900/40 via-cloud-blue/10 to-transparent rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(37,99,235,0.1)_0%,_transparent_70%)]"></div>
-                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+                        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-cloud-blue/25 via-sky-blue/15 to-transparent rounded-full blur-3xl -translate-y-1/4 translate-x-1/4 animate-pulse"></div>
+                        <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-gradient-to-tr from-blue-900/50 via-cloud-blue/15 to-transparent rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(37,99,235,0.15)_0%,_transparent_70%)]"></div>
                     </>
                 ) : (
                     <>
-                        <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-gradient-to-bl from-cloud-blue/12 via-sky-blue/5 to-transparent rounded-full blur-3xl translate-x-1/4 -translate-y-1/4"></div>
-                        <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-gradient-to-tr from-blue-100/70 via-slate-100/60 to-transparent rounded-full blur-3xl -translate-x-1/4 translate-y-1/4"></div>
-                        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+                        <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-gradient-to-bl from-cloud-blue/15 via-sky-blue/5 to-transparent rounded-full blur-3xl translate-x-1/4 -translate-y-1/4"></div>
+                        <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-gradient-to-tr from-blue-100/60 via-slate-200/50 to-transparent rounded-full blur-3xl -translate-x-1/4 translate-y-1/4"></div>
                     </>
                 )}
             </div>
@@ -207,34 +205,28 @@ export function HeroCarousel() {
                                 <div className={`inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs md:text-sm font-bold tracking-wider uppercase mb-6 w-fit border backdrop-blur-md transition-all shadow-xs ${
                                     isDark 
                                         ? 'bg-blue-900/50 text-blue-300 border-blue-500/40 shadow-blue-900/30' 
-                                        : 'bg-blue-50/90 text-cloud-blue border-blue-200 shadow-blue-100'
+                                        : 'bg-blue-50/90 text-cloud-blue border-blue-200 shadow-blue-100/40'
                                 }`}>
-                                    <span className="w-2 h-2 rounded-full bg-cloud-blue animate-ping" />
+                                    <span className={`w-2 h-2 rounded-full ${isDark ? 'bg-sky-400 animate-ping' : 'bg-cloud-blue animate-ping'}`} />
                                     {activeSlide.badge}
                                 </div>
 
                                 {/* Main Headline */}
-                                <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-[4.1rem] font-extrabold tracking-tight leading-[1.06] mb-6 ${
-                                    isDark ? 'text-white' : 'text-dark-navy'
-                                }`}>
+                                <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-[4.1rem] font-extrabold tracking-tight leading-[1.06] mb-6 ${isDark ? 'text-white' : 'text-dark-navy'}`}>
                                     <span className="block">{activeSlide.titleStart}</span>
-                                    <span className="text-cloud-blue block mt-1">
+                                    <span className={`block mt-1 ${isDark ? 'text-sky-400' : 'text-cloud-blue'}`}>
                                         {activeSlide.highlightWord}
                                     </span>
                                     {activeSlide.titleEnd && <span className="block">{activeSlide.titleEnd}</span>}
                                 </h1>
 
                                 {/* Tagline */}
-                                <div className={`text-lg md:text-2xl font-bold mb-4 tracking-tight ${
-                                    isDark ? 'text-blue-200' : 'text-dark-navy/90'
-                                }`}>
+                                <div className={`text-lg md:text-2xl font-bold mb-4 tracking-tight ${isDark ? 'text-blue-100/90' : 'text-dark-navy/90'}`}>
                                     {activeSlide.tagline}
                                 </div>
 
                                 {/* Body Description */}
-                                <p className={`text-base md:text-lg mb-8 leading-relaxed max-w-2xl font-light ${
-                                    isDark ? 'text-slate-300' : 'text-slate-600'
-                                }`}>
+                                <p className={`text-base md:text-lg mb-8 leading-relaxed max-w-2xl font-light ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
                                     {activeSlide.description}
                                 </p>
 
@@ -250,9 +242,9 @@ export function HeroCarousel() {
                                     <Link 
                                         href={activeSlide.secondaryCta.href}
                                         className={`px-7 py-4 rounded-xl font-bold text-base transition-all text-center flex items-center justify-center gap-2 border ${
-                                            isDark
-                                                ? 'border-slate-700 bg-white/5 hover:bg-white/10 text-white'
-                                                : 'border-slate-200 bg-white hover:bg-slate-50 text-dark-navy shadow-xs'
+                                            isDark 
+                                                ? 'border-slate-700 bg-white/10 hover:bg-white/20 text-white' 
+                                                : 'border-slate-300 bg-white hover:bg-slate-50 text-dark-navy shadow-xs'
                                         } hover:scale-[1.02] active:scale-[0.98]`}
                                     >
                                         {activeSlide.secondaryCta.text} <ArrowUpRight className="w-4 h-4" />
@@ -260,17 +252,17 @@ export function HeroCarousel() {
                                 </div>
 
                                 {/* Pill Tags & Highlights */}
-                                <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-slate-200/20">
+                                <div className={`flex flex-wrap items-center gap-2.5 pt-4 border-t ${isDark ? 'border-slate-800' : 'border-slate-200/80'}`}>
                                     {activeSlide.pillTags.map((tag, idx) => (
                                         <span 
                                             key={idx} 
                                             className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-semibold ${
-                                                isDark
-                                                    ? 'bg-slate-800/90 text-slate-200 border border-slate-700/80'
+                                                isDark 
+                                                    ? 'bg-slate-800/90 text-slate-200 border border-slate-700/80' 
                                                     : 'bg-white text-slate-700 border border-slate-200 shadow-2xs'
                                             }`}
                                         >
-                                            <CheckCircle2 className="w-3.5 h-3.5 text-cloud-blue flex-shrink-0" />
+                                            <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 ${isDark ? 'text-sky-400' : 'text-cloud-blue'}`} />
                                             {tag}
                                         </span>
                                     ))}
@@ -291,7 +283,7 @@ export function HeroCarousel() {
 
             {/* Bottom Carousel Controller & Interactive Slide Tabs */}
             <div className={`relative z-20 border-t backdrop-blur-md transition-colors py-4 ${
-                isDark ? 'border-slate-800 bg-dark-navy/90' : 'border-slate-200/90 bg-white/90 shadow-xs'
+                isDark ? 'border-slate-800 bg-dark-navy/95' : 'border-slate-200/90 bg-white/90 shadow-xs'
             }`}>
                 <Container>
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -306,23 +298,23 @@ export function HeroCarousel() {
                                         className={`relative text-left px-4 py-3 rounded-xl transition-all flex flex-col justify-center overflow-hidden border cursor-pointer ${
                                             isActive
                                                 ? isDark
-                                                    ? 'bg-blue-950/80 border-cloud-blue/70 text-white shadow-lg shadow-cloud-blue/15'
+                                                    ? 'bg-blue-950/90 border-sky-400/80 text-white shadow-lg shadow-blue-900/30'
                                                     : 'bg-blue-50/90 border-cloud-blue/60 text-dark-navy shadow-sm'
                                                 : isDark
-                                                    ? 'bg-slate-900/50 border-slate-800 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
-                                                    : 'bg-white/70 border-slate-200/80 text-slate-500 hover:text-slate-800 hover:bg-white'
+                                                    ? 'bg-slate-900/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                                                    : 'bg-white/80 border-slate-200/80 text-slate-500 hover:text-slate-800 hover:bg-white'
                                         }`}
                                     >
                                         {/* Auto-advance animated progress bar */}
                                         {isActive && (
                                             <div 
-                                                className="absolute bottom-0 left-0 h-1 bg-cloud-blue transition-all duration-75"
+                                                className={`absolute bottom-0 left-0 h-1 transition-all duration-75 ${isDark ? 'bg-sky-400' : 'bg-cloud-blue'}`}
                                                 style={{ width: `${progress}%` }}
                                             />
                                         )}
                                         <div className="text-xs font-extrabold uppercase tracking-wider flex items-center justify-between">
-                                            <span className={isActive ? 'text-cloud-blue' : ''}>{slide.tabTitle}</span>
-                                            {isActive && <span className="w-2 h-2 rounded-full bg-cloud-blue animate-pulse"></span>}
+                                            <span className={isActive ? (isDark ? 'text-sky-300' : 'text-cloud-blue') : ''}>{slide.tabTitle}</span>
+                                            {isActive && <span className={`w-2 h-2 rounded-full animate-pulse ${isDark ? 'bg-sky-400' : 'bg-cloud-blue'}`}></span>}
                                         </div>
                                         <div className="text-[11px] opacity-80 truncate mt-0.5 font-medium">
                                             {slide.tabSub}
@@ -344,7 +336,7 @@ export function HeroCarousel() {
                                 }`}
                                 aria-label="Toggle autoplay"
                             >
-                                {isPaused ? <Play className="w-4 h-4 text-emerald-500" /> : <Pause className="w-4 h-4 text-slate-500" />}
+                                {isPaused ? <Play className="w-4 h-4 text-emerald-400" /> : <Pause className="w-4 h-4 text-slate-400" />}
                             </button>
 
                             <div className="flex items-center gap-1.5">

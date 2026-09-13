@@ -6,18 +6,18 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { ArrowRight, CheckCircle2, Server, Users, Settings, ShieldCheck, Cloud, Headset } from 'lucide-react';
 
 const servicesData = {
-    'consulting': {
-        title: 'Consulting',
+    'consultant-and-training': {
+        title: 'Consultant and Training',
         icon: <Users className="w-12 h-12 text-blue-600" />,
         bg: 'bg-blue-50',
-        desc: 'We help you define the right technology strategy and architecture to align with your business goals.',
-        details: 'Our consulting engagements start with understanding your business objectives. We then assess your current technology landscape, identify gaps, and design a modern, scalable architecture that provides a foundation for growth and innovation.',
+        desc: 'We help you define the right technology strategy, modern architecture, and empower internal teams with hands-on training.',
+        details: 'Our consultant and training engagements bridge the gap between architectural vision and operational mastery. We assess your technology landscape, design resilient vendor-neutral architectures, and provide comprehensive training programs to upskill your teams in modern cloud, cybersecurity, and digital sovereignty operations.',
         features: [
-            "Technology assessment and maturity modeling", 
-            "Enterprise architecture & solution design", 
-            "Digital transformation roadmap & planning", 
-            "Security, risk & compliance review",
-            "Vendor evaluation and technology selection"
+            "Enterprise architecture & technology advisory", 
+            "Workforce technical training & capability development", 
+            "Hands-on operational workshops & bootcamps", 
+            "Security, risk & compliance governance review",
+            "Vendor evaluation and migration roadmaps"
         ]
     },
     'implementation': {
@@ -122,7 +122,10 @@ const servicesData = {
 
 const fullServicesData: Record<string, any> = {
     ...servicesData,
-    'advisory-consulting': servicesData['consulting'],
+    'consultant-and-training': servicesData['consultant-and-training'],
+    'consulting': servicesData['consultant-and-training'],
+    'consultant': servicesData['consultant-and-training'],
+    'advisory-consulting': servicesData['consultant-and-training'],
     'architecture-deploy': servicesData['implementation']
 };
 

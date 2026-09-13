@@ -17,7 +17,7 @@ export default function Footer() {
             {/* CTA Pre-Footer Banner */}
             <section data-tour="cta" className="bg-gradient-blue relative overflow-hidden py-16 mt-auto">
                 <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-[url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&h=800&q=80')] bg-cover bg-left opacity-20 mix-blend-screen pointer-events-none"></div>
-                <div className="container mx-auto px-6 max-w-7xl xl:max-w-[1420px] 2xl:max-w-[1500px] relative z-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <div className="mx-auto w-full max-w-[1720px] 2xl:max-w-[1800px] pl-6 sm:pl-8 md:pl-12 lg:pl-16 xl:pl-20 2xl:pl-24 pr-6 relative z-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                     <div className="mb-6 md:mb-0">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Ready to Transform Your Communication and Infrastructure?</h2>
                         <p className="text-sm text-blue-200 max-w-2xl">Let's discuss how CloudCom Networks can help your organization build a secure, scalable, and future-ready digital foundation.</p>
@@ -39,20 +39,20 @@ export default function Footer() {
 
             {/* Main Footer */}
             <footer className="bg-darkBg border-t border-slate-800 pt-16 pb-8">
-                <div className="container mx-auto px-6 max-w-7xl xl:max-w-[1420px] 2xl:max-w-[1500px]">
+                <div className="mx-auto w-full max-w-[1720px] 2xl:max-w-[1800px] pl-6 sm:pl-8 md:pl-12 lg:pl-16 xl:pl-20 2xl:pl-24 pr-6">
                     
                     {/* Top Columns Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 mb-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 xl:gap-12 mb-12">
                         {/* Company Info & Social Links */}
-                        <div className="lg:col-span-2">
-                            <div className="flex items-center gap-2 mb-4">
+                        <div className="sm:col-span-2 md:col-span-3 lg:col-span-1">
+                            <div className="flex items-center mb-6">
                                 <img
                                     src="/media/fot_logo.png"
                                     alt="CloudCom Networks Logo"
-                                    className="h-auto w-44 object-contain rounded-xl"
+                                    className="h-24 sm:h-28 md:h-32 w-auto max-w-[260px] object-contain drop-shadow-lg transition-transform duration-300 hover:scale-[1.02]"
                                 />
                             </div>
-                            <p className="text-xs text-slate-400 mb-6 leading-relaxed pr-4">
+                            <p className="text-xs text-slate-400 mb-6 leading-relaxed">
                                 Building secure communications and resilient digital infrastructure for a connected, sovereign, and AI-enabled tomorrow.
                             </p>
                             
@@ -152,7 +152,7 @@ export default function Footer() {
                         <div>
                             <h4 className="text-white font-bold text-sm mb-5 tracking-wide">Services</h4>
                             <ul className="space-y-2.5 text-xs font-medium text-slate-400">
-                                <li><Link href="/services/consulting" className="hover:text-white transition-colors">Advisory & Consulting</Link></li>
+                                <li><Link href="/services/consultant-and-training" className="hover:text-white transition-colors">Consultant and Training</Link></li>
                                 <li><Link href="/services/implementation" className="hover:text-white transition-colors">Architecture & Deploy</Link></li>
                                 <li><Link href="/services/managed-services" className="hover:text-white transition-colors">Managed Services</Link></li>
                                 <li><Link href="/services/cloud-migration" className="hover:text-white transition-colors">Cloud Migration</Link></li>

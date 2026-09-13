@@ -56,7 +56,7 @@ export function IndustriesGrid() {
     ];
 
     return (
-        <section className="py-24 bg-white border-b border-slate-100 relative overflow-hidden">
+        <section className="py-24 bg-[#f4f5f8] border-b border-slate-200/80 relative overflow-hidden">
             <Container>
                 <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-4 mb-16">
                     <AnimatedSection direction="up">
@@ -83,14 +83,14 @@ export function IndustriesGrid() {
                         <AnimatedSection key={idx} delay={idx * 0.08} direction="up" className="h-full">
                             <Link 
                                 href={`/industries/${ind.slug}`}
-                                className="bg-slate-50/70 rounded-3xl p-8 border border-slate-200/90 hover:border-cloud-blue/50 hover:bg-white shadow-2xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 h-full flex flex-col justify-between group block"
+                                className="bg-white rounded-3xl p-8 border border-slate-200 hover:border-cloud-blue/50 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 h-full flex flex-col justify-between group block"
                             >
                                 <div>
                                     <div className="flex items-center justify-between mb-6">
-                                        <div className="w-12 h-12 rounded-2xl bg-white shadow-sm border border-slate-200 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <div className="w-12 h-12 rounded-2xl bg-blue-50/80 text-cloud-blue border border-blue-100 flex items-center justify-center group-hover:scale-110 transition-transform">
                                             {ind.icon}
                                         </div>
-                                        <span className="text-[11px] font-bold text-slate-500 bg-white px-2.5 py-1 rounded-full border border-slate-200 group-hover:border-cloud-blue/30 group-hover:text-cloud-blue transition-colors">
+                                        <span className="text-[11px] font-bold text-slate-500 bg-slate-50 px-2.5 py-1 rounded-full border border-slate-200 group-hover:border-cloud-blue/30 group-hover:text-cloud-blue transition-colors">
                                             {ind.highlight}
                                         </span>
                                     </div>

@@ -11,22 +11,21 @@ import {
 
 export function SecurityFirstSection() {
     return (
-        <section className="py-24 bg-dark-navy text-white relative overflow-hidden border-t border-blue-900/40">
+        <section className="py-24 bg-[#f4f5f8] text-slate-800 relative overflow-hidden border-b border-slate-200/80">
             {/* Ambient Background Lights */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_rgba(37,99,235,0.15)_0%,_transparent_60%)]"></div>
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,_rgba(37,99,235,0.08)_0%,_transparent_60%)]"></div>
 
             <Container className="relative z-10">
                 <div className="max-w-3xl mb-16">
                     <AnimatedSection direction="up">
-                        <span className="inline-block px-3.5 py-1.5 rounded-full bg-blue-900/50 text-blue-300 text-xs font-bold uppercase tracking-widest border border-blue-500/30 mb-4 shadow-sm">
+                        <span className="inline-block px-3.5 py-1.5 rounded-full bg-blue-50 text-cloud-blue text-xs font-bold uppercase tracking-widest border border-blue-200 mb-4 shadow-2xs">
                             Security First Architecture
                         </span>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-dark-navy tracking-tight mb-6 leading-tight">
                             Security isn&apos;t an add-on. <br />
                             <span className="text-cloud-blue">It&apos;s how we build.</span>
                         </h2>
-                        <p className="text-lg text-blue-100/80 leading-relaxed font-light">
+                        <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-light">
                             From identity and access management to infrastructure, communication networks, applications and data storage, zero-trust security is designed into every layer from day one.
                         </p>
                     </AnimatedSection>
@@ -46,38 +45,38 @@ export function SecurityFirstSection() {
                             title: "Least Privilege",
                             sub: "Only the access that is needed.",
                             desc: "Granular role-based access control (RBAC) and just-in-time access.",
-                            icon: <Key className="w-6 h-6 text-emerald-400" />,
+                            icon: <Key className="w-6 h-6 text-emerald-600" />,
                             checks: ["Granular IAM roles", "JIT privilege escalation", "Audit trail logging"]
                         },
                         {
                             title: "Secure Infrastructure",
                             sub: "Hardened and protected.",
                             desc: "Harden critical compute workloads, cloud networks, and storage endpoints.",
-                            icon: <ShieldCheck className="w-6 h-6 text-indigo-400" />,
+                            icon: <ShieldCheck className="w-6 h-6 text-indigo-600" />,
                             checks: ["End-to-end encryption", "Immutable configurations", "Automated patching"]
                         },
                         {
                             title: "Cyber Resilience",
                             sub: "Design for recovery.",
                             desc: "Air-gapped backups, disaster recovery automation and rapid failover.",
-                            icon: <RefreshCw className="w-6 h-6 text-cyan-400" />,
+                            icon: <RefreshCw className="w-6 h-6 text-cyan-600" />,
                             checks: ["Immutable backup vaults", "Tested RTO/RPO SLAs", "Rapid incident response"]
                         }
                     ].map((pillar, idx) => (
                         <AnimatedSection key={idx} delay={idx * 0.1} direction="up" className="h-full">
-                            <div className="bg-slate-900/90 rounded-3xl p-7 border border-slate-800 hover:border-cloud-blue/50 shadow-xl h-full flex flex-col justify-between transition-all group">
+                            <div className="bg-white rounded-3xl p-7 border border-slate-200 hover:border-cloud-blue/50 shadow-sm hover:shadow-lg h-full flex flex-col justify-between transition-all group">
                                 <div>
-                                    <div className="w-12 h-12 rounded-2xl bg-slate-800 text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-slate-700">
+                                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-cloud-blue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform border border-blue-100">
                                         {pillar.icon}
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-1">{pillar.title}</h3>
+                                    <h3 className="text-xl font-bold text-dark-navy mb-1">{pillar.title}</h3>
                                     <p className="text-xs font-semibold text-cloud-blue mb-4">{pillar.sub}</p>
-                                    <p className="text-sm text-slate-300 leading-relaxed mb-6 font-light">{pillar.desc}</p>
+                                    <p className="text-sm text-slate-600 leading-relaxed mb-6 font-light">{pillar.desc}</p>
                                 </div>
 
-                                <ul className="space-y-2.5 pt-4 border-t border-slate-800/80">
+                                <ul className="space-y-2.5 pt-4 border-t border-slate-100">
                                     {pillar.checks.map((check, i) => (
-                                        <li key={i} className="flex items-center text-xs font-medium text-slate-300">
+                                        <li key={i} className="flex items-center text-xs font-medium text-slate-700">
                                             <CheckCircle2 className="w-3.5 h-3.5 text-cloud-blue mr-2 flex-shrink-0" />
                                             {check}
                                         </li>
@@ -90,19 +89,19 @@ export function SecurityFirstSection() {
 
                 {/* Bottom Security Banner CTA */}
                 <AnimatedSection direction="up" delay={0.3}>
-                    <div className="bg-blue-950/60 rounded-2xl p-6 border border-blue-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div className="bg-gradient-to-r from-dark-navy via-[#072464] to-dark-navy rounded-2xl p-6 sm:p-8 border border-blue-500/30 text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
                         <div className="flex items-center gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-cloud-blue text-white flex items-center justify-center flex-shrink-0">
-                                <Shield className="w-5 h-5" />
+                            <div className="w-12 h-12 rounded-xl bg-cloud-blue/20 text-sky-400 border border-cloud-blue/40 flex items-center justify-center flex-shrink-0">
+                                <Shield className="w-6 h-6" />
                             </div>
                             <div>
-                                <h4 className="text-sm font-bold text-white">Need a comprehensive security & compliance audit?</h4>
-                                <p className="text-xs text-blue-200">Our certified security architects evaluate zero-trust posture, data sovereignty and regulatory compliance.</p>
+                                <h4 className="text-base font-bold text-white mb-1">Need a comprehensive security & compliance audit?</h4>
+                                <p className="text-xs sm:text-sm text-blue-100/80">Our certified security architects evaluate zero-trust posture, data sovereignty and regulatory compliance.</p>
                             </div>
                         </div>
                         <Link 
                             href="/solutions/security" 
-                            className="inline-flex items-center gap-2 bg-cloud-blue hover:bg-cloud-blue-hover text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-colors whitespace-nowrap shadow-md shadow-cloud-blue/30"
+                            className="inline-flex items-center gap-2 bg-cloud-blue hover:bg-cloud-blue-hover text-white px-6 py-3 rounded-xl text-xs font-bold transition-all whitespace-nowrap shadow-md shadow-cloud-blue/30 flex-shrink-0"
                         >
                             Explore Cybersecurity <ArrowRight className="w-4 h-4" />
                         </Link>

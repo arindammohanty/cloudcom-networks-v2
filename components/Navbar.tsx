@@ -30,17 +30,22 @@ export default function Navbar() {
 
     return (
         <nav className="bg-white border-b border-slate-100 sticky top-0 z-50 transition-all shadow-sm">
-            <div className="container mx-auto px-6 max-w-7xl xl:max-w-[1420px] 2xl:max-w-[1500px] h-20 flex items-center justify-between">
-                <Link href="/" className="flex items-center gap-2 group">
+            <div className="mx-auto w-full max-w-[1720px] 2xl:max-w-[1800px] pl-6 sm:pl-8 md:pl-12 lg:pl-16 xl:pl-20 2xl:pl-24 pr-6 h-20 flex items-center justify-between">
+                <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group py-1">
                     <img 
                         src="/media/nav_logo.png" 
-                        alt="CloudCom Networks Logo" 
-                        className="h-[72px] w-auto object-contain" 
+                        alt="CloudCom Logo" 
+                        className="h-10 sm:h-11 md:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
+                    />
+                    <img 
+                        src="/media/nav_company.png" 
+                        alt="CloudCom Networks" 
+                        className="h-9 sm:h-10 md:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
                     />
                 </Link>
 
                 {/* Desktop Navigation */}
-                <div data-tour="navbar-nav" className="hidden lg:flex h-full items-center space-x-8">
+                <div data-tour="navbar-nav" className="hidden lg:flex h-full items-center space-x-6 xl:space-x-8">
                     {navLinks.map((link) => (
                         <Link 
                             key={link.name}
