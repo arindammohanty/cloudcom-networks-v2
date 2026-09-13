@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
-import { Mail, Lock, Target, ShieldCheck, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Lock, Target, ShieldCheck, Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 // Comprehensive list of global country codes
 const COUNTRY_CODES = [
@@ -56,9 +56,14 @@ function ContactForm() {
         message: ''
     });
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [honeypot, setHoneypot] = useState('');
+    const [formStartTime, setFormStartTime] = useState<number>(0);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitSuccess, setSubmitSuccess] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
     useEffect(() => {
+        setFormStartTime(Date.now());
         if (typeof window !== 'undefined') {
             const params = new URLSearchParams(window.location.search);
             const interest = params.get('interest');
@@ -71,6 +76,7 @@ function ContactForm() {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
+        if (errorMessage) setErrorMessage(null);
     };
 
     // Specialized handler to enforce strict 10-digit numerical entry for the phone number
@@ -79,45 +85,98 @@ function ContactForm() {
         if (numericValue.length <= 10) {
             setFormData(prev => ({ ...prev, phone: numericValue }));
         }
+        if (errorMessage) setErrorMessage(null);
     };
 
-    const handleFormSubmit = (e: React.FormEvent) => {
+    const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
-        const trackedSection = formData.requirement || 'General Inquiry (Direct Visit)';
-        const formattedPhone = formData.phone ? `${formData.countryCode} ${formData.phone}` : 'Not Provided';
-        
-        const popupMessage = `
---- COMMUNICATION DISPATCH RECORD ---
-Target Section: ${trackedSection}
+        setIsSubmitting(true);
+        setErrorMessage(null);
+        setSubmitSuccess(false);
 
-User Details:
-Name: ${formData.name}
-Designation: ${formData.designation || 'Not Provided'}
-Email: ${formData.email}
-Phone: ${formattedPhone}
-Company: ${formData.company || 'Not Provided'}
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    ...formData,
+                    honeypot,
+                    formStartTime,
+                }),
+            });
 
-Message Contents:
-Requirement: ${formData.requirement}
-Message: ${formData.message}
+            const data = await response.json();
 
-(This message has been recorded and routed successfully)
-        `.trim();
+            if (!response.ok) {
+                if (response.status === 429) {
+                    setErrorMessage(data.error || 'Too many submissions. Please wait a few minutes before trying again.');
+                } else if (data.errors) {
+                    const firstError = Object.values(data.errors)[0] as string;
+                    setErrorMessage(firstError || data.error || 'Invalid form entry. Please review the highlighted fields.');
+                } else {
+                    setErrorMessage(data.error || 'Unable to record your message. Please try again later.');
+                }
+                setIsSubmitting(false);
+                return;
+            }
 
-        alert(popupMessage);
-        setIsSubmitted(true);
-        
-        // Reset form, keeping the default +91 country code intact
-        setFormData({ name: '', designation: '', email: '', countryCode: '+91', phone: '', company: '', requirement: '', message: '' });
+            // Successfully recorded in Supabase / API
+            setSubmitSuccess(true);
+            setFormData({
+                name: '',
+                designation: '',
+                email: '',
+                countryCode: '+91',
+                phone: '',
+                company: '',
+                requirement: '',
+                message: ''
+            });
+            setHoneypot('');
+            setFormStartTime(Date.now());
+        } catch (err) {
+            console.error('[Contact Form Submission Error]:', err);
+            setErrorMessage('A network error occurred while submitting. Please check your connection or email hello@cloudcomnet.com.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
         <form onSubmit={handleFormSubmit} className="space-y-4">
-            {isSubmitted && (
-                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs flex items-center gap-2 mb-4">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                    <span>Thank you! Your message has been sent successfully. Our team will contact you shortly.</span>
+            {/* Anti-spam honeypot input (hidden from real users) */}
+            <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                <label htmlFor="hp_company_url">Do not fill this field</label>
+                <input 
+                    type="text" 
+                    id="hp_company_url" 
+                    name="honeypot" 
+                    value={honeypot} 
+                    onChange={(e) => setHoneypot(e.target.value)} 
+                    tabIndex={-1} 
+                    autoComplete="off" 
+                />
+            </div>
+
+            {submitSuccess && (
+                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs flex items-center gap-2.5 mb-4 animate-in fade-in duration-300">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                    <div>
+                        <div className="font-bold text-emerald-900">Message Received Successfully</div>
+                        <p className="text-emerald-700 mt-0.5">Thank you! Your inquiry has been securely recorded. Our solutions team will get back to you shortly.</p>
+                    </div>
+                </div>
+            )}
+
+            {errorMessage && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-xs flex items-center gap-2.5 mb-4 animate-in fade-in duration-300">
+                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
+                    <div>
+                        <div className="font-bold text-red-900">Submission Notice</div>
+                        <p className="text-red-700 mt-0.5">{errorMessage}</p>
+                    </div>
                 </div>
             )}
 
@@ -241,10 +300,20 @@ Message: ${formData.message}
             
             <button 
                 type="submit" 
-                className="w-full bg-cloud-blue hover:bg-cloud-blue-hover text-white px-6 py-3 rounded-lg text-sm font-bold transition-colors shadow-md flex items-center justify-center gap-2"
+                disabled={isSubmitting}
+                className="w-full bg-cloud-blue hover:bg-cloud-blue-hover disabled:opacity-60 disabled:cursor-not-allowed text-white px-6 py-3 rounded-lg text-sm font-bold transition-colors shadow-md flex items-center justify-center gap-2"
             >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
-                Send Us a Message
+                {isSubmitting ? (
+                    <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Sending Message...</span>
+                    </>
+                ) : (
+                    <>
+                        <Send className="w-4 h-4" />
+                        <span>Send Us a Message</span>
+                    </>
+                )}
             </button>
         </form>
     );
