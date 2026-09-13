@@ -44,7 +44,7 @@ export default function SitemapPage() {
             icon: "fa-solid fa-gears",
             links: [
                 { name: "All Services Overview", url: "/services" },
-                { name: "Consultant and Training", url: "/services/consultant-and-training" },
+                { name: "Consulting & Training", url: "/services/consultant-and-training" },
                 { name: "Architecture & Implementation", url: "/services/implementation" },
                 { name: "Managed Services", url: "/services/managed-services" },
                 { name: "Security Services", url: "/services/security-services" },

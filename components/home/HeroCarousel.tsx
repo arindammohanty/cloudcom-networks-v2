@@ -286,9 +286,9 @@ export function HeroCarousel() {
                 isDark ? 'border-slate-800 bg-dark-navy/95' : 'border-slate-200/90 bg-white/90 shadow-xs'
             }`}>
                 <Container>
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-4 lg:gap-6">
                         {/* Slide Selector Tabs */}
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full md:w-auto md:flex-1 max-w-5xl">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 lg:gap-3 w-full md:flex-1">
                             {heroSlides.map((slide, idx) => {
                                 const isActive = current === idx;
                                 return (
@@ -325,7 +325,7 @@ export function HeroCarousel() {
                         </div>
 
                         {/* Controls (Play/Pause, Prev, Counter, Next) */}
-                        <div className="flex items-center gap-3 self-center md:self-auto">
+                        <div className="flex items-center gap-3 self-center md:self-auto flex-shrink-0">
                             <button
                                 onClick={() => setIsPaused(!isPaused)}
                                 title={isPaused ? "Resume Auto-Play" : "Pause Carousel"}

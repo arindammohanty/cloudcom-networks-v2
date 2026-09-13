@@ -152,7 +152,7 @@ export default function Footer() {
                         <div>
                             <h4 className="text-white font-bold text-sm mb-5 tracking-wide">Services</h4>
                             <ul className="space-y-2.5 text-xs font-medium text-slate-400">
-                                <li><Link href="/services/consultant-and-training" className="hover:text-white transition-colors">Consultant and Training</Link></li>
+                                <li><Link href="/services/consultant-and-training" className="hover:text-white transition-colors">Consulting & Training</Link></li>
                                 <li><Link href="/services/implementation" className="hover:text-white transition-colors">Architecture & Deploy</Link></li>
                                 <li><Link href="/services/managed-services" className="hover:text-white transition-colors">Managed Services</Link></li>
                                 <li><Link href="/services/cloud-migration" className="hover:text-white transition-colors">Cloud Migration</Link></li>

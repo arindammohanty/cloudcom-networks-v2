@@ -25,35 +25,35 @@ export default function HomePage() {
             </div>
 
             {/* 2. TRUSTED BY / VALUES ALIGNMENT STRIP (From PDF Page 3, 4, 7) */}
-            <section className="py-8 bg-[#f4f5f8] border-b border-slate-200/80 relative z-10 shadow-2xs">
+            <section className="py-7 bg-[#f4f5f8] border-b border-slate-200/80 relative z-10 shadow-2xs">
                 <Container>
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
-                        <div className="text-xs font-bold uppercase tracking-widest text-slate-400 whitespace-nowrap">
+                    <div className="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-6">
+                        <div className="text-xs font-bold uppercase tracking-wider text-slate-400 whitespace-nowrap flex-shrink-0">
                             Trusted by organisations that value:
                         </div>
-                        <div className="flex flex-wrap justify-center lg:justify-end items-center gap-x-6 sm:gap-x-8 gap-y-3 text-xs sm:text-sm font-semibold text-slate-700">
-                            <div className="flex items-center gap-2">
-                                <ShieldCheck className="w-4 h-4 text-cloud-blue" />
+                        <div className="flex flex-wrap lg:flex-nowrap justify-center lg:justify-end items-center gap-x-3.5 xl:gap-x-5 2xl:gap-x-6 gap-y-2 text-xs xl:text-[13px] font-semibold text-slate-700">
+                            <div className="inline-flex items-center gap-2 whitespace-nowrap">
+                                <ShieldCheck className="w-4 h-4 text-cloud-blue flex-shrink-0" />
                                 <span>Security & Compliance</span>
                             </div>
-                            <div className="hidden sm:block w-1 h-1 rounded-full bg-slate-300"></div>
-                            <div className="flex items-center gap-2">
-                                <Unlock className="w-4 h-4 text-cloud-blue" />
+                            <div className="inline-flex items-center gap-2 whitespace-nowrap">
+                                <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-300 mr-1 xl:mr-1.5 flex-shrink-0" />
+                                <Unlock className="w-4 h-4 text-cloud-blue flex-shrink-0" />
                                 <span>Independence & Control</span>
                             </div>
-                            <div className="hidden sm:block w-1 h-1 rounded-full bg-slate-300"></div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-cloud-blue" />
+                            <div className="inline-flex items-center gap-2 whitespace-nowrap">
+                                <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-300 mr-1 xl:mr-1.5 flex-shrink-0" />
+                                <CheckCircle2 className="w-4 h-4 text-cloud-blue flex-shrink-0" />
                                 <span>Practical Solutions</span>
                             </div>
-                            <div className="hidden sm:block w-1 h-1 rounded-full bg-slate-300"></div>
-                            <div className="flex items-center gap-2">
-                                <HeartHandshake className="w-4 h-4 text-cloud-blue" />
+                            <div className="inline-flex items-center gap-2 whitespace-nowrap">
+                                <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-300 mr-1 xl:mr-1.5 flex-shrink-0" />
+                                <HeartHandshake className="w-4 h-4 text-cloud-blue flex-shrink-0" />
                                 <span>Long-term Partnership</span>
                             </div>
-                            <div className="hidden sm:block w-1 h-1 rounded-full bg-slate-300"></div>
-                            <div className="flex items-center gap-2">
-                                <Leaf className="w-4 h-4 text-emerald-600" />
+                            <div className="inline-flex items-center gap-2 whitespace-nowrap">
+                                <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-300 mr-1 xl:mr-1.5 flex-shrink-0" />
+                                <Leaf className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                                 <span>Sustainable Technology</span>
                             </div>
                         </div>
@@ -124,7 +124,7 @@ export default function HomePage() {
                             },
                             { 
                                 icon: <Users className="w-8 h-8" />, 
-                                title: "Consultant and Training", 
+                                title: "Consulting & Training", 
                                 desc: "Advisory, enterprise architecture and workforce capabilities enablement.", 
                                 link: "/services/consultant-and-training",
                                 bullets: ["Architecture Advisory", "Workforce Enablement", "Strategic Roadmap"]
@@ -401,7 +401,7 @@ export default function HomePage() {
                                         href="/services/consultant-and-training" 
                                         className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-9 py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-[0.98]"
                                     >
-                                        Consultant & Training
+                                        Consulting & Training
                                     </Link>
                                 </div>
                             </div>

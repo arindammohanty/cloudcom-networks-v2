@@ -7,11 +7,11 @@ import { ArrowRight, CheckCircle2, Server, Users, Settings, ShieldCheck, Cloud, 
 
 const servicesData = {
     'consultant-and-training': {
-        title: 'Consultant and Training',
+        title: 'Consulting & Training',
         icon: <Users className="w-12 h-12 text-blue-600" />,
         bg: 'bg-blue-50',
         desc: 'We help you define the right technology strategy, modern architecture, and empower internal teams with hands-on training.',
-        details: 'Our consultant and training engagements bridge the gap between architectural vision and operational mastery. We assess your technology landscape, design resilient vendor-neutral architectures, and provide comprehensive training programs to upskill your teams in modern cloud, cybersecurity, and digital sovereignty operations.',
+        details: 'Our consulting and training engagements bridge the gap between architectural vision and operational mastery. We assess your technology landscape, design resilient vendor-neutral architectures, and provide comprehensive training programs to upskill your teams in modern cloud, cybersecurity, and digital sovereignty operations.',
         features: [
             "Enterprise architecture & technology advisory", 
             "Workforce technical training & capability development", 
@@ -122,6 +122,7 @@ const servicesData = {
 
 const fullServicesData: Record<string, any> = {
     ...servicesData,
+    'consulting-and-training': servicesData['consultant-and-training'],
     'consultant-and-training': servicesData['consultant-and-training'],
     'consulting': servicesData['consultant-and-training'],
     'consultant': servicesData['consultant-and-training'],

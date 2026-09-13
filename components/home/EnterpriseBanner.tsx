@@ -41,7 +41,7 @@ export function EnterpriseBanner() {
                                         href="/services/consultant-and-training" 
                                         className="bg-white/10 hover:bg-white/15 text-white border border-white/20 px-6 py-3.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2"
                                     >
-                                        <Users className="w-4 h-4 text-cloud-blue" /> Consultant & Training
+                                        <Users className="w-4 h-4 text-cloud-blue" /> Consulting & Training
                                     </Link>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@ export function EnterpriseBanner() {
                                     <div className="w-16 h-16 rounded-2xl bg-blue-500/20 text-cloud-blue flex items-center justify-center mb-4 border border-blue-400/40">
                                         <Users className="w-8 h-8" />
                                     </div>
-                                    <h4 className="font-bold text-white text-base mb-1">Consultant and Training</h4>
+                                    <h4 className="font-bold text-white text-base mb-1">Consulting & Training</h4>
                                     <p className="text-xs text-slate-400 mb-4">Direct advisory with principal infrastructure engineers and hands-on staff enablement.</p>
                                     <Link 
                                         href="/services/consultant-and-training"

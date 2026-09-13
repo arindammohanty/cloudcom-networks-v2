@@ -175,7 +175,7 @@ export default function ServicesPage() {
                                 icon: <Users className="w-8 h-8" />, 
                                 color: "text-blue-600",
                                 bg: "bg-blue-50",
-                                title: "Consultant and Training", 
+                                title: "Consulting & Training", 
                                 desc: "We help you define the right technology strategy, architecture, and empower teams with hands-on training.",
                                 list: ["Technology assessment & advisory", "Architecture & design", "Workforce skills development", "Staff training & enablement"]
                             },
