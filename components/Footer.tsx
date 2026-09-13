@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { 
-    MapPin, Mail, Phone, ArrowRight, Shield, Globe, Sparkles, Cookie, Building2
+    MapPin, Mail, ArrowRight, Shield, Globe, Sparkles, Cookie, Building2
 } from 'lucide-react';
 import { useTour } from '@/context/TourContext';
 import { useCookieConsent } from '@/context/CookieConsentContext';
@@ -167,7 +167,6 @@ export default function Footer() {
                             <ul className="space-y-2.5 text-xs font-medium text-slate-400">
                                 <li><Link href="/contact" className="hover:text-white transition-colors">Contact Sales</Link></li>
                                 <li><Link href="mailto:hello@cloudcomnet.com" className="hover:text-white transition-colors">hello@cloudcomnet.com</Link></li>
-                                <li><Link href="tel:+918606014781" className="hover:text-white transition-colors">+91 86060 14781</Link></li>
                                 <li><Link href="/support" className="hover:text-white transition-colors">24/7 SLA Support</Link></li>
                                 <li><Link href="/support/sla-policies" className="hover:text-white transition-colors">SLA Policies</Link></li>
                             </ul>
