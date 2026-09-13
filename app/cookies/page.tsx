@@ -755,10 +755,10 @@ export default function CookiesAgreementPage() {
                       </Link>
                     </div>
                     <div className="text-xs text-slate-600">
-                      <strong>APAC Hub:</strong> A-10-11, Brickfields, 50470 Kuala Lumpur, Federal Territory of Kuala Lumpur, Malaysia
+                      <strong>Registered Office:</strong> HIG-425, Lane 10A, Kalinga Vihar, K5, Bhubaneswar, Odisha, India
                     </div>
                     <div className="text-xs text-slate-600">
-                      <strong>Engineering Centre:</strong> HIG-425, Kalinga Vihar, Phase-V, Bhubaneswar, Odisha, India
+                      <strong>Branch Office:</strong> Arena-4, Level-3, STPI Elite Building, Gothapatna, Bhubaneswar, Odisha, India
                     </div>
                     <div className="text-[11px] text-slate-400 pt-2 border-t border-slate-200/60">
                       Response Time Guarantee: All formal inquiries are acknowledged and addressed within 48 business hours.

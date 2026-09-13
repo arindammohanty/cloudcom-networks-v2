@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { 
-    MapPin, Mail, Phone, ArrowRight, Shield, Globe, Sparkles, Cookie
+    MapPin, Mail, Phone, ArrowRight, Shield, Globe, Sparkles, Cookie, Building2
 } from 'lucide-react';
 import { useTour } from '@/context/TourContext';
 import { useCookieConsent } from '@/context/CookieConsentContext';
@@ -178,31 +178,31 @@ export default function Footer() {
                     <div className="border-t border-slate-800/80 pt-8 pb-8">
                         <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-4 flex items-center gap-2">
                             <MapPin className="w-4 h-4 text-cloud-blue" />
-                            Our Global Office Locations
+                            OUR OFFICE LOCATIONS
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Malaysia Office */}
+                            {/* Registered Office */}
                             <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex items-start gap-3.5">
                                 <div className="w-8 h-8 rounded-xl bg-blue-900/40 text-blue-300 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <Globe className="w-4 h-4" />
+                                    <Building2 className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <div className="text-xs font-bold text-white mb-1">Malaysia Office (APAC Hub)</div>
+                                    <div className="text-xs font-bold text-white mb-1">Registered Office</div>
                                     <p className="text-[11px] text-slate-400 leading-relaxed">
-                                        A-10-11, Brickfields, 50470 Kuala Lumpur, Federal Territory of Kuala Lumpur
+                                        HIG-425, Lane 10A, Kalinga Vihar, K5, Bhubaneswar, Odisha, India.
                                     </p>
                                 </div>
                             </div>
 
-                            {/* India Office */}
+                            {/* Branch Office */}
                             <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 flex items-start gap-3.5">
                                 <div className="w-8 h-8 rounded-xl bg-indigo-900/40 text-indigo-300 flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <Globe className="w-4 h-4" />
+                                    <Building2 className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <div className="text-xs font-bold text-white mb-1">India Office (Engineering Centre)</div>
+                                    <div className="text-xs font-bold text-white mb-1">Branch Office</div>
                                     <p className="text-[11px] text-slate-400 leading-relaxed">
-                                        HIG-425, Kalinga Vihar, Phase-V, Bhubaneshwar, Odisha
+                                        Arena-4, Level-3, STPI Elite Building, Gothapatna, Bhubaneswar, Odisha, India.
                                     </p>
                                 </div>
                             </div>
