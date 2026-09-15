@@ -6,3 +6,5 @@ node_modules/
 *.txt
 public/media/extracted/
 out/
+ccn_ganesh_draft*
+live_*.png
