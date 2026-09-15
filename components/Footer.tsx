@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { 
-    MapPin, Mail, ArrowRight, Shield, Globe, Sparkles, Cookie, Building2
+    MapPin, Mail, ArrowRight, Sparkles, Building2
 } from 'lucide-react';
 import { useTour } from '@/context/TourContext';
 import { useCookieConsent } from '@/context/CookieConsentContext';
@@ -20,7 +20,7 @@ export default function Footer() {
                 <div className="mx-auto w-full max-w-[1720px] 2xl:max-w-[1800px] pl-6 sm:pl-8 md:pl-12 lg:pl-16 xl:pl-20 2xl:pl-24 pr-6 relative z-10 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                     <div className="mb-6 md:mb-0">
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">Ready to Transform Your Communication and Infrastructure?</h2>
-                        <p className="text-sm text-blue-200 max-w-2xl">Let's discuss how CloudCom Networks can help your organization build a secure, scalable, and future-ready digital foundation.</p>
+                        <p className="text-sm text-blue-200 max-w-2xl">Let&apos;s discuss how CloudCom Networks can help your organization build a secure, scalable, and future-ready digital foundation.</p>
                     </div>
                     <div className="flex flex-wrap items-center gap-3">
                         <button 
@@ -57,47 +57,50 @@ export default function Footer() {
                             </p>
                             
                             {/* Social Media Links */}
-                            <div className="flex items-center space-x-3 mb-6">
-                                <Link 
-                                    href="https://linkedin.com/company/cloudcom-networks" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    title="CloudCom on LinkedIn"
-                                    className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-cloud-blue hover:text-white hover:border-cloud-blue transition-all"
-                                >
-                                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                                    </svg>
-                                </Link>
-                                <Link 
-                                    href="https://twitter.com/cloudcomnet" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    title="CloudCom on X (Twitter)"
-                                    className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-cloud-blue hover:text-white hover:border-cloud-blue transition-all"
-                                >
-                                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                    </svg>
-                                </Link>
-                                <Link 
-                                    href="https://youtube.com/@cloudcomnetworks" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    title="CloudCom on YouTube"
-                                    className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-cloud-blue hover:text-white hover:border-cloud-blue transition-all"
-                                >
-                                    <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                                    </svg>
-                                </Link>
+                            <div className="space-y-2.5 mb-6">
+                                <div className="flex items-center space-x-3">
+                                    <Link 
+                                        href="/social-media?channel=linkedin" 
+                                        title="CloudCom on LinkedIn (Coming Soon)"
+                                        className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-cloud-blue hover:text-white hover:border-cloud-blue transition-all"
+                                    >
+                                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                        </svg>
+                                    </Link>
+                                    <Link 
+                                        href="/social-media?channel=twitter" 
+                                        title="CloudCom on X (Twitter) (Coming Soon)"
+                                        className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-cloud-blue hover:text-white hover:border-cloud-blue transition-all"
+                                    >
+                                        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                        </svg>
+                                    </Link>
+                                    <Link 
+                                        href="/social-media?channel=youtube" 
+                                        title="CloudCom on YouTube (Coming Soon)"
+                                        className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-cloud-blue hover:text-white hover:border-cloud-blue transition-all"
+                                    >
+                                        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                        </svg>
+                                    </Link>
 
+                                    <Link 
+                                        href="mailto:hello@cloudcomnet.com" 
+                                        title="Email CloudCom Networks"
+                                        className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-cloud-blue hover:text-white hover:border-cloud-blue transition-all"
+                                    >
+                                        <Mail className="w-4 h-4" />
+                                    </Link>
+                                </div>
                                 <Link 
-                                    href="mailto:hello@cloudcomnet.com" 
-                                    title="Email CloudCom Networks"
-                                    className="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300 hover:bg-cloud-blue hover:text-white hover:border-cloud-blue transition-all"
+                                    href="/social-media" 
+                                    className="inline-flex items-center gap-1.5 text-[11px] text-slate-400 hover:text-cloud-blue transition-colors group"
                                 >
-                                    <Mail className="w-4 h-4" />
+                                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                    <span>Social Channels: <span className="text-amber-400 font-medium group-hover:underline">Coming Soon</span></span>
                                 </Link>
                             </div>
                         </div>
@@ -113,6 +116,11 @@ export default function Footer() {
                                 <li><Link href="/industries" className="hover:text-white transition-colors">Industries</Link></li>
                                 <li><Link href="/partners" className="hover:text-white transition-colors">Partners</Link></li>
                                 <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
+                                <li>
+                                    <Link href="/social-media" className="hover:text-white transition-colors flex items-center gap-1.5">
+                                        Social Channels <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-400/15 text-amber-300 border border-amber-400/30">Soon</span>
+                                    </Link>
+                                </li>
                                 <li>
                                     <button 
                                         onClick={() => startTour(0)} 

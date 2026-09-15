@@ -21,6 +21,7 @@ export default function SitemapPage() {
                 { name: "Industries", url: "/industries" },
                 { name: "Partners", url: "/partners" },
                 { name: "Contact", url: "/contact" },
+                { name: "Official Social Channels (Coming Soon)", url: "/social-media" },
             ]
         },
         {
